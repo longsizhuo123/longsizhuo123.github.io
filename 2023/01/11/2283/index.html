@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
   <title>每日一题 2283 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2283.判断一个数的数字计数是否等于数位的值。 12345678910class Solution:    def digitCount(self, num: str) -&gt; bool:        hash_1 &#x3D; &amp;#123;&amp;#125;        for index, i in enumerate(num):            if int(i) !&#x3D; 0:">
+  <meta name="description" content="这里有东西被加密了，需要输入密码查看哦。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一题 2283">
 <meta property="og:url" content="https://longsizhuo123.github.io/2023/01/11/2283/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="2283.判断一个数的数字计数是否等于数位的值。 12345678910class Solution:    def digitCount(self, num: str) -&gt; bool:        hash_1 &#x3D; &amp;#123;&amp;#125;        for index, i in enumerate(num):            if int(i) !&#x3D; 0:">
+<meta property="og:description" content="这里有东西被加密了，需要输入密码查看哦。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-10T13:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-14T17:05:31.167Z">
+<meta property="article:modified_time" content="2023-01-14T17:25:41.072Z">
 <meta property="article:author" content="Loong Loong">
-<meta property="article:tag" content="-[Python] -[已解决,题解]">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="已解决,题解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Siz Long" type="application/atom+xml">
@@ -183,12 +184,22 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2283.判断一个数的数字计数是否等于数位的值。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def digitCount(self, num: str) -&gt; bool:</span><br><span class="line">        hash_1 = &#123;&#125;</span><br><span class="line">        for index, i in enumerate(num):</span><br><span class="line">            if int(i) != 0:</span><br><span class="line">                hash_1[str(index)] = int(i)</span><br><span class="line">        hash_2 = Counter(num)</span><br><span class="line">        if hash_1 == dict(hash_2):</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
-
-<p>这道题读题读了好一会儿，意思就是按照<code>index</code>来读取，<code>index</code>要出现<code>num[index]</code>次，1210就是说”0出现1次，”1出现2次，”2出现1次，”3出现0次。然后对num里的东西进行计数即可。</p>
-<p>因为前两天都在做哈希表的练习，所以这道题一眼哈希表，再直接用Counter函数进行计数，比较一下，结束</p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="f8a496cc727db64f1ff97201b06f387a7697fe0dd6a4b50904d32d21b8d277f1">165d50f05814027fb7fe5e4ae8a088d89b88c2a3dda26e23cfd540f447037abdc851b3b2dbacf283b4838374884f57c021a94ebe3ae98574beb8cc894c1355979c8902cadb64306d2b1b3a187a09d4276208886407175962dcec14dd3c909c9f9fe99e7b9ab5ece81c12446051991219d199d6c325cdf5de5077646b7ea75df9c8c007bb9de383b00c0669a07956ee09de5fd11d9ab1b0b1ee166737676f6fcde3a93b5cff0547ab5835fb777f8df5d6f5fb35488a3663da0212f1cbc863a3d28322cea1920cbe4c45e8f71f6e52671e8d6a799c455f0cfbadbdc8b5bd027acbb84de619a3d6d0ae4c4fdd7d62140ccfc4cc8b2cdcf64802f504fea9cd7c08b9628a9f1da4d8bb1568020ca975d41f389f34bcb6012f80f3dc19a7a90a49e06dcf84229e637785beb300407e631e7e766d82b2e66dc84eecc8b6194c506e8de601b35ebcffd324d6ae09f2301ceddfeebc48d4a37a3d9048eebd2d3377022a339dd106e84d094583bbd344db0d9077fb6118ebfc2242d7f4d25f6aa1e8a2ec5bdb1325ad8be707a9c66392f6e9c994dd82b291fb9f49f9fbc31f9aeeac744a3a6089536a1a2aa7afa900fc5c426c2cf4a6d6a72d6ac3856ca7d5a69f2ba6e5794c6cb6fe6f75cb9dabe10b46c348fe9f9e0772caf742335bc0852af25a1288275d3d889a41d0a012fd93156b63f74af53b2a734587bd675989c366ca27bf646b0c8224b471e1f766d1c3e3627a4a6db98aeb9bd2774d57a1ecd48d49609ca74d9765873da7ed2b743c13d979ec0a5c00e5e2716d3f5a80dc30852875bf4900687a960cc479c3eef169c8fd010c07494e4857ad7b517581409797a374d45f3303d5970cf0fe049534b0a867832b4484364ca36c89e7fcf13f39811cc55cb4ccb4c48cbf665a919cc056a037a4bf9cb0daeb3d4b5fd9cfedfc4685edfb499fc34b2e4039f59a4e94814e4d4a1a48b7a95b5204b5043807bff9c434f00f737eb6012198f27a7e9ca1615a251035aa339f2348f1d2d19ae5738e071e59b92538b4f3ecf8beaa503333eec7779e6df2063cdb1400a7fdc891ceb1a0269c77f2ca5bd2e6abd01a18b24decb3ce0e53820546b3a9ff308a5d720241e6b3e4a02bfe1ee71911442253ea72bed508dbedbe53811aff59c9f48463b77b223bb1f75361dd463f9371399f6d2d7f0ff2ab54390fcecdf9d02a91a8a75a9580d6593cc600ba7aad4f234547951705c84d8f573c99b4de3dd5d6b739b8fe43d9570a45e341234f17f6b59aa415ef2b1655b692f5ae9075aa506b58de3a486c884c4249d96a02e6623865378b49fc5eab0aa06d8fbe33cd99b8689f013334413f13f763d79fddbc8bf1a0db82b660f6f6506c469bcdeb63d54a410663d7dcbb07e710da32c61eaed8eacecdab76eeb236722fce92d6d513557c21206da5fe4d9e34349ecffe5222904e64504dfe0348f9c40bd5514c2f12a03600a1f1bbd0adbc0d287687999bfc841a668f4e8966d32a3e8651700997b1cc73f7105b0ecf1d418cfe981235a925dfabd0d6a5302c0c0a185cd0525e85a731f42cc1b315e29909c7cb9fa7151f7f596928f1f17092a7513bad05473f870ba27228630142aa210fd5bf21a2840f24037e0907ea125f1016f0c54212b7c249eb8814f956b860308441a7b903671c20282f339cc25229703eb301ea6bd10c2a80ddb6538c1f2cb545b2600406a5dc2573ec22ae6ee4ffb9f5cbe1d12cc91fcd69eb8bfe2d948d5d864b8aebc6bdd6637385ebf77f9756684e8f913f9bca5ab7efb1ab63c84eba78ebefefd517236e65f7fa8f58ee3015b7c3ff6fadc1c80149eb809aa4dbb8faea52ca6b093b54d7a791f4a5483c2643bdcb7f3859fe7315f17d903b35e2977b7719d43633b2d7b0617b840292a99a4085700ef1cd8d9c516f834896abdf9516b085a951234785b42baa6df645282c6c5738c72293403bb24432e3c2b05a3ea74ef4575f02bcb7eb4777c394ecca0557ae61b358810b5d60a34269ced05e9683fcecc2f1e7d557fba6524c4c1f129d47f241063f967f4aadd12e38602246cb5b1942acec464909310fdb68da45fe73fa0f8fd9ae73de15a23e80e109858119fa9a1a14cff68bd1de906b4e8672f9f2b39b0ff453e5e4d529034785d306de008625facfe04785c86b740ca28a3cf9e52f47787ab2b663bd722b8f71f3849475d3e7f8256bfbb3e3748c3c5aea74176cb80564c06ca3e3e7cae5</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-xray">
+      <input class="hbe hbe-input-field hbe-input-field-xray" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-xray" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-xray">您好, 这里需要密码.</span>
+      </label>
+      <svg class="hbe hbe-graphic hbe-graphic-xray" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
       
 
       
@@ -201,7 +212,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-[Python] -[已解决,题解]</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
         		</li>
       		
 		</ul>
@@ -414,27 +429,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-[Python] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-[Python,周赛] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-[Python,哈希表] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端,HEXO</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">未解决,存在bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-[Python] -[已解决] -[题解] -[困难]</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">困难</a>
               </li>
             
             <div class="clearfix"></div>

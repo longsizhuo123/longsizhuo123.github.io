@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
   <title>271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n) | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem: 271. 字符串的编码与解码  [TOC] 思路 第一反应是不是对字符串进行加密解密，但是读题后发现是将列表转化为字符串，然后第二部分对自己处理过的字符串转化回源列表。  解题方法 列表可能有多个元素（由‘，’区分开的单词组），在每个元素中可能存在多个由空格隔开的单词。于是分开对list中的元素和空格进行处理。   首先对列表进行第一层遍历，再对每个元素进行遍历，当读取到‘ ’">
+  <meta name="description" content="这里有东西被加密了，需要输入密码查看哦。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n)">
 <meta property="og:url" content="https://longsizhuo123.github.io/2022/12/07/271/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="Problem: 271. 字符串的编码与解码  [TOC] 思路 第一反应是不是对字符串进行加密解密，但是读题后发现是将列表转化为字符串，然后第二部分对自己处理过的字符串转化回源列表。  解题方法 列表可能有多个元素（由‘，’区分开的单词组），在每个元素中可能存在多个由空格隔开的单词。于是分开对list中的元素和空格进行处理。   首先对列表进行第一层遍历，再对每个元素进行遍历，当读取到‘ ’">
+<meta property="og:description" content="这里有东西被加密了，需要输入密码查看哦。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-06T14:15:00.000Z">
-<meta property="article:modified_time" content="2023-01-14T17:05:31.142Z">
+<meta property="article:modified_time" content="2023-01-14T17:25:41.056Z">
 <meta property="article:author" content="Loong Loong">
-<meta property="article:tag" content="-[Python] -[已解决,题解]">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="已解决,题解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Siz Long" type="application/atom+xml">
@@ -183,34 +184,22 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/encode-and-decode-strings/description/">271. 字符串的编码与解码</a></p>
-</blockquote>
-<p>[TOC]</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
-<p>第一反应是不是对字符串进行加密解密，但是读题后发现是将列表转化为字符串，然后第二部分对自己处理过的字符串转化回源列表。</p>
-</blockquote>
-<h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><blockquote>
-<p>列表可能有多个元素（由‘，’区分开的单词组），在每个元素中可能存在多个由空格隔开的单词。于是分开对list中的元素和空格进行处理。</p>
-</blockquote>
-<ol>
-<li>首先对列表进行第一层遍历，再对每个元素进行遍历，当读取到‘ ’的时候对预先声明的空列表中添加转义符（一开始打算自定义转义符，后来发现\t直接可行）在每一层遍历每一次结束的时候都在列表中添加新的，与‘ ’不同的转义符比如\n。最后<code>&#39;&#39;.join()</code>转换成字符串，return。</li>
-<li>在解码时，预先声明一个空列表List和空字符串Str，当遍历读取到‘\t’的时候，就在字符串中加入空格<code>Str = &#39;&#39;.join([Str, &#39; &#39;])</code>，同理，读取到’\n’的时候就将Str添加到List中，并且将Str置空进行下一次的循环。</li>
-</ol>
-<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul>
-<li><p>时间复杂度:</p>
-<blockquote>
-<p>添加时间复杂度, 示例： $O(n)$</p>
-</blockquote>
-</li>
-<li><p>空间复杂度:</p>
-<blockquote>
-<p>添加空间复杂度, 示例： $O(n)$</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight plaintext"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Codec:</span><br><span class="line">    def encode(self, strs: list[str]) -&gt; str:</span><br><span class="line">        &quot;&quot;&quot;Encodes a list of strings to a single string.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        List = []</span><br><span class="line">        for i in strs:</span><br><span class="line">            for j in i:</span><br><span class="line">                if j == &#x27; &#x27;:</span><br><span class="line">                    List.append(&#x27;\t&#x27;)</span><br><span class="line">                else:</span><br><span class="line">                    List.append(j)</span><br><span class="line">            List.append(&#x27;\n&#x27;)</span><br><span class="line">        List = &#x27;&#x27;.join(List)</span><br><span class="line">        return List</span><br><span class="line"></span><br><span class="line">    def decode(self, s: str) -&gt; list[str]:</span><br><span class="line">        &quot;&quot;&quot;Decodes a single string to a list of strings.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        List = []</span><br><span class="line">        Str = &#x27;&#x27;</span><br><span class="line">        for i in s:</span><br><span class="line">            if i == &#x27;\t&#x27;:</span><br><span class="line">                Str = &#x27;&#x27;.join([Str, &#x27; &#x27;])</span><br><span class="line">            else:</span><br><span class="line">                if i != &#x27;\n&#x27;:</span><br><span class="line">                    Str = &#x27;&#x27;.join([Str, i])</span><br><span class="line">                else:</span><br><span class="line">                    List.append(Str)</span><br><span class="line">                    Str = &#x27;&#x27;</span><br><span class="line">        return List</span><br></pre></td></tr></table></figure>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="cdcbcd35bd19fa2a598dbf761bec06f6160dfa28d0ab964bb41da814d075466b">165d50f05814027fb7fe5e4ae8a088d8e75508278850dfff540638e69e6eda40ba2eeb5300cce4c9f23a5cfb451fcdfb58b5a524331fb9c24c16aa6c614abbeed42e0fd82bec0b5e668e4c00f4cb9969eaf74bfd1a561ba3c9f61f9cb3a4ffeb4252c16a1e9532687c50adc2af9b320152f1b7e324d05aede5088e4b65214acf1208d2b82e32950a2cebf8d30df4376396dc8f42c8648d7d7c2e8fdbc9e18adf582e0f985f5f40ad61d6ad04a86c11ecb06b0df42e5df33db774524d6dc2a421b34497bc076a62ae1737ed42498476bc90a62983e67ed8c65beb980d5b301139b6e6feacabf42447de788a5fc0fc54ef7988eb531250a880c4802177571f63b217b9d72682ee2b1a3d389f36b0cc904efcba86fe45473b36e002d8966ecab7e75f792f948f1cb0068275c5ca26e26d6279c9578e30f4ca52c386a1d8c139eaa3ede286ed6686868e688d465f24cef2e78abff8f3e2bf4ce16dc92ce6b5ea6ac9496fc186b3032b5eb91af96c15f9b69629c635d4ad287075fbf21b87042aa8abc46c661fa612f9cf8b66b6aa5fa9b376dd0fd337f6f5dba19c4e56ae30f7b8d708f97b26806567edbd51bd2180d639fd843e04e64a331d28a41db41cf99e772395d7f5ec1d376108bda6ce01b6829506699c7f4f27fbb8f65d75ef3dfd736c2100ba6c8df8e495215bcc64f4e189aad0a83e693f37c2674ed384844d0749ba6dbd74e9adffc831f4cff6d8a07fe9fd7fe224fac2e77c75bb9df1892916c46a57e111cc4737f622740e573aa6cf29be09803d95b6da67113606a7079f1e589a07a05dcc139c1cef66855861ad6c3c83f461d40e7ffde7280085c0902fae23387be09121dac9c59fc090ca979c78c6262c71a2b0e8e60aae186caf1cc343bd88496d0606326067176ad240d60775050038fe3798e6beaf66285b248aa4b1b435270da582159acebd64306d9a9202d7e299febe892795dce5beb20fc2fe004c675fdbba48271646b8270beac9f25331447bf6ee5d89be6bc93796fb3b0df66503c475720e41217dc4be345d93b028de42ad3f939b168489c7e0f1518114e6cd95575aad298156496bd6ab47ad01843e20a33430d290a60503e6b0e59eeb120106248193a121e81cf2cdffd331ef60680fba37b925d94c66a832293f5a792c96361c14e5d5bd3540b758ad7ac3a575295f30295faf3ff12e52b84935db86b2efa75b1e15a811dca6c2b985d2c6722de7a30fa5b45c44474bb0516e38dc2c7b1d0936f7b692aeaecf972398c937b907fc8ff2d446ae348a0cdfb02660b80c4fb9b128e3a4b13d305d9c5b4e6b32d41d41c0104c11dd5a1f038fc8f6ce514a35bc21351024edca40e04bf4d57668c45b9e371a21c007b0bc6e5bb4f8fc891cce6b9c7103af657b74bfde2f402fc21dbaef3fe8d29986734892ed087b157a2343bc0f2fc1255e35b739fc311a3f55527d5dc41d383b9e5cad1147e94a70e1a35ef25f83182417cec2b4769cc4423713e6e67de90c24675a6b246312c4597df1b95aa194829c7cb00b546819571e9062ed09dd61cc550999a163ffda29b6670143f974f25f4e9fcd446eed1f9928fd2b79ae141e0e574532f2f83adaa43ba884e77e702439f8e33ea17e7240d0ae664b1abd4bdfc1fee410adf3e802d04a46ef7de6542de450bf9e1eb9093a5e7669d71c1dc99fbcccdbb1f40cc5907d232eafbabeb6f3b1572b1677631f6c79752df3a18a94019da236a650c18d4f382574c321214f276ff7d7f7f8ec7646d942026073b5f940889da0e76efe895176de0f8466225b551ea732cb18b0966b5d50a3ae769e50eaa3e2d6594d8672d10fee9093f5d0b353f4c8c0ca1f148e380dbb86b38477b885da2d40e361b37f3e4c7857abe8f417b126f3f39cdd3e0b05d7bfd30873a2ddf5d5d9f243c9675ff1d48e3411b1ea291310220b90afeb23f9b07afea22f3237aafb76717a8ff03defb864bba9a3a2f3f82064b7fc3f618e0e2398ca34d99b230cd4809e1a845546b0f5c34ac371f91e09258f215294e4383f7275582d8a81c7b9c8b8f76546a2132e79eba96b22226fafd29aa1a8f755b99d32aca1c7c5749f57c30408a926364e80825e186dd00c5ac26fcc39fee3dc508baa19ab726a69caddaabf6140ef8f63fb37c055220e3eda0a7ef11bb51762d373d92c82dae2ca2f5fb4ac076df1b41cc7e98a893f35620126960a833067188d4f0128212df97a80eecb9689fc7ff30589660c4655afb896efd21cac05d8cab93ade03269ac250483db8242d9a4bd5f73e594e17299aea4cd8d716144a475433131be55f487cac11edf6a6136717d63aa58ae7d193f3b5b20359ef170efd871e4da57c0094ed367ffc8aad1aa8af2f684b29fe4942648b821a3161dad68c3b3469fc1bb0603caffcf63ab702da7bb5ba64c101fe9b8427ff9813a76d261b7f530fba5cd4a0a3f3b450274eba1c9d738b6453e32d9cc8ce3918961044e99635bf9ead0df25abdda18b7ea95fe3b84309a4e58618b557b7786700ac7610b4359dc119a4fa18a04e6ae80743f7303d94c84a28a664676af105825616c91d45854f2114fb9062467853a177e473376f9ff7e89a85f1ca4f107355479ca9fd71d94267154fe636e01f6ed95fd9b7c73c9245266dccb2a45905d60cb1b7a2565c9a2e552ee3ecfc7a67fa30dd9cdd46427465aed3b42d0d2ab271dfd42d2c81dcd21b5a2fcb21a4a94a082c74614bbbf17bf73c0e6084f96915c8aa392161e10d96b642014b0c12753a4656451b8205b57332e70f4c7f14febba06044bfb7faf7365d72ca43b3e803b95923bdbbd6d136fdd6615352c05b874a155fabd851dde3f8f614ecac6f7822d8206cae05445e8c7fd7eee7743c446053b991dd6ae5e005a801775848519d4cc429cfe73722b8c925d33c8466dc0cbf56a1b2ac1133d8dfad67b21d33eb1c1746cc86ce1cd24961403ffcbd6331b3aca0a95dd89616c915ea1348047c73d8698f4df9dcd187120001a1d6ca505d4fee2cf4d4b3c1887f7db410d80573c2c059881526538d10a570bbdf9c2e3340b3bf01d4bec667f029146fea0426b453ee07fa753fd6b2fc6eedac7616851e2d167f40247b48e392c342b6585858e6b3c37e0157c5495b0eebbe11ba7cdf046239515c9168f447ea503c9bec28bf7eb2d2b1c0a8cd10c01fb9799d51bcc9116f13cbf8b9435e91c3bc890099927afe410e86c5b7cc70e61f95b32f0aefa7e841f023e8aad3bb8a706e1a38aa64341bd701546c1dd0e7759b44f4e5608e584b796121107a962f7d66be95d4323e3f13fc7b4b93f30c514c6c8d1ef6d29de2d3b56e07148fa977271bb0618300e461f1ce00f87c1acec7d45ffc5e55beb7a42125a733aefeb632c587f4186b0d95bf12513960d7e15ae6bb62253aada6c7ad4dbf08732408d329c6df637fdad2fcea31b98bc2306f755af075d76058cacefc97f2364cb90cc4c1dce6a92685afd6e15d0fc4135d883462748f560090a5a4f1a7c85038df83a5ac54cf998336f9471f24658b434baa22bff79651d835598b141ea5fefd6d6a25bbfc45e7be13df84768673291093a852f9b81d6b96dcb8c899d2383d70578f2db88f8cb0a70b6a6e4a2bc4c48ec9329d59f311fe22f729d2e09e06c8a7bf313d5f04b8132fb0e1f84fd6271f1ea1faf80aadd4bb9b0bb3abc4bb09a9a1590914d396cb53c33c26075e8773637cc2e18a609ac6095e4eb6ac243609c8313807511b8d3e87833fb8efe77ef6b6cd51a7e116ed556fa1a855a90954b9b2c3a010d0575357870cf92d168f909594218b2737e438098cceed4333eeec5e35e7a4a1c4902b7d1dd0927e97be538b693891e72cd8dbee90c4bb05ba08c60658174c460a26b2b5b23c67720754ce9ead9c45c4a5d2c6f3a62e93ff09e58c9ed6239005558bc4b65833b3d8bd1b4582f4c20cbea5d3fff8b6229166e3b058cc9f065e5a7fe8ba284021cc0c09153de1fad70fa4406f3229bde4643e8710f304c8ecd2397029d9ea4e20fed478f463754dd92f077cb5369aeb25ae1ae34f07eee983e01b60a71b55ec6385cfe3891fc9613a37d87744ec3865bd7cefd67ec058f63b75d4662b937a688f1de6cef47ecd80bc5b8bf784a5f86a848360a115d65eb040713e1a399bd8dde1a037b208ec9d25df078d27bea9233b30c45f264a308a428c3c0d421fc2fe332d7c0576b2e0764e76598d3732ab182d91133034ef5ba72505e51f49f75679e09e8f5eabc7c1cd77ae447c553b52fe0e723edbccb5c7b2c294a852ea196c9e30c9b22758b5a1c9e856190a821d6a63bc4aa92d79cbf0bbdf6a4dfeb9e2a39a9725248e1ebdcaba9c7f017f48ace6c84b5f9bb96e2d2e87c90f39f57042c96887a1608a5aa072349cc6783b481d31b35aef060acb4860571080dcc52bc9180f164475a6638068d90610bba94aad177882f15ece8524f14e760a31aff726768a4bca476d6de3995727cc542ab5fb59643a9989e6cf2a0b583d9205e1cd0fb49d325e37e3e41be11e52c5a085a5be99adb2d20d54a9252f2e050b27002e941a5e24dd3041afef30d9eef29d9023bf9162550192ce8aa13faca3af6c662bad7cb973dd12b680b2e2e21f7d7b18832a1b52292f6566d73e3b1ced3bc7e6abe51709a9fc7fb7e33582275e58e7b1bce3725e4a5833df4a46dbe6f81ce1558b6d2d6a4cbbe41e2a5a4d0e8f183049c664d9e5623ee147cab43465d955f5d8a9c922058309460bf989441fa9d39bf5e4ac62f2c268c12559ecbd97038e5e1274758e0fdad37959d36aa18acefec7e13d6500c96dd8bdc70ae656bd3e70c962120cfb70e4840a20cedc4839cb638736821aee3e8cba68a528b57e60bf049f74049abb43e80cda2ca8a1984e5401b362072b25c46fb66e64bc37a96426f543e5aabed5ebe76aa36b024edd02f93f0caac2414e26ad82208f871bbb0cdaa6e3dd694e312959486a038ef5b3d73ebba4940bb73ff5d649d69c98006c5282227ccc769f76add4ebf7db4a6e0db7e3569cfe2b4816cd5923635d2c709238b266246117dc7a7ba73088aba87506c5bc443870a133267c62fe49d861a42c41e86f9c7594a644ef0a20a4447ed03d0c8a9133321d75932f8ebc90d91a5484835283997b7901cb43ce411d33440bdd2935ad15480fefd6735d63ee7fb92966c1613bec13aaf26c2201bd1ed0e1d99e41988df8afea434598527b80d693edb2353cc0182352884658b2b20a11ef85ad125381a8ebac0f27a322e7bdb6ce496340dcecefe3d8a60bd842fd0258509fd5300b01d38a5e1bd4c297d038e26f8e11f1614cd7d176992cd7e8226c800dd49eb6ff40b140f02f581ad1862b7e82e32c904bbdb5dfe7cad0aa692ac117035d127ac03996ce324c2bf412b130df872bef2126c587d560589a0c57a8dfb54601a641e631ce49a8e253aacea331389d243f0f07db05c2bab6e4823e0352ea8a843480d4e043af96f3c2d18dd39f3fb4d0cc3097d0c49bf47f77a3b5ea733d72e6ca5392c034423de20de17e64fd25e759e2076cd8a5281610a031252e13f6476deb0a122e570c9a3cf92c54195b6a263814ab4b5ce14baff29479de338eee96039af963c54b1642702e2447ebb8b78d9107d6a467afb7b7d5da3c8729a6d4bd639c2704c8da66f372744ade68fbaef6b812acb9be6dd6e0bb2cf391ed636470b49755f43c1d53d7afa226580f348a0051acdb0cc55a04e113d9d124e921c3181c40b5d9385a9703f654cdfe28feb85d725290d0e4bd391fe942d881dfbad8c22c7e85c0088620f428166c100744c35ca11ed14d6aaa2fda9366ccbef71f149560f14934f75db873f9a22436b18eec0000aefe1d772b3dc9997ed0aa8cc21837f2f4ec3a05e44ef3108443556f190053c707b59be20af7b13908afcc7a03dd827ccc013f52a5c9c0288825ecec4297b2859c7e497acde60b2c836fd5c567c1db8abc8c848aa6f173ade2d6c7df880d48cd8d7238e48b47510c6f8ae7633b89a51817191703ebab99e7cf3e6ddeaef1e0b65905a5171e199403c9b9773c1861a8de0e217811a05c93eeb9e61be8c0c39ea1a0c2366746f73a812f3de077391af9d2585d79c24d21b24faa25618776ec397e3dacfbe331c88d517bdff8e56c87abda12888537ff72693641986130e3460f3f2d370996eda8e568f916a361b8a8494d1145e1c6067612aac14c4afc5e1a56dba6e0b6864638e1f89c739fce253f633e4f9a4d3c997fe5be571f04ff6db913d23cd1aa41f71bbb5fa416bd2567235b4a0b74ec22dbcf9802344d4ce1243e811187cf27d4227d9dd86a8fc0dd1227d5b4006f07e156844501bd6e1e77f1654527091718c06c3c80cba8dd23b0ad671e24fbb0de49874ffdfab3a85e711a1dcfdc0f7d274ddca6827a1a06ac9fd670d93176d7477317b0d7d416349c18ad0e4931481911996fd20005aa19988eaf85d822bd769e0ab490e0604c6c138b40821fb92acdef24cc0ed4d44f1410458318298b5e2c29a178f450114c8ac2be5c955312a1719b4ae05d2c2f60a946abf087fefcd8744de6c5e982e2bb8585dd1f52d70aa3a59eeb545e0b6bbb53f700513017a4fd5cffe20e8518701f0dd3438326fdf89361a75317603a9322da3a1f9b846f7a44091267230bd4fe48724f1d4a94726ac7033c9c378874579b139ae2bb70cab313f48ff8486ca0165eaa272b73153119ba218b5a6c060efce4ca7d1768128d76a79dc4c6ee71afe62935fd455b55cf3c39109fab9a6f52d2ff81808b303524b8db4134dae00e1cd0037bc6d081d74d224dddd6ab531de934808e948de4621de0e00f80aed8f1e628478e8c9d39cda280a49916b823cff88593f2ca0794df3220254983f2a0f374fc746e0b8e45c22d5a0ca46caa341c6910f27e089fe385d1e29231191287c131bb69895b170e3aa1aecc8fed7e31f0488bacb3608b7e0b5e5b4f047a1dad7161d78e6e11854fe4bc66080e4843ee0d53893b733be69307186fb1a964851b020f95fee44d356b67b0d727ed286d495c2fa8d46a0ad6ee1fa80e0aafab16f26912e</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-xray">
+      <input class="hbe hbe-input-field hbe-input-field-xray" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-xray" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-xray">您好, 这里需要密码.</span>
+      </label>
+      <svg class="hbe hbe-graphic hbe-graphic-xray" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
       
 
       
@@ -223,7 +212,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-[Python] -[已解决,题解]</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
         		</li>
       		
 		</ul>
@@ -293,11 +286,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2022/12/07/219/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/12/07/2527/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          219.存在重复元素 II 哈希表图形学
+          2527.查询数组Xor美丽值 周赛第三题
         
       </div>
     </a>
@@ -431,27 +424,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-[Python] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-[Python,周赛] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-[Python,哈希表] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端,HEXO</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">未解决,存在bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-[Python] -[已解决] -[题解] -[困难]</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">困难</a>
               </li>
             
             <div class="clearfix"></div>

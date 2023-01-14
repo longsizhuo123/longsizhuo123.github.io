@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
   <title>Python 击败98.40% collections的Counter 方法！ | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Pyhton collection 包里 Counter() 可以对list里出现的元素进行计数，并且输出是字典。比如nums&#x3D;[1, 1, 1, 2, 2, 3] 对其Counter后的结果是Counter(&amp;#123;1: 3, 2: 2, 3: 1&amp;#125;)。  因此遍历一次字典，当value&gt;3的时候value&#x3D;2，就可以将大于2个的元素计数变成2个。 所以我们将Counter(">
+  <meta name="description" content="这里有东西被加密了，需要输入密码查看哦。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 击败98.40% collections的Counter 方法！">
 <meta property="og:url" content="https://longsizhuo123.github.io/2022/12/25/80/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="Pyhton collection 包里 Counter() 可以对list里出现的元素进行计数，并且输出是字典。比如nums&#x3D;[1, 1, 1, 2, 2, 3] 对其Counter后的结果是Counter(&amp;#123;1: 3, 2: 2, 3: 1&amp;#125;)。  因此遍历一次字典，当value&gt;3的时候value&#x3D;2，就可以将大于2个的元素计数变成2个。 所以我们将Counter(">
+<meta property="og:description" content="这里有东西被加密了，需要输入密码查看哦。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-25T09:39:00.000Z">
-<meta property="article:modified_time" content="2023-01-14T17:05:31.146Z">
+<meta property="article:modified_time" content="2023-01-14T17:24:57.992Z">
 <meta property="article:author" content="Loong Loong">
-<meta property="article:tag" content="-[Python] -[已解决,题解]">
+<meta property="article:tag" content="已解决,题解">
+<meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Siz Long" type="application/atom+xml">
@@ -183,18 +184,22 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Pyhton <code>collection</code> 包里 <code>Counter()</code> 可以对list里出现的元素进行计数，并且输出是字典。<br>比如<code>nums=[1, 1, 1, 2, 2, 3]</code> 对其Counter后的结果是<code>Counter(&#123;1: 3, 2: 2, 3: 1&#125;)</code>。</p>
-<ol>
-<li>因此遍历一次字典，当<code>value&gt;3</code>的时候<code>value=2</code>，就可以将大于2个的元素计数变成2个。</li>
-<li>所以我们将<code>Counter(&#123;1: 3, 2: 2, 3: 1&#125;)</code>变成<code>Counter(&#123;1: 2, 2: 2, 3: 1&#125;)</code>后再对其elements进行list操作就可以得到改变后的列表了。</li>
-</ol>
-<hr>
-<p>由于题意中“输入数组是以「引用」方式传递的”，所以我们将nums清空再填入就好</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter # 导入包</span><br><span class="line">class Solution:</span><br><span class="line">    def removeDuplicates(self, nums: List[int]) -&gt; List[int]:</span><br><span class="line">        dict1 = Counter(nums)</span><br><span class="line">        for i in dict1:</span><br><span class="line">            if dict1[i] &gt; 2:</span><br><span class="line">                dict1[i] = 2</span><br><span class="line">        list1 = list(dict1.elements())</span><br><span class="line">        nums.clear() # 清空列表</span><br><span class="line">        nums.extend(list1) # 将集合添加到列表</span><br><span class="line">        return len(nums)</span><br></pre></td></tr></table></figure>
-<p>复杂度分析</p>
-<p>时间复杂度：<code>O(n)</code>，其中 <code>n</code> 是数组的长度。我们最多遍历该数组一次。</p>
-<p>空间复杂度：<code>O(1)</code>。我们只需要常数的空间存储若干变量。</p>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="c6147dfe933a94d3e91b140c3b8a6a4ca84dd3005249684e2f8eb4af4c3571f3">101d1d5d1585dfd9f702988508b8e900d51d584863224a842c112269eff817ff0cf0b45fc7b70044f425d01bd7ea7a6486794f63b795dfa6aba0c52042c65a22f6b2bb3d8eb03bf0f1d6b5b61eca7cdf40af0cfc6ba9b48b3741ded703bcc72a11f46133c95061d3e31fb40056180139409bf5380465699b41eeac22bd95571394375df7c0d91a9484e12803cf7897125cb0a31374cd26c49618b76685bddc6a5647067dc88551a71e92ab35b46375788091fba2413990053db3204abdbd3e5a75fab61f7b0bfbfbbe05327295fa15ec4c450e81642fc9b290831e597bf43878f419cbcd81619a9bbda813a1dae87729d669b4656bafb8af632053b9d48deec7a15751ad2e8ebecc52d666d10b35c61178d89e096c1c29700e87b94c2823bc84bdb29e113f251afc700526874701d61634a8c294f5644cf1bad92d5b46513b567befdef98295169cdf00bab4773778eaaa866713e9bb2c7a416eca75ead3ccbab0e98c020872a625a1e71c4d2ac033988ac3f710e992b7e844e21b533042abb088857827cdfd137c82467d3d2beb731358bf96dbe73bc2dcd8d7740069a5ccf808c74d9e74c7898e44d02d7e3717a0be289def3ea079eca05026eea593721f825f68243582b49b2591fa24ac3097a13d72c2143b0e11599a7a8c69e93207f420f4af304b36e44bab66f8c8f18c9dfaa0a742126fb393ea120bdd01bdf319ea84081709f07fac558fc25a1a948a244f47f45415ff4318a9e37918561664231e3e93587d5bd66d4494c0c5666e2da5d2f8f5a24c2465590cb90cd3901b7aea5211a8371d1879c2905262d6721e47a5eae7a1c4083e2dd586e05dc3946ef68c0afd0560d7220fef4d81b6fc58fc4af2f570c01c51b459a5108ca1a981a0c65974b132160ed3099e1c78c8282a47afc6f057525a31a044dc70bea8828d83a50e65536837f922a8f5e251f13a0628ba3fbe3cf5596fd4d732f6e7100a85fe798b344a1405db264eb3d150fc9355e118817a0eb26951c436ac7783b3b07867603c3c0bb54e53fc905bd6976b784eea6c698d26286709813d20d26ff001156688250a20756a2e82b226aa16cd7e529adef6a073b708d2e3e06632ad3b8a7fbe91ce76eece0a28b9afe4e0f14568866beec30e10f88bc26d3ceec4ede5517ab2259b78cb65bd089e40dba153b8fab12dcc1afb65ef68e1d14d310fb573bce971d7020ee6e7dfc3ed9fd4699754f1e531568346b817cdc6aec3c8f9761f3bcc61a3a66b6fe5a88b2d8eacfa83da9b35639980790b26d4f3a28cd1dc6e87c28db4ba0872dc2158e7e7b6ae6968ff120c43e1fefba078272e03a010b49fada9293993cb1ad7a88892ff129b72bae672c55ba4a5d7286070ba749885af0a680f68d889688598e7cf879b5fa98d8e6644c5f5d606bcf0158f7524de97db45b85b756685a9bfc94283137ca1cb0c6b12a61303c57c7c4ad5648bd7164598ac4a220f91ebc44bacb7693f373080d202efc18be84241c9d4d0afadb7cfcc7df8e2def561e4150693aa54ec52db25e3a358adc5e0358ca874c11a0fc24d23c71b91fd2bd974a8fde8598d7bf436f76bc38f6e7e4d31377c7e27f32a7f61d003841c5d93fe90765e6e7f2adfd60f2338e8eb714db401462ea0957fa616ba053b1222e8f4fce409065c33568690be79bf4538509a8bd8833024ac8d1dfe62d80237df862f5f015c9bbabc573c722189db04ffb47eb29bc5a43cb5449f98b3c0658a5718c304ded3a42c1ac06e3883bd32b8396f82c1e7acf75348bd01a68bc9011f65639efe140ea23d445ca93ef322f2ba05f747e4806f88828b9b4588366ffaa36420ac8da49b3ad83942f1fe5380e15279f0aba1cffc25693dc6766fdd9d7053145acae72ad7e60b3d1bbb32551e48427501dd66b28122c5f4649351decd846aef819dec40e042dd72f8dc6ccd7207aefe012d9352951ea729bc2d8e9a0a68a8e9e64553e182ac3779d33a3fba1b2bea170448164165e85ba7cc3da12ec370c5d04edb6bfa033ae9c55b90835671830d9b79f72a24315712583a25cb87055103ff1f4a707cb3ecb328351a4fdfb0738e3ffedb14ea5cac53e85c691c4ec6eac4e2f1840834fcdc660039a0bd22bdc026caf6b54cb4c5d5ee443381192ee9d3a7f7ed4ef9915873feda8470fc308bf6d165079a82a0f4d333dccd6b508228ebec152c023187150e1df7c3ccb1612fc8d2261de89257dbfd952ce945a9e78578b426b18af1e85f7d55924a051af68e5a4046a372630c839f2105b02b6c63e9337759777d3a66a4e07d4ef6d0280e0f654b5f461645b3a688ab86aed93e18c5957c6ed4ffe4c5c067053a124e4871f7eb52df2cc9744c7314b38b917cca1324e60e9874e04bf77237f0bb2467759cc9ff0949d11c8cdb3c923e87b39edff3a80fc125fdb8e5dd1f04731ead969a02e01e002dade0e153e6ec82be4078809495d14f29de7f834c637ea5d33307a74283cd4a215d0d765587bb17c6a6fe08cd2627c51adf820352cf782296a6c64d70e12bfc7cf72a320a0d351dcb554b95f552304930da7eefef2186f00f7fe9e9e3344246e2cab6dd6c0fcb8ce0226545dc340bd198665e6aca41cc918206ef0000a3cd56651c68d215645238a29097e9c3a5dbef0f39630d2d78fee10b153c62f3e32aa6390177e0c8d98c27cd52c84ec4a3949570202f877e39ed53b6928ad8551bf0a85aa48bca5aba716b2eaf46cb57eddc0848bbb40470115c5ed9651d277328c71cbc481f0e4fe46ecbf0c62d018c9b7b665f40bb5a9b742cad4cbd03b783726d254c5b76ca32ca24ef2769b6efd1254864aa571fd5575681b12c20d62a1e64ed1a94a822dd0ad969b05d68c17fc3aed22cc09bc6c2b5df3c6f228a177ac7353791242cce66fdcb952fd11606561c1fe49ba8ae19c9a439d211d7ffaab8d6ef3c011cdd063ddffbec57300453822c339f01511b0cca44662928e7483ca86b087ae9378fdeb9915b225c7e87272aaaf19ee13b829f6de7ae8f1b5cd52a02acef908c58e21136f7c0112beb36c027c4da4dee90dd55419aca150a905484aca4f6e36f81578c8a11f94aa8fb3af66fb5ab4b76656306c32a7bdf8382ad3ae22eb1c839ad2b3bb7067bd2c9</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-xray">
+      <input class="hbe hbe-input-field hbe-input-field-xray" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-xray" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-xray">您好, 这里需要密码.</span>
+      </label>
+      <svg class="hbe hbe-graphic hbe-graphic-xray" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
       
 
       
@@ -207,7 +212,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-[Python] -[已解决,题解]</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		
 		</ul>
@@ -420,27 +429,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">-[Python] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-[Python,周赛] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-[Python,哈希表] -[已解决,题解]</a>
+                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端,HEXO</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">未解决,存在bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-[Python] -[已解决] -[题解] -[困难]</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">困难</a>
               </li>
             
             <div class="clearfix"></div>
