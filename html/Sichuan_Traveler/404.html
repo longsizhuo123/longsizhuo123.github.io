@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>咕咕咕</title>
+
+    <style>
+        :root {
+            --translateX: 0;
+            --translateY: 0;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-animation: fadeIn 0.5s;
+            animation: fadeIn 0.5s;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        .channel {
+            color: #008000;
+            font-size: 40px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .fourofour {
+            margin: 0;
+            padding: 0;
+            font-size: 175px;
+            opacity: 0.1;
+            --X: calc(var(--translateX) * -100px);
+            --Y: calc(var(--translateY) * -150px);
+            -webkit-transform: translate(var(--X), var(--Y));
+            transform: translate(var(--X), var(--Y));
+        }
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../../AppData/Local/Temp/360zip$Temp/360$1/process.css">
+    <link rel="stylesheet" href="../../AppData/Local/Temp/360zip$Temp/360$2/process.css">
+    <link rel="stylesheet" href="../../AppData/Local/Temp/360zip$Temp/360$3/main.css">
+    <link rel="stylesheet" href="../咕咕咕小组/咕咕咕/css/process.css">
+</head>
+<body>
+<h1 class="fourofour">404</h1><script>
+    /**
+     * Create alias for requestAnimationFrame
+     */
+    const RAF =
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(cb) {
+            setTimeout(cb, 1000 / 60);
+        };
+
+    /**
+     * Initialize a canvas
+     */
+    const BODY = document.body;
+    const HEIGHT = window.innerHeight / 1;
+    const WIDTH = window.innerWidth / 1;
+    const TOTAL = HEIGHT * WIDTH;
+
+    const CANVAS = document.createElement("canvas");
+    CANVAS.height = HEIGHT;
+    CANVAS.width = WIDTH;
+    const CONTEXT = CANVAS.getContext("2d");
+
+    /**
+     * Start rendering some stuff.
+     */
+    for (let pixel = 0; pixel < TOTAL; pixel++) {
+        const X = pixel % WIDTH;
+        const Y = Math.floor(pixel / WIDTH);
+        const generateColor = () => {
+            let base = Math.floor(Math.random() * 255).toString(16);
+            return `#${base}${base}${base}`;
+        };
+        const color = generateColor();
+        // CONTEXT.fillStyle = `#${Math.floor(Math.random() * 16777215).toString(16)}`
+        CONTEXT.fillStyle = color;
+        CONTEXT.fillRect(X, Y, 1, 1);
+    }
+
+    BODY.style.background = `url(${CANVAS.toDataURL()})`;
+
+    const update = () => {
+        const X = Math.floor(Math.random() * WIDTH);
+        const Y = Math.floor(Math.random() * HEIGHT);
+        BODY.style.backgroundPosition = `${X}px ${Y}px`;
+        RAF(update);
+    };
+    RAF(update);
+
+    const root = document.documentElement;
+
+    const move = e => {
+        if (e.acceleration && e.acceleration.x !== null) {
+            root.style.setProperty("--translateX", e.acceleration.x);
+            root.style.setProperty("--translateY", e.acceleration.y);
+        } else {
+            root.style.setProperty("--translateX", e.pageX / innerWidth - 0.5);
+            root.style.setProperty("--translateY", e.pageY / innerHeight - 0.5);
+        }
+    };
+
+    BODY.addEventListener("mousemove", move);
+    window.ondevicemotion = move;
+</script>
+</body>
+</html>
