@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
   <title>Python取巧，随机算法O(nlogn)搞定捏 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里有东西被加密了，需要输入密码查看哦。">
+  <meta name="description" content="思路历程：  看了官方题解，和自己第一次的做法很相似，都是sorted后在新的列表里append。但是左思右想觉得不能证明正确性，因为是周赛不敢随意提交。 在想第一种解法时发现，我如果不停for i in 整个数组，判断是否满足条件再交换位置时，万一进入死循环怎么办？如果某种特殊情况每一次都失败都需要交换位置的话和随机打乱有什么区别？ 看了其他大佬的解法，自己还是太年轻了12345678910de">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python取巧，随机算法O(nlogn)搞定捏">
 <meta property="og:url" content="https://longsizhuo123.github.io/2023/01/07/1968/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="这里有东西被加密了，需要输入密码查看哦。">
+<meta property="og:description" content="思路历程：  看了官方题解，和自己第一次的做法很相似，都是sorted后在新的列表里append。但是左思右想觉得不能证明正确性，因为是周赛不敢随意提交。 在想第一种解法时发现，我如果不停for i in 整个数组，判断是否满足条件再交换位置时，万一进入死循环怎么办？如果某种特殊情况每一次都失败都需要交换位置的话和随机打乱有什么区别？ 看了其他大佬的解法，自己还是太年轻了12345678910de">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-07T09:25:00.000Z">
 <meta property="article:modified_time" content="2023-01-14T17:25:41.081Z">
@@ -184,22 +184,13 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="ece443d84a829ddf2f53927b6f365c6dc0939c4572ed3b9d5a913ee77a612e69">165d50f05814027fb7fe5e4ae8a088d8f9a3d771ad3572c7264aaa7e6b2d7ec7d034e13b769ebd53cc8cfb505f908946f77e795ddd3596326691f641c6cc939df872caa1dd3e230b466b267d0c1bfbf71b86565e6fccd02f1c55c7cf1b4bd64893a7b40e280359634ad818f4490cd8f7c8aff439b7892edb2f2d68a6957589c96d47e6a69d31eb4ecd68361cbbbd7917e1d2d1d2bdd5c57c7d8aca53eb24f62a72e11476761d3cb2985dfe8273da992666f17bae0f610588d4128ee31ffffd6fed16812096755cc0d39f6d578007441da811e51cae5b423f0641ad7ba5f140cc183b6cc74e0467e6efdd3de5f1e41f6b1a2afc9bf0ee0a5c50fcffb41add715768caa742b8fe03d1ffdbb2e7218da036f8f9dcba542e5e2ada1796e6b1e6bf7dc7accebf2de4a4860302a860cd715458cacd171168b9df8b553ac01cdfb9e06140ed89dc5773ecae416fb38898b46080c57ad9ef45e4045a33d829c0675b2592c32185d24b74a6914c7ff7cd8321816b3e8174ed06519fe107ea6f1642768244751840f5b596d7c0aee28eadefb631046e7a9cce4ee84f4e84a4367c15d4647812a7fdcdb245992a023055fa0ad9a47a12712babb3054574f14cda332766bf47321c0db5272afcf98d8c3b502518940476e1a83d3ce1f910b4d96b915b32c039fe4b37fc2dc4f18357030660c9fc437fcd7b75aa17155d7f8bd3a18e7ba4d4fd96e5d2d14e45ce919e5b23ff61dec8b19ce136e0b51d28727f64701fb6308081fc85396c85495d7435e26f82963e2b6a29e91cce158f5102f87a1cbc793e3f8ec231e674c6f52649a625d8eeea77eb932dcbca29a0ee5b76aa420b15f15caf5a11cb1c5d3233ea3dfd95c70673bfdcd5f0d4b38ecb74d5fc867df187e274f2a5339dffb9793efa6529594fdc177608dfd4a3972d073ac08eaa16534078d6d89a47b6e9dce2175bcedb83d7ce1a21bdd6c2b076aad2911fa968ca23ddc27856dcd8973a9b97f6550daab3b496831ea357a4b887b85a9e7f010206744ebe77366a1234372212f671a3129a025468c6ba92f1fa68afe99cb051778aa0da67aaf92ecfc5a2e1f2fe20eb839a254b680663a3019d2a0552e492ada586c1c058ef090d38a392e5b9206e4773846de10562150de5ea5c15375c2e9dabf5fe58302aee00d8af3efd675fa066f78df07348157e280c49554ce0e7068425d1e8490875629eb1f0febc6b3be02b1a45593376bc3df618726d00ebd804802fe1917e9cff1c3e606082f7cd2517d1c6828a137151d0c4ed62ffe9c4921ef9734a83787ee79e051dfaeaaeac8ba3c2a08a7409357a33937744c339ec22e0179375603cd5b52e64a1e35c9bc48ce6dffe27d5eea43efa960f0ac864c61d88cb5723f7687038aa53592a58a4667bab871ecf5f7dd6d34bf8e22d13953a47cd83bca29cf4e21ab18ce49a13ba371e01da537c5f07070e92dba1878b6d8e62f4c8aef8a72ecf0251953a69c7344026b38de4caff31d2604bba4b0c15f026be1deb26c07597a0d7a197959c1b1404065c973155e671bd683b92e86c14b7e64a96d6f894750ae2f9f8281b8f7cbd4983dd3a71b68698dc32f227029c17df660e42e7c07f0754ec624c38d089f8730c6019927905fd3ca310701e009d07d640f1db738adee9a42da7c7356d02665dc3deaa5eb7c5fa1a6136e7a168ebe7d4c384b2338090fe48fd83e268b04e4f13901c19ff2fffcc965102238f6aa9b7a121ac87c5c9d3a1e416c975d93b1d779bd19376852a6cd99a7e8df0ac8ddaa4b841c3990867bbdc6146f63c6b41a52256a6df1e0955237bce7a44c45750687afeff1999e380c4ed22ff77d58256988302f8a3167a9be530fcc4d1875c43c567e7d9c3295770ca84b455dd49e629e5762916e57aa8097783a52592f17e30dd753e7024eb2513ddc2929f221c487202c35fe1c2e588f247f58627cdd59bb51c89f7da822f8a9d0f78eee85a2fa68c5bd27c1658960153577138728bbd9e5c0a0f1aca43e4ff82d893367bf08fe5834274f4589ddeb014ebcbf475afd82c9e87aacffdac7e56750bdb23244985316db10ef14c5b2a52331e2a2434d9fcfe4b7786dd0328deb89f8285c9bd28ad51f7290227eda79eb8109c583b656b57f9ef13dcca54f8c4b1ba1136a9f45ac244062912355d76b966b4157cfdc301b566fdfa56c0b601f67059d12a0fb234f1e7b46def36517d23158f0f821fd13cff4d709ec4dd853b3a47b22bc337d0321ff2</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-xray">
-      <input class="hbe hbe-input-field hbe-input-field-xray" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-xray" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-xray">您好, 这里需要密码.</span>
-      </label>
-      <svg class="hbe hbe-graphic hbe-graphic-xray" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"></path>
-      </svg>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p>思路历程：</p>
+<ol>
+<li>看了官方题解，和自己第一次的做法很相似，都是sorted后在新的列表里append。但是左思右想觉得不能证明正确性，因为是周赛不敢随意提交。</li>
+<li>在想第一种解法时发现，我如果不停for i in 整个数组，判断是否满足条件再交换位置时，万一进入死循环怎么办？如果某种特殊情况每一次都失败都需要交换位置的话和随机打乱有什么区别？</li>
+<li>看了其他大佬的解法，自己还是太年轻了<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def rearrangeArray(self, nums: List[int]) -&gt; List[int]:</span><br><span class="line">    i = 1</span><br><span class="line">    while i &lt; len(nums)-1:</span><br><span class="line">        if nums[i] == (nums[i - 1] + nums[i + 1]) // 2:</span><br><span class="line">            random.shuffle(nums)</span><br><span class="line">            i = 1</span><br><span class="line">        else:</span><br><span class="line">            i += 1</span><br><span class="line">    else:</span><br><span class="line">        return nums</span><br></pre></td></tr></table></figure></li>
+</ol>
+
       
 
       
@@ -441,11 +432,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">

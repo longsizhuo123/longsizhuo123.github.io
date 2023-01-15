@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
   <title>2527.查询数组Xor美丽值 周赛第三题 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里有东西被加密了，需要输入密码查看哦。">
+  <meta name="description" content="6289.查询数组 Xor 美丽值。 这道题研究了很久，发现是一道数学题，但是又没想通透，因为不熟悉异或值。所以没有相出更好的解法。 首先是读题得知需要计(nums[i]|nums[j])&amp;nums[k]，因为ijk可以是数组里的任意值，所以用的三重for循环（肯定会超时），然后自己灵光了一点，也就一点，觉得i，j值互换的值是一样的，所以多加了一层判断（用的字典）。 12345678910">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2527.查询数组Xor美丽值 周赛第三题">
 <meta property="og:url" content="https://longsizhuo123.github.io/2022/12/07/2527/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="这里有东西被加密了，需要输入密码查看哦。">
+<meta property="og:description" content="6289.查询数组 Xor 美丽值。 这道题研究了很久，发现是一道数学题，但是又没想通透，因为不熟悉异或值。所以没有相出更好的解法。 首先是读题得知需要计(nums[i]|nums[j])&amp;nums[k]，因为ijk可以是数组里的任意值，所以用的三重for循环（肯定会超时），然后自己灵光了一点，也就一点，觉得i，j值互换的值是一样的，所以多加了一层判断（用的字典）。 12345678910">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-06T14:15:00.000Z">
 <meta property="article:modified_time" content="2023-01-14T17:25:41.067Z">
@@ -184,22 +184,15 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="d43e932c13dc433fea6eaead96f2c9670fd480c056033ec97b019f51ddb9d816">165d50f05814027fb7fe5e4ae8a088d8596b52e93e4b2b68aba812a1db576bbafc2255146f75196ccb7b9f6f3b692664523df65b4d11c1de5184294dbfde9b0fc7a30f46eb6c81b0bb070d6f5ccb8ee913e48c1d4dbb4d5603991165a907e806bfc8d363e324a342e8bc5ff9b1413452d1895ef333433bb7f6c8a55f129df348880ec426e1a7041ffebfe6c7646a8df3d8dcda53ef156ee2d7c1b1560b876df4420ae7cb1cb5c6da2e89fe55fc450a941e9956bc5b0341e1639e4008d9a10139d4edf8b6f26892321f0b09c01ba5ca05492282bfb816b84e35c782a96332a7504a16d578e049d780e224f1ced62a7347e5dfa5dd4c64f8f95162dcbd117087466e76302cda314be47668a5f9953578e0cd266880410cd122cb9ce0f883515bcfcf76e807fa5b9aae3f92b189d85fbd912bcf17191121bee05b48783feee4bf15008fa5d27d79aab686d0cb5aa9011a20710ea4064694116c78dc51efbd250fde5ea2b1309f9162d1c2a778e527c5b4ad13bcb985dee23c88a313a8da7958073f04860db05e6356e30759adf4949793e3d0bbb36c09e07978a78881a3f77417af20c3fb7a0f057f3ec0b41d6580fde8319d496f5e8f40021aa09e8a2e1c06ba777e207230cff579431f548dff9411e7bafed9f2762c7728b41ca37908d31623948008d75897b87c276a22833f9f23c5666e9474872a8ccbd3d63ab19b645a93eeb3cddffb1b20910e610a72c5d0e9cd6f179c7895932a70229a808371429f11efafe8597b93a11cbf75cb1f70586906cc60c7791e248313d8135e9a1bdb3df4c8ea303247c4ec1e226a617cc16b3bbaeba2abdcfce50c7850aca1c23e2443e64591ba42dabf1561d1f20653018b8dea3d025362236498b6f249585093c8a3bf0641912648a7699dd31fd8edceba0d435b9000f18b74feb3d96c754f611846cefcca220cbc4edbe8166fdce3a1a88b9b11606c7f76e34175aa5c8f7beacda07b9c845c458e223c3a89ba5cc2168d82b236f411a5a1fb5c617ed7965bcdc1ce097b43a24baeab1292238fb5c29eefefe721d6990149a0fbb09e47ab202e916775891d7bcb2b65d6c739a4e0d51e0e0f18a3e4ce8545fa5079bf9ce43170baa18c7d948e9aefdf1cdbdcae1a4dd98b7e8e52ac8bf004210c11fa0b3109caea36db1ecbb3f1ad5940abbe36671ce48e62688595bea246f2974095994cc2740a5333aa83072cb8f1a552a85b24ed18577b7365534b1957c2dd72cb7bc2634b66eeeed08f3bc63efc240e6d9d74bd1030b27e604e3327abc982aea50575d2c084d53789c6f18761b2d3682969a3a9fee16b24168f62063b25f3bec3e946ef60079a9480986d67a3f41ff2e9ce24812c7badccc76f79bf65e17d07ff85e7dafbe2c8c5169bf990e4fbfa3d1983e63ea23c7ec86ee66432fa7f1d95660b51d22f18f64ed534564af556ddf45cd045ee0bae561ee130aa713c20a4085fb098cbb1d1d3a4d56e2dab6f9956aaab9e9b5ef698f1f87209c5eb461f737756353ffbdedb1d9210856f72e7a9864053d4ceeb8405920e589d0c31f569bed2930e0164c169d30d91d066a590a27eb200a2bb7303e53ddf3882777f22dd28fed8cc484f3285d19316c0505ce4d808c8be9d779b241d25f62323a28758ff4203dab9267508c2d03c3483c6a0d6bdcda53ff6d2fde3498cd6cd89510e2cbb97b8661f98553f649ed1016a9280d722775db2fe0068be93fc7f94920900a272af4d7f68654a7ece3acbe3f0435062ba1caf1b4f9b12b7622d7820567eb801b2d1f7e48523596b2fe7eb2cb3885b95569426c2cb39dd58665418d585a8286c0ee45430813deeaefe9c0f3b7381fc70d2df9e2e0abf4b396f51f2ed325ffd2a16fb95e2d036e7a83044537118065feb8a192de06df820fb91e2961bfd93a828f49c2641a88b864657960755e0ff03a6906e1bc8846a731a17f6921541f7b9314cc7c61fc9eb7224a0e44e0fadfce953d669074323fd03bcaed2ed6b05881f0b0b41e36a782076586dfa1e1b7b6fb97a1db72563a27b4e76530bcc2048c3079613d13ef51b392b785fd98c478c88d5233fee9199bf47152e19bbb7ceceb394156023f12615e04657449b2d17f0bc957a0bcc1f917d5c5cbe2fb8657e5fd665c55131b9469bc1c25a1d3d2640fe4266c42499e3dd16313b12ccd372da4b032f197776a7120707aef0b3d9f69241c9b3470c33fedaede41cf6875c04fbe5f8d7e0922b456f21fef54b92965b11c7a5cd56d6253d10afc983052ce976e8d92574f6d89c0532f2dfa0e7b6e0d7228e8b4825fb79bfab6187cf14132ba3e5c53cb91c74ab0ed753e8ab7bc5010f3615201ed8aeda3c47d0482d5a77b6f5e2282f4bf44c1521414ae2304b06f8a6023105c2d6985f9b5c006ef2b13d876bc1c43c9bab59f5c7ef157cbc8dcaac1596be42496be3f809a2f33ef24f28a00aa9a3173a35ac75e47ffc1427b3f259be970e09449edb4c8731e195952ddc2345aff20c007d1598efb62c09d903d257b3cf190f3606f3fa05839fc59fed1c223e4a073d8edc2471342dfa350fe719ccfb57735dd29f27ebb8fa2775922261e603119892607b11bc478ff2bf33c7896735c4dfefd350b605c84329ef6963c7b23c199c0e989e30c22a04e7621c2122b7fbccc84a7a314b8ada8b7786c9414e36be88b29c900cec5c43d6450112edc70b706ee4f08051472214ceedcd6d5fc83aef92606d13b10f30906cdc3e78d95954d700ec1c5621f748696de879e9a66ab86225715aa82ddd2dc31bb24993b2ecfcf8f00a6a3f6210be96d6c4c2c377e3b0fc313ff0802632b214210d1c5a36ad66e32b413987b03cddeaa675dd1016bf8f45035a59c266ea7b797de6c9d0199a94f68a195400ba7efb1db7c7e14368360724806d12ed4f54dcd1dbb4fdf354bf273e37176ba14b761a45df0a633a3f381ec165ab6d633c8a38265fc3c3ccaae9a6273d675c8be9031f3fa457c1cb4c4c58902dafd009d340caaf34e43215e5aff172fb272e008b03d5726722d212e479f23746d4a2152bf3ce85d9c201c7e736b7896e82116fa8abea58a7f9cb003ee763a0f0fff2d854ab52e9726cf4e3bf5d1ac82d91640f6139eda63c74a046f44abfc6b31795b5966092563af0f6f5e5e3b919432d16da8876f7dbafced15645905d651425026dde59670784ca07fe6f15f20a48720542b807278e68dfd3d8f29d245b05b809eb3c24c7ff8d90b70793bc7b40ddfcac9372e0230ad8d185fe390a1774ca4da4ca9b2e3063dc8c249342aa984856d0e8eeabb4ae2ebf0cf5040aad7ac4923cf98ab77b330729d32549f087118a72c8a46b27be3a616b6e94aa0a622ab9dcf742ffc6451ca69f190409461f35d88c776423f6c5721e8f196e9b87c8f08a43e49a68f9e4c0390452b9dd6f561c7a6e068df22cbda6c77be825f9440e140860dcc6d2241107659003a515266fd52834938e3b27453bffcabb6643201b908d9c33672afaa88544904050cc549906cd1a0dbeaa518e1b83f0078e52658274f930d7f1f4b9fadab8cb8bacd1c0f8b803f1db91d01f1ce735110081ade7231c78feb93b81705bcbc5d0bb9c02dd5db5f47f299fc3614587c997f8ef2a5407672b6b86cb3d909fb129ceff4aebe9301031be1cfd9abcef93e9e59f96b01d8e61723d57cc63359b736f4b0164f2f8ef8e6c5c9779a196419750b269385003d9425513c807c12f2f8d9f3e36072c3c24c05fcd4bc7dc9fb0a6f5dc460dbe5fceec19ece44b44e2fdf496e69914a5d9a66229313b1ea5bac4b40a3860186040537717502cc634aafb4cb4ab14c325cf51858d9e9daec781fe8e188f2755de80c6915c9b62ee110b7ecd906054146639f4d81b10d683afa076a4071990c41cc63c76cd15c49c276c955ea3e5c828c081a67043be56fa761db8f47bd09ac6347c7d7e1f5d26b8012a0369c7970e7067b4a0b2b2390fe14c0af8a919ddd7c35ca53c0968442a7e5aef89f5663daffa892b06fdea95c892db52de469601e223fc12c647d5f4951ba4dd6c2465ecf3e7889cd85a9718361f8dc34ff4e20395834038aebb485ed0bc8255f1685ab46a095f1f0169c57ddc25505cfbe02b7bad23eb3fdcae480444f76732cd3ccf9884df3b64736ee05cf7d38d34aca7cf2d69449cb0730e437eaa3872aa9046d79ab13172741efb01e1107ef7a5f468783a023bc0ae6f5e016c2e5ee45bfa628d541e1ec034da0da7b590ea38b894f1c58d5c426001e4822aa6c6c07d0688bace0cb2137222b5f8a13d3e6657de2b0d2bd38d7cc61269c7db452abce878e8880653d5d04aefd1b1134903822106a1f00779e97fb787a8c2bbed96d0a2ddf5357a08c339544b331b1e7264e583947973b676585d03fbe9dd30f2126a4968a0dbc6f59865fa47a1170f35183cb55a91eee7b37cfea2c78fc3dd87f157ee266c894b8077363f96f0c45703463fc38557efb6de90febd5edaab48e95dcb73efd8cbd3fbe184b54250a87c0a90952e43ed7c1f5cd3d39ae363c74807057ef93da953e63a0a14ebd259f87765a843b6fcf08df93d54829e6c566195a334f649d327c42995566abaadc2a24aa91df57c0baea5a180d229cdd25d2e77760c7c48cae80ea7b17c91cf0f287ce3d09cc8a782b6b6c81de9c3a2ec160c1f2d54e78127843ec230b2c2418b62b71067694a04ef3a4780eeda4d1f72ce797deacd8ce5260facdbf776a2674bd0a93100a6a5deda5d73004e6b24c85d28204fb47f99d5028fafb4ca9dbd96dc648b2f2495268e5677d3a6921d80a6f925758e3671cf19a495a05f0f49eed15db64186087293bfa328bd208b49dc5f37a717c14f34ab410ddeb35122e160b1e41bd4abcd1dd8a5e9fe97dc88630588621d46904adb278afb279aa551722615ded9652db0e5c76644f680b94d1f365dfc59b51a7222103932613937c6de265e7fa3f35bd650beb112ce2a5400a8c303c2e196784ee82ad83a898e052eef2777b1e8e6286136e4fdb1cb0c7f19c450038a1dd8b929581827b4f50037565e54f24f56a2a6539f3d4e712c075b20c77a45015085264fb63c5a6e3798a2f827ed30bcd3228f1f059a0216b2baff5612b075f208e24c55ad36eaf9b5efda8dcc46b230c86448a612c22bcc84ac79f38ad5de2d4aac233e7320f4eadef18b09d644e40fa78823e762bc4f26871f4e74f2ce4437d426da650823f6c5430c33a83bb0104be64fad8627dc7f83b8e4f7b6e39aaf03f6fb71e8</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-xray">
-      <input class="hbe hbe-input-field hbe-input-field-xray" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-xray" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-xray">您好, 这里需要密码.</span>
-      </label>
-      <svg class="hbe hbe-graphic hbe-graphic-xray" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"></path>
-      </svg>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p>6289.查询数组 Xor 美丽值。</p>
+<p>这道题研究了很久，发现是一道数学题，但是又没想通透，因为不熟悉异或值。所以没有相出更好的解法。</p>
+<p>首先是读题得知需要计(nums[i]|nums[j])&amp;nums[k]，因为ijk可以是数组里的任意值，所以用的三重for循环（肯定会超时），然后自己灵光了一点，也就一点，觉得i，j值互换的值是一样的，所以多加了一层判断（用的字典）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def xorBeauty(self, nums: List[int]) -&gt; int:</span><br><span class="line">        ans = []</span><br><span class="line">        record = &#123;&#125;</span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            for j in range(len(nums)):</span><br><span class="line">                for k in range(len(nums)):</span><br><span class="line">                    if k not in record:</span><br><span class="line">                        if (i,j) not in record.values():</span><br><span class="line">                            record[k] = (i,j)</span><br><span class="line">                            flag = (nums[i]|nums[j])&amp;nums[k]</span><br><span class="line">                            if flag not in ans:</span><br><span class="line">                                ans.append(flag)</span><br><span class="line">                            else:</span><br><span class="line">                                ans.remove(flag)</span><br><span class="line">        if len(ans) == 0:</span><br><span class="line">            return 0</span><br><span class="line">        answer = ans[0]</span><br><span class="line"></span><br><span class="line">        for i in range(1,len(ans)):</span><br><span class="line">            answer ^= ans[i]</span><br><span class="line">        return answer</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>今天出门的时候还一直在想怎么判断答案一样的情况，结果一看大<a href="/u/endlesscheng">@灵茶山艾府</a>的解法，就一行，那没事了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def xorBeauty(self, nums: List[int]) -&gt; int:</span><br><span class="line">        return reduce(xor, nums)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>接着做，在网上搜了一下，原来如果两个值是一样的话求异或会抵消掉，比如A^B^A &#x3D; B，所以用的append，remove来实现这个功能。最后for循环求异或值。</p>
+<p>大佬代码还在研究ing</p>
+
       
 
       
@@ -286,20 +279,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2022/12/07/219/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/12/07/271/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          219.存在重复元素 II 哈希表图形学
+          271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n)
         
       </div>
     </a>
   
-  
-    <a href="/2022/12/07/271/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n)</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -441,11 +429,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
