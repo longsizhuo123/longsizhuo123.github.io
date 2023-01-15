@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
   <title>剑指 Offer 43. 1～n 整数中 1 出现的次数 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="剑指 Offer 43. 1～n 整数中 1 出现的次数 []12345678class Solution:    def countDigitOne(self, n: int) -&gt; int:        mulk &#x3D; 1        ans &#x3D; 0        while n &gt;&#x3D; mulk:            ans +&#x3D; (n&#x2F;&#x2F;(mulk * 10)) * mulk">
+  <meta name="description" content="剑指 Offer 43. 1～n 整数中 1 出现的次数 12345678class Solution:    def countDigitOne(self, n: int) -&gt; int:        mulk &#x3D; 1        ans &#x3D; 0        while n &gt;&#x3D; mulk:            ans +&#x3D; (n&#x2F;&#x2F;(mulk * 10)) * mulk +">
 <meta property="og:type" content="article">
 <meta property="og:title" content="剑指 Offer 43. 1～n 整数中 1 出现的次数">
 <meta property="og:url" content="https://longsizhuo123.github.io/2023/01/07/Offer43/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="剑指 Offer 43. 1～n 整数中 1 出现的次数 []12345678class Solution:    def countDigitOne(self, n: int) -&gt; int:        mulk &#x3D; 1        ans &#x3D; 0        while n &gt;&#x3D; mulk:            ans +&#x3D; (n&#x2F;&#x2F;(mulk * 10)) * mulk">
+<meta property="og:description" content="剑指 Offer 43. 1～n 整数中 1 出现的次数 12345678class Solution:    def countDigitOne(self, n: int) -&gt; int:        mulk &#x3D; 1        ans &#x3D; 0        while n &gt;&#x3D; mulk:            ans +&#x3D; (n&#x2F;&#x2F;(mulk * 10)) * mulk +">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-06T14:55:00.000Z">
-<meta property="article:modified_time" content="2023-01-14T17:25:41.076Z">
+<meta property="article:modified_time" content="2023-01-15T06:39:47.749Z">
 <meta property="article:author" content="Loong Loong">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="已解决">
@@ -187,7 +187,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/1nzheng-shu-zhong-1chu-xian-de-ci-shu-lcof/">剑指 Offer 43. 1～n 整数中 1 出现的次数</a></p>
-<figure class="highlight plaintext"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def countDigitOne(self, n: int) -&gt; int:</span><br><span class="line">        mulk = 1</span><br><span class="line">        ans = 0</span><br><span class="line">        while n &gt;= mulk:</span><br><span class="line">            ans += (n//(mulk * 10)) * mulk + min(max(n % (mulk * 10) - mulk + 1, 0), mulk)</span><br><span class="line">            mulk *= 10</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countDigitOne</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        mulk = <span class="number">1</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> n &gt;= mulk:</span><br><span class="line">            ans += (n//(mulk * <span class="number">10</span>)) * mulk + <span class="built_in">min</span>(<span class="built_in">max</span>(n % (mulk * <span class="number">10</span>) - mulk + <span class="number">1</span>, <span class="number">0</span>), mulk)</span><br><span class="line">            mulk *= <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
 <p>那天心血来潮做了一套小米的测开题，其中第一道就是计算1～n中1出现的次数。</p>
 <p>力扣的题号是剑指offer 43<br>n是12的情况下，1 10 11 12中就出现了5次1。</p>
 <p>因为那套题中选择题都是简单难度，所以很自然地就想用暴力算法破解。</p>
@@ -441,15 +441,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">困难</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>

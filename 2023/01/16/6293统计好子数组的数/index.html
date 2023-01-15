@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
   <title>6293. 统计好子数组的数目 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一看这道题就是双指针，不过对与双指针实在不熟悉，在搭框架的时候就浪费了大部分的时间。    这道题是周赛的第三题，前两题都很快秒杀了，但是因为睡过头了，打开电脑的时候只剩半小时了。      一直在debug，今下午看看0x3f的题解吧。他滑动窗口算法和双指针的讲解有一套。 []1234567891011121314151617181920212223242526272829303132from">
+  <meta name="description" content="一看这道题就是双指针，不过对与双指针实在不熟悉，在搭框架的时候就浪费了大部分的时间。    这道题是周赛的第三题，前两题都很快秒杀了，但是因为睡过头了，打开电脑的时候只剩半小时了。      一直在debug，今下午看看0x3f的题解吧。他滑动窗口算法和双指针的讲解有一套。 1234567891011121314151617181920212223242526272829303132from co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6293. 统计好子数组的数目">
 <meta property="og:url" content="https://longsizhuo123.github.io/2023/01/16/6293%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="一看这道题就是双指针，不过对与双指针实在不熟悉，在搭框架的时候就浪费了大部分的时间。    这道题是周赛的第三题，前两题都很快秒杀了，但是因为睡过头了，打开电脑的时候只剩半小时了。      一直在debug，今下午看看0x3f的题解吧。他滑动窗口算法和双指针的讲解有一套。 []1234567891011121314151617181920212223242526272829303132from">
+<meta property="og:description" content="一看这道题就是双指针，不过对与双指针实在不熟悉，在搭框架的时候就浪费了大部分的时间。    这道题是周赛的第三题，前两题都很快秒杀了，但是因为睡过头了，打开电脑的时候只剩半小时了。      一直在debug，今下午看看0x3f的题解吧。他滑动窗口算法和双指针的讲解有一套。 1234567891011121314151617181920212223242526272829303132from co">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-16T04:25:00.000Z">
-<meta property="article:modified_time" content="2023-01-15T04:33:20.060Z">
+<meta property="article:modified_time" content="2023-01-15T06:39:47.767Z">
 <meta property="article:author" content="Loong Loong">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="未解决">
@@ -187,7 +187,7 @@ var _hmt = _hmt || [];
         <p>一看这道题就是双指针，不过对与双指针实在不熟悉，在搭框架的时候就浪费了大部分的时间。   </p>
 <p>这道题是周赛的第三题，前两题都很快秒杀了，但是因为睡过头了，打开电脑的时候只剩半小时了。     </p>
 <p>一直在debug，今下午看看0x3f的题解吧。他滑动窗口算法和双指针的讲解有一套。</p>
-<figure class="highlight plaintext"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line">from itertools import count</span><br><span class="line">from typing import List</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def countGood(self, nums: List[int], k: int) -&gt; int:</span><br><span class="line">        start = 0</span><br><span class="line">        tail = 0</span><br><span class="line">        flag = 0</span><br><span class="line">        if len(set(nums)) == 1:</span><br><span class="line">            if k &gt; len(nums) * (len(nums)-1) // 2:</span><br><span class="line">                return 0</span><br><span class="line">        while start &lt; len(nums) - 1:</span><br><span class="line">            x = Counter(nums[start:tail])</span><br><span class="line">            if len(x) &gt;= k:</span><br><span class="line">                flag2 = 0</span><br><span class="line">                for j in x:</span><br><span class="line">                    if x[j] &gt;= k:</span><br><span class="line">                        flag2 += 1</span><br><span class="line">                if flag2 &gt;= k:</span><br><span class="line">                    flag += 1</span><br><span class="line">            else:</span><br><span class="line">                for i in x:</span><br><span class="line">                    if x[i] * (x[i] - 1) // 2 &gt;= k:</span><br><span class="line">                        flag += 1</span><br><span class="line">            if tail != len(nums):</span><br><span class="line">                tail += 1</span><br><span class="line">            else:</span><br><span class="line">                start += 1</span><br><span class="line"></span><br><span class="line">        return flag</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> count</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countGood</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        tail = <span class="number">0</span></span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(<span class="built_in">set</span>(nums)) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> k &gt; <span class="built_in">len</span>(nums) * (<span class="built_in">len</span>(nums)-<span class="number">1</span>) // <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; <span class="built_in">len</span>(nums) - <span class="number">1</span>:</span><br><span class="line">            x = Counter(nums[start:tail])</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(x) &gt;= k:</span><br><span class="line">                flag2 = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> x:</span><br><span class="line">                    <span class="keyword">if</span> x[j] &gt;= k:</span><br><span class="line">                        flag2 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> flag2 &gt;= k:</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> x:</span><br><span class="line">                    <span class="keyword">if</span> x[i] * (x[i] - <span class="number">1</span>) // <span class="number">2</span> &gt;= k:</span><br><span class="line">                        flag += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> tail != <span class="built_in">len</span>(nums):</span><br><span class="line">                tail += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> flag</span><br></pre></td></tr></table></figure>
       
 
       
@@ -278,7 +278,7 @@ var _hmt = _hmt || [];
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2293. 极大极小游戏
+          每日一题 2293. 极大极小游戏
         
       </div>
     </a>
@@ -423,15 +423,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">困难</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
