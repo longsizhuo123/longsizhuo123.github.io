@@ -163,6 +163,94 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-80" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/25/80/">Python 击败98.40% collections的Counter 方法！</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/25/80/" class="archive-article-date">
+  	<time datetime="2022-12-25T09:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Pyhton <code>collection</code> 包里 <code>Counter()</code> 可以对list里出现的元素进行计数，并且输出是字典。<br>比如<code>nums=[1, 1, 1, 2, 2, 3]</code> 对其Counter后的结果是<code>Counter(&#123;1: 3, 2: 2, 3: 1&#125;)</code>。</p>
+<ol>
+<li>因此遍历一次字典，当<code>value&gt;3</code>的时候<code>value=2</code>，就可以将大于2个的元素计数变成2个。</li>
+<li>所以我们将<code>Counter(&#123;1: 3, 2: 2, 3: 1&#125;)</code>变成<code>Counter(&#123;1: 2, 2: 2, 3: 1&#125;)</code>后再对其elements进行list操作就可以得到改变后的列表了。</li>
+</ol>
+<hr>
+<p>由于题意中“输入数组是以「引用」方式传递的”，所以我们将nums清空再填入就好</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter <span class="comment"># 导入包</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeDuplicates</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        dict1 = Counter(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> dict1:</span><br><span class="line">            <span class="keyword">if</span> dict1[i] &gt; <span class="number">2</span>:</span><br><span class="line">                dict1[i] = <span class="number">2</span></span><br><span class="line">        list1 = <span class="built_in">list</span>(dict1.elements())</span><br><span class="line">        nums.clear() <span class="comment"># 清空列表</span></span><br><span class="line">        nums.extend(list1) <span class="comment"># 将集合添加到列表</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(nums)</span><br></pre></td></tr></table></figure>
+<p>复杂度分析</p>
+<p>时间复杂度：<code>O(n)</code>，其中 <code>n</code> 是数组的长度。我们最多遍历该数组一次。</p>
+<p>空间复杂度：<code>O(1)</code>。我们只需要常数的空间存储若干变量。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/25/80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-1004" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -641,6 +729,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">未解决</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">双指针</a>
               </li>
              
               <li class="article-tag-list-item">
