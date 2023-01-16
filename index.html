@@ -163,34 +163,33 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2293" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-1813" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/16/2293/">每日一题 2293. 极大极小游戏</a>
+      <a class="article-title" href="/2023/01/16/1813/">1813. 句子相似性 III</a>
     </h1>
   
 
         
-        <a href="/2023/01/16/2293/" class="archive-article-date">
-  	<time datetime="2023-01-16T06:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-16</time>
+        <a href="/2023/01/16/1813/" class="archive-article-date">
+  	<time datetime="2023-01-16T04:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>虽然是简单题，但是有递归思想。      </p>
-<p>不断地将一维列表转化为二维列表进行操作（这样可以避免因为index的改变造成的混乱）</p>
-<p>然后用flag进行计数，进行最大值和最小值的比较。    </p>
-<p>最后返回就行了，虽然肯定返回一个数字，不过还是‘nums[0]’来避免警告。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">2293. 极大极小游戏</span><br><span class="line">简单</span><br><span class="line">39</span><br><span class="line">company</span><br><span class="line">谷歌 Google</span><br><span class="line">给你一个下标从 0 开始的整数数组 nums ，其长度是 2 的幂。</span><br><span class="line"></span><br><span class="line">对 nums 执行下述算法：</span><br><span class="line"></span><br><span class="line">设 n 等于 nums 的长度，如果 n == 1 ，终止 算法过程。否则，创建 一个新的整数数组 newNums ，新数组长度为 n / 2 ，下标从 0 开始。</span><br><span class="line">对于满足 0 &lt;= i &lt; n / 2 的每个 偶数 下标 i ，将 newNums[i] 赋值 为 min(nums[2 * i], nums[2 * i + 1]) 。</span><br><span class="line">对于满足 0 &lt;= i &lt; n / 2 的每个 奇数 下标 i ，将 newNums[i] 赋值 为 max(nums[2 * i], nums[2 * i + 1]) 。</span><br><span class="line">用 newNums 替换 nums 。</span><br><span class="line">从步骤 1 开始 重复 整个过程。</span><br><span class="line">执行算法后，返回 nums 中剩下的那个数字。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入：nums = [1,3,5,2,4,8,2,2]</span><br><span class="line">输出：1</span><br><span class="line">解释：重复执行算法会得到下述数组。</span><br><span class="line">第一轮：nums = [1,5,4,2]</span><br><span class="line">第二轮：nums = [1,4]</span><br><span class="line">第三轮：nums = [1]</span><br><span class="line">1 是最后剩下的那个数字，返回 1 。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：nums = [3]</span><br><span class="line">输出：3</span><br><span class="line">解释：3 就是最后剩下的数字，返回 3 。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;= nums.length &lt;= 1024</span><br><span class="line">1 &lt;= nums[i] &lt;= 109</span><br><span class="line">nums.length 是 2 的幂</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minMaxGame</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(nums) &gt; <span class="number">1</span>:</span><br><span class="line">            nums = [nums[i:i + <span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(nums), <span class="number">2</span>)]</span><br><span class="line">            <span class="comment"># 分成2维</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">                <span class="keyword">if</span> flag % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">                    nums[i] = <span class="built_in">min</span>(nums[i])</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    nums[i] = <span class="built_in">max</span>(nums[i])</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+        <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">一个句子是由一些单词与它们之间的单个空格组成，且句子的开头和结尾没有多余空格。比方说，&quot;Hello World&quot; ，&quot;HELLO&quot; ，&quot;hello world hello world&quot; 都是句子。每个单词都 只 包含大写和小写英文字母。</span><br><span class="line"></span><br><span class="line">如果两个句子 sentence1 和 sentence2 ，可以通过往其中一个句子插入一个任意的句子（可以是空句子）而得到另一个句子，那么我们称这两个句子是 相似的 。比方说，sentence1 = &quot;Hello my name is Jane&quot; 且 sentence2 = &quot;Hello Jane&quot; ，我们可以往 sentence2 中 &quot;Hello&quot; 和 &quot;Jane&quot; 之间插入 &quot;my name is&quot; 得到 sentence1 。</span><br><span class="line"></span><br><span class="line">给你两个句子 sentence1 和 sentence2 ，如果 sentence1 和 sentence2 是相似的，请你返回 true ，否则返回 false 。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：sentence1 = &quot;My name is Haley&quot;, sentence2 = &quot;My Haley&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：可以往 sentence2 中 &quot;My&quot; 和 &quot;Haley&quot; 之间插入 &quot;name is&quot; ，得到 sentence1 。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：sentence1 = &quot;of&quot;, sentence2 = &quot;A lot of words&quot;</span><br><span class="line">输出：false</span><br><span class="line">解释：没法往这两个句子中的一个句子只插入一个句子就得到另一个句子。</span><br><span class="line">示例 3：</span><br><span class="line"></span><br><span class="line">输入：sentence1 = &quot;Eating right now&quot;, sentence2 = &quot;Eating&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：可以往 sentence2 的结尾插入 &quot;right now&quot; 得到 sentence1 。</span><br><span class="line">示例 4：</span><br><span class="line"></span><br><span class="line">输入：sentence1 = &quot;Luky&quot;, sentence2 = &quot;Lucccky&quot;</span><br><span class="line">输出：false</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;= sentence1.length, sentence2.length &lt;= 100</span><br><span class="line">sentence1 和 sentence2 都只包含大小写英文字母和空格。</span><br><span class="line">sentence1 和 sentence2 中的单词都只由单个空格隔开。</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法:"></a>我的解法:</h1><p>想的是一次次遍历判断字符是否在最左边或者最右边然后删除，<br>但是做的过程中耐心没了，感觉是削足适履。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">areSentencesSimilar</span>(<span class="params">self, sentence1: <span class="built_in">str</span>, sentence2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        list1 = sentence1.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        list2 = sentence2.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(list1) &lt; <span class="built_in">len</span>(list2):</span><br><span class="line">            temp = list1</span><br><span class="line">            list1 = list2</span><br><span class="line">            list2 = temp</span><br><span class="line">        ans=copy.deepcopy(list2)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> list2:</span><br><span class="line">            <span class="keyword">for</span> index, j <span class="keyword">in</span> <span class="built_in">enumerate</span>(list1):</span><br><span class="line">                <span class="keyword">if</span> i == j <span class="keyword">and</span> (index == <span class="number">0</span> <span class="keyword">or</span> index == <span class="built_in">len</span>(list1) - <span class="number">1</span>):</span><br><span class="line">                    ans.remove(i)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ans:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="官方题解："><a href="#官方题解：" class="headerlink" title="官方题解："></a>官方题解：</h1><p>根据题意，两个句子 <em>sentence1</em> 和 <em>sentence2</em>，如果是相似的，那么这两个句子按空格分割得到的字符串数组 <em>words1</em><br>和 <em>words2</em>，一定能通过往其中一个字符串数组中插入某个字符串数组（可以为空），得到另一个字符串数组。这个验证可以通过双指针完成。<br><em>i</em> 表示两个字符串数组从左开始，最多有 <em>i</em> 个字符串相同。<br><em>j</em> 表示剩下的字符串数组从右开始，最多有 <em>j</em> 个字符串相同。<br>如果 <em>i+j</em> 正好是某个字符串数组的长度，那么原字符串就是相似的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">areSentencesSimilar</span>(<span class="params">self, sentence1: <span class="built_in">str</span>, sentence2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        words1 = sentence1.split()</span><br><span class="line">        words2 = sentence2.split()</span><br><span class="line">        i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(words1) <span class="keyword">and</span> i &lt; <span class="built_in">len</span>(words2) <span class="keyword">and</span> words1[i] == words2[i]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j &lt; <span class="built_in">len</span>(words1) - i <span class="keyword">and</span> j &lt; <span class="built_in">len</span>(words2) - i <span class="keyword">and</span> words1[-j - <span class="number">1</span>] == words2[-j - <span class="number">1</span>]:</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> i + j == <span class="built_in">min</span>(<span class="built_in">len</span>(words1), <span class="built_in">len</span>(words2))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
 
       
@@ -207,7 +206,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
         		</li>
       		
 		</ul>
@@ -217,7 +216,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/16/2293/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/01/16/1813/">展开全文 >></a>
         </p>
       
 
@@ -298,6 +297,90 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/16/6293%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2293" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/15/2293/">每日一题 2293. 极大极小游戏</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/15/2293/" class="archive-article-date">
+  	<time datetime="2023-01-15T06:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>虽然是简单题，但是有递归思想。      </p>
+<p>不断地将一维列表转化为二维列表进行操作（这样可以避免因为index的改变造成的混乱）</p>
+<p>然后用flag进行计数，进行最大值和最小值的比较。    </p>
+<p>最后返回就行了，虽然肯定返回一个数字，不过还是‘nums[0]’来避免警告。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">2293. 极大极小游戏</span><br><span class="line">简单</span><br><span class="line">39</span><br><span class="line">company</span><br><span class="line">谷歌 Google</span><br><span class="line">给你一个下标从 0 开始的整数数组 nums ，其长度是 2 的幂。</span><br><span class="line"></span><br><span class="line">对 nums 执行下述算法：</span><br><span class="line"></span><br><span class="line">设 n 等于 nums 的长度，如果 n == 1 ，终止 算法过程。否则，创建 一个新的整数数组 newNums ，新数组长度为 n / 2 ，下标从 0 开始。</span><br><span class="line">对于满足 0 &lt;= i &lt; n / 2 的每个 偶数 下标 i ，将 newNums[i] 赋值 为 min(nums[2 * i], nums[2 * i + 1]) 。</span><br><span class="line">对于满足 0 &lt;= i &lt; n / 2 的每个 奇数 下标 i ，将 newNums[i] 赋值 为 max(nums[2 * i], nums[2 * i + 1]) 。</span><br><span class="line">用 newNums 替换 nums 。</span><br><span class="line">从步骤 1 开始 重复 整个过程。</span><br><span class="line">执行算法后，返回 nums 中剩下的那个数字。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入：nums = [1,3,5,2,4,8,2,2]</span><br><span class="line">输出：1</span><br><span class="line">解释：重复执行算法会得到下述数组。</span><br><span class="line">第一轮：nums = [1,5,4,2]</span><br><span class="line">第二轮：nums = [1,4]</span><br><span class="line">第三轮：nums = [1]</span><br><span class="line">1 是最后剩下的那个数字，返回 1 。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：nums = [3]</span><br><span class="line">输出：3</span><br><span class="line">解释：3 就是最后剩下的数字，返回 3 。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;= nums.length &lt;= 1024</span><br><span class="line">1 &lt;= nums[i] &lt;= 109</span><br><span class="line">nums.length 是 2 的幂</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minMaxGame</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(nums) &gt; <span class="number">1</span>:</span><br><span class="line">            nums = [nums[i:i + <span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(nums), <span class="number">2</span>)]</span><br><span class="line">            <span class="comment"># 分成2维</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">                <span class="keyword">if</span> flag % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">                    nums[i] = <span class="built_in">min</span>(nums[i])</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    nums[i] = <span class="built_in">max</span>(nums[i])</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/15/2293/">展开全文 >></a>
         </p>
       
 
@@ -928,89 +1011,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-1004" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/12/07/1004/">1004.最大连续1的个数 III 最大连续1的个数 III</a>
-    </h1>
-  
-
-        
-        <a href="/2022/12/07/1004/" class="archive-article-date">
-  	<time datetime="2022-12-06T14:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天的每日一题太难了，于是自己找题做。今天的题是哈希表+滑动窗口算法，虽然感觉只用了滑动窗口算法。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestOnes</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        k_mean = k</span><br><span class="line">        <span class="comment"># 用于记录现在有多少子数组</span></span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 用于记录最大地子数组</span></span><br><span class="line">        max_flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> start <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            tail = start</span><br><span class="line">            <span class="keyword">while</span> k &gt;= <span class="number">0</span> <span class="keyword">and</span> tail &lt;= <span class="built_in">len</span>(nums) - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> nums[tail] == <span class="number">1</span>:</span><br><span class="line">                    tail += <span class="number">1</span></span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> nums[tail] == <span class="number">0</span> <span class="keyword">and</span> k &gt; <span class="number">0</span>:</span><br><span class="line">                    tail += <span class="number">1</span></span><br><span class="line">                    k -= <span class="number">1</span></span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> nums[tail] == <span class="number">0</span> <span class="keyword">and</span> k == <span class="number">0</span>:</span><br><span class="line">                    k = k_mean</span><br><span class="line">                    max_flag = <span class="built_in">max</span>(max_flag, flag)</span><br><span class="line">                    flag = <span class="number">0</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">if</span> tail == <span class="built_in">len</span>(nums):</span><br><span class="line">                    max_flag = <span class="built_in">max</span>(max_flag, flag)</span><br><span class="line">                    flag = <span class="number">0</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> max_flag</span><br></pre></td></tr></table></figure>
-
-<p>这是一开始我的做法，虽然用了双指针，但是却没有那种灵活性，很空洞的感觉，很干巴巴的滑动。<br>以下<a href="/u/lincoln">@Lincoln</a>@Lincoln 大佬的 做法，只做为一个记录自己看，不作为我的题解发表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def longestOnes(self, nums: List[int], k: int) -&gt; int:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        思路：1. k=0可以理解为求最长重复子串问题</span><br><span class="line">             2. 如果当前窗口值-窗口中1的个数 &lt;= k: 则扩大窗口(right+1)</span><br><span class="line">                如果当前窗口值-窗口中1的个数 &gt; k: 则向右滑动窗口(left+1)</span><br><span class="line">        方法：哈希表 + 滑动窗口</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        n = len(nums)</span><br><span class="line">        o_res = 0</span><br><span class="line">        left = right = 0</span><br><span class="line">        while right &lt; n:</span><br><span class="line">            if nums[right]== 1: o_res += 1</span><br><span class="line">            if right-left+1- o_res &gt; k:</span><br><span class="line">                if nums[left]== 1: o_res -= 1 </span><br><span class="line">                left += 1</span><br><span class="line">            right += 1</span><br><span class="line">        return right - left</span><br></pre></td></tr></table></figure>
-<p>看了Lincoln大佬的思路，非常清晰，记住了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/12/07/1004/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1112,15 +1112,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,6 +1125,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">困难</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
