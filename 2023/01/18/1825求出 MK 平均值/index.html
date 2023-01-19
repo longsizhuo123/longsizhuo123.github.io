@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
-  <title>219.存在重复元素 II 哈希表图形学 | Siz Long</title>
+  <title>1825. 求出 MK 平均值 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这道题一开始是在手机上做的，直接用的是双哈希表，一个存元素，一个存index，当某个元素超过2个的时候判断是否存在某两个他们的index相减小于等于k的情况。因此时间复杂度是O(n^3)。 123456789101112131415161718class Solution:    def containsNearbyDuplicate(self, nums: List[int], k: int)">
+  <meta name="description" content="解题思路维护 3 个 multiset：lower（保存最小的 kkk 个数）、middle（中间的数）、upper（保存最大的 kkk 个数）。 插入操作·如果 num≤max(lower)，则在 lower中插入 num·如果 num≥min(upper)，则在 upper 中插入 num·否则，在 middle 中插入 num如果插入后，lower 或 upper 中的元素多于 k 个，则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="219.存在重复元素 II 哈希表图形学">
-<meta property="og:url" content="https://longsizhuo123.github.io/2022/12/07/219/index.html">
+<meta property="og:title" content="1825. 求出 MK 平均值">
+<meta property="og:url" content="https://longsizhuo123.github.io/2023/01/18/1825%E6%B1%82%E5%87%BA%20MK%20%E5%B9%B3%E5%9D%87%E5%80%BC/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="这道题一开始是在手机上做的，直接用的是双哈希表，一个存元素，一个存index，当某个元素超过2个的时候判断是否存在某两个他们的index相减小于等于k的情况。因此时间复杂度是O(n^3)。 123456789101112131415161718class Solution:    def containsNearbyDuplicate(self, nums: List[int], k: int)">
+<meta property="og:description" content="解题思路维护 3 个 multiset：lower（保存最小的 kkk 个数）、middle（中间的数）、upper（保存最大的 kkk 个数）。 插入操作·如果 num≤max(lower)，则在 lower中插入 num·如果 num≥min(upper)，则在 upper 中插入 num·否则，在 middle 中插入 num如果插入后，lower 或 upper 中的元素多于 k 个，则">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-06T14:15:00.000Z">
-<meta property="article:modified_time" content="2023-01-15T06:38:51.741Z">
+<meta property="og:image" content="https://longsizhuo123.github.io/assets/img/cadf1776c7767e9ac0bf17750f18368.png">
+<meta property="article:published_time" content="2023-01-18T04:42:00.000Z">
+<meta property="article:modified_time" content="2023-01-19T13:21:22.704Z">
 <meta property="article:author" content="Loong Loong">
 <meta property="article:tag" content="Python">
-<meta property="article:tag" content="已解决">
+<meta property="article:tag" content="未解决">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="多重集">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://longsizhuo123.github.io/assets/img/cadf1776c7767e9ac0bf17750f18368.png">
   
     <link rel="alternative" href="/atom.xml" title="Siz Long" type="application/atom+xml">
   
@@ -164,31 +168,35 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-219" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-1825求出 MK 平均值" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      219.存在重复元素 II 哈希表图形学
+      1825. 求出 MK 平均值
     </h1>
   
 
         
-        <a href="/2022/12/07/219/" class="archive-article-date">
-  	<time datetime="2022-12-06T14:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-07</time>
+        <a href="/2023/01/18/1825%E6%B1%82%E5%87%BA%20MK%20%E5%B9%B3%E5%9D%87%E5%80%BC/" class="archive-article-date">
+  	<time datetime="2023-01-18T04:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这道题一开始是在手机上做的，直接用的是双哈希表，一个存元素，一个存index，当某个元素超过2个的时候判断是否存在某两个他们的index相减小于等于k的情况。因此时间复杂度是<code>O(n^3)</code>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">containsNearbyDuplicate</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        hash_1=&#123;&#125;</span><br><span class="line">        hash_2=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> index, i <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> hash_1:</span><br><span class="line">                hash_1[i] = <span class="number">1</span></span><br><span class="line">                hash_2[i] = [index]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hash_1[i] += <span class="number">1</span></span><br><span class="line">                hash_2[i].append(index)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> hash_1:</span><br><span class="line">            <span class="keyword">if</span> hash_1[i] &gt;= <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(hash_2[i])):</span><br><span class="line">                    <span class="keyword">for</span> m <span class="keyword">in</span> <span class="built_in">range</span>(j + <span class="number">1</span>, <span class="built_in">len</span>(hash_2[i])):</span><br><span class="line">                        <span class="keyword">if</span> <span class="built_in">abs</span>(hash_2[i][j]-hash_2[i][m]) &lt;= k:</span><br><span class="line">                            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-
-<p>看<a href="/u/ac_oier">@宫水三叶</a>宫水三叶的解法后，才想起来，这道题的目的是为了练习双指针在哈希表中的应用，TA的原话是整理题意：是否存在长度不超过的 k+1k + 1k+1 窗口，窗口内有相同元素。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#整理题意：是否存在长度不超过的 k+1k + 1k+1 窗口，窗口内有相同元素。</span><br><span class="line">class Solution:</span><br><span class="line">    def containsNearbyDuplicate(self, nums: List[int], k: int) -&gt; bool:</span><br><span class="line">        n = len(nums)</span><br><span class="line">        s = set()</span><br><span class="line">        for i in range(n):</span><br><span class="line">            if i &gt; k:</span><br><span class="line">                s.remove(nums[i - k - 1])</span><br><span class="line">            if nums[i] in s:</span><br><span class="line">                return True</span><br><span class="line">            s.add(nums[i])</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
+        <p><img src="/../assets/img/cadf1776c7767e9ac0bf17750f18368.png" alt="cadf1776c7767e9ac0bf17750f18368.png"></p>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>维护 3 个 multiset：lower（保存最小的 kkk 个数）、middle（中间的数）、upper（保存最大的 kkk 个数）。</p>
+<h1 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h1><p>·如果 num≤max(lower)，则在 lower中插入 num<br>·如果 num≥min(upper)，则在 upper 中插入 num<br>·否则，在 middle 中插入 num<br>如果插入后，lower 或 upper 中的元素多于 k 个，则向 middle 中 转移 元素</p>
+<p>操作过程中维护 middle 的元素和 sum</p>
+<h1 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h1><p>·设删除的元素为 d<br>·d 一定存在于 lower 或middle 或 upper 中的一个或多个集合中<br>·择一删除即可<br>如果删除后，lower 或 upper 中的元素少于 k 个，则从 middle 中 索取 元素</p>
+<p>操作过程中维护 middle 的元素和 sum</p>
+<h1 id="平均值操作"><a href="#平均值操作" class="headerlink" title="平均值操作"></a>平均值操作</h1><p>平均值 &#x3D; sum&#x2F;(m−2⋅k)sum &#x2F; (m - 2\cdot k)sum&#x2F;(m−2⋅k) （向下取整）。</p>
+<p>有问题的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MKAverage</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, m: <span class="built_in">int</span>, k: <span class="built_in">int</span></span>):</span><br><span class="line">        self.m = m</span><br><span class="line">        self.k = k</span><br><span class="line">        self.list1 = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">addElement</span>(<span class="params">self, num: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self.list1.append(num)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">calculateMKAverage</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(self.list1) &lt; self.m:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            list2 = self.list1[-<span class="number">1</span>:-self.m-<span class="number">1</span>:-<span class="number">1</span>]</span><br><span class="line">            list2 = <span class="built_in">sorted</span>(list2)</span><br><span class="line">            list2 = list2[self.k:<span class="built_in">len</span>(list2) - self.k]</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sum</span>(list2) // <span class="built_in">len</span>(list2)</span><br></pre></td></tr></table></figure>
       
 
       
@@ -205,36 +213,21 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">已解决</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">困难</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多重集</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python/哈希表//" class="article-tag-list-link color4">哈希表</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/已解决//" class="article-tag-list-link color4">已解决</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/已解决/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -284,7 +277,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2022/12/07/219/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2023/01/18/1825%E6%B1%82%E5%87%BA%20MK%20%E5%B9%B3%E5%9D%87%E5%80%BC/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +291,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2022/12/07/1004/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          1004.最大连续1的个数 III 最大连续1的个数 III
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/12/07/2527/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2527.查询数组Xor美丽值 周赛第三题</div>
+    <a href="/2023/01/18/350%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">350.两个数组的交集</div>
       <i class="icon-circle-right"></i>
     </a>
   
