@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
-  <title>太累了 | Siz Long</title>
+  <title>1819.序列中不同最大公约数的数目 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里有东西被加密了，需要输入密码查看哦。">
+  <meta name="description" content="https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;number-of-different-subsequences-gcds&#x2F;solutions&#x2F;?orderBy&#x3D;most_votes  题解 ： 由于非空子序列的数量高达  $$2^n-1$$  ，直接回溯枚举是会超时的。不妨换一个视角，考虑值域。 多个数的最大公约数等于 g，也反过来说明这些数都是 g 的倍数。例如 [8,12,6] 的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="太累了">
-<meta property="og:url" content="https://longsizhuo123.github.io/2023/01/15/%E4%B8%8D%E5%AF%B9/index.html">
+<meta property="og:title" content="1819.序列中不同最大公约数的数目">
+<meta property="og:url" content="https://longsizhuo123.github.io/2023/01/20/1819%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="这里有东西被加密了，需要输入密码查看哦。">
+<meta property="og:description" content="https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;number-of-different-subsequences-gcds&#x2F;solutions&#x2F;?orderBy&#x3D;most_votes  题解 ： 由于非空子序列的数量高达  $$2^n-1$$  ，直接回溯枚举是会超时的。不妨换一个视角，考虑值域。 多个数的最大公约数等于 g，也反过来说明这些数都是 g 的倍数。例如 [8,12,6] 的">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-01-14T16:06:00.797Z">
-<meta property="article:modified_time" content="2023-01-14T17:11:54.800Z">
+<meta property="og:image" content="https://longsizhuo123.github.io/assets/img/2023-01-20%20(1).png">
+<meta property="article:published_time" content="2023-01-19T14:42:00.000Z">
+<meta property="article:modified_time" content="2023-01-19T14:49:42.164Z">
 <meta property="article:author" content="Loong Loong">
-<meta property="article:tag" content="blog">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="未解决">
+<meta property="article:tag" content="困难">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://longsizhuo123.github.io/assets/img/2023-01-20%20(1).png">
   
     <link rel="alternative" href="/atom.xml" title="Siz Long" type="application/atom+xml">
   
@@ -163,42 +167,42 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-不对" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-1819序列中不同最大公约数的数目" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      太累了
+      1819.序列中不同最大公约数的数目
     </h1>
   
 
         
-        <a href="/2023/01/15/%E4%B8%8D%E5%AF%B9/" class="archive-article-date">
-  	<time datetime="2023-01-14T16:06:00.797Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-15</time>
+        <a href="/2023/01/20/1819%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/" class="archive-article-date">
+  	<time datetime="2023-01-19T14:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="fb207fa6793a12656b021cbaec62261936291fa343778ab6741c1e58427490a0">165d50f05814027fb7fe5e4ae8a088d8974da6396704d48c20097002016d12a9775e24c9fe3ee1131a10a5435b7ff0e067bea5c99c3742bd12f761ac44e7029ea317ab2ad63d72b4984dbc0d5bccbd8e7d24d2baf94caf59d076d2e6841e79865828b65662997768bbd8d46f0fb8d08b</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-xray">
-      <input class="hbe hbe-input-field hbe-input-field-xray" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-xray" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-xray">您好, 这里需要密码.</span>
-      </label>
-      <svg class="hbe hbe-graphic hbe-graphic-xray" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
-        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"></path>
-      </svg>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-different-subsequences-gcds/solutions/?orderBy=most_votes">https://leetcode.cn/problems/number-of-different-subsequences-gcds/solutions/?orderBy=most_votes</a></p>
+<p><img src="/../assets/img/2023-01-20%20(1).png" alt="2023-01-20 (1).png"></p>
+<p>题解 ：</p>
+<p>由于非空子序列的数量高达 </p>
+<p>$$<br>2^n-1<br>$$ </p>
+<p>，直接回溯枚举是会超时的。不妨换一个视角，考虑值域。</p>
+<p>多个数的最大公约数等于 g，也反过来说明这些数都是 g 的倍数。例如 [8,12,6] 的最大公约数是 2，这些数都是 2 的倍数。</p>
+<p>那么，能不能反过来，枚举 g 的倍数呢？</p>
+<p>1,2,3,<br>2,4,6,⋯<br>3,6,9,⋯<br>看上去运行时间是个平方级别的，会超时。<br>⌊<br>1<br>U<br>​<br>⌋<br>先别急着否定，这里得来点数学。<br>设 U&#x3D;max(nums)，那么 1 的倍数需要枚举 $⌊U1⌋\left\lfloor\dfrac{U}{1}\right\rfloor⌊<br>1<br>U<br>​<br>⌋ $个，222 的倍数需要枚举 ⌊U2⌋\left\lfloor\dfrac{U}{2}\right\rfloor⌊2 U ​ ⌋ 个，……，把这些加起来，去掉下取整，有4</p>
+<p>$$⌊U1⌋+⌊U2⌋+⋯+⌊UU⌋≤U⋅(11+12+⋯+1U) \left\lfloor\dfrac{U}{1}\right\rfloor + \left\lfloor\dfrac{U}{2}\right\rfloor +\cdots + \left\lfloor\dfrac{U}{U}\right\rfloor \le U\cdot\left(\dfrac{1}{1} + \dfrac{1}{2} + \cdots + \dfrac{1}{U}\right)$$</p>
+<p>右边括号中的叫做 调和级数部分和，可以看成是 $$O(log⁡U)O(\log U)O(logU)$$ 的，因此枚举倍数的时间复杂度为 $$O(Ulog⁡U)O(U\log U)O(UlogU)$$，不会超时。</p>
+<p>那么就枚举 $$i&#x3D;1,2,⋯ ,Ui&#x3D;1,2,\cdots,Ui&#x3D;1,2,⋯,U$ 及其倍数，当作子序列中的数。</p>
+<p>子序列中的数越多，g 就可能越小，就越可能等于 i。<br>例如，如果枚举 i&#x3D;2 的倍数，其中 8 和 12 是在 $$nums\textit{nums}nums$$ 中的，但由于 8 和 12 的最大公约数等于 4，所以无法找到一个子序列，其最大公约数为 i。但如果还有 6 也在 $$nums\textit{nums}nums$$ 中，那么最大公约数等于 2，这样 i 就可以是一个子序列的最大公约数了。</p>
+<p>代码实现时，需要用哈希表或者数组，记录每个数是否在 $$nums\textit{nums}nums$$ 中，从而加快判断。数组的效率会更高一些。</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-different-subsequences-gcds/solutions/2061079/ji-bai-100mei-ju-gcdxun-huan-you-hua-pyt-get7/?orderBy=most_votes">https://leetcode.cn/problems/number-of-different-subsequences-gcds/solutions/2061079/ji-bai-100mei-ju-gcdxun-huan-you-hua-pyt-get7/?orderBy=most_votes</a></p>
+
       
 
       
@@ -206,6 +210,25 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">困难</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -256,7 +279,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2023/01/15/%E4%B8%8D%E5%AF%B9/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2023/01/20/1819%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -270,18 +293,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2023/01/15/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/01/20/704%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          置顶文章
+          704. 二分查找
         
       </div>
     </a>
   
   
-    <a href="/2023/01/11/2283/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每日一题 2283</div>
+    <a href="/2023/01/20/2299%E5%BC%BA%E5%AF%86%E7%A0%81%E6%A3%80%E9%AA%8C%E5%99%A8II/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日一题 2299. 强密码检验器 II</div>
       <i class="icon-circle-right"></i>
     </a>
   

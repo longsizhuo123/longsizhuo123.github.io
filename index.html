@@ -360,6 +360,266 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-1817查找用户活跃分钟数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/21/1817%E6%9F%A5%E6%89%BE%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83%E5%88%86%E9%92%9F%E6%95%B0/">1817. 查找用户活跃分钟数 每日一题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/21/1817%E6%9F%A5%E6%89%BE%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83%E5%88%86%E9%92%9F%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2023-01-20T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="https-leetcode-cn-problems-finding-the-users-active-minutes-description-orderBy-most-votes"><a href="#https-leetcode-cn-problems-finding-the-users-active-minutes-description-orderBy-most-votes" class="headerlink" title="https://leetcode.cn/problems/finding-the-users-active-minutes/description/?orderBy=most_votes"></a><img src="/../assets/img/2023-01-21.png" alt="2023-01-21.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/finding-the-users-active-minutes/description/?orderBy=most_votes">https://leetcode.cn/problems/finding-the-users-active-minutes/description/?orderBy=most_votes</a></h2><h1 id="我的题解："><a href="#我的题解：" class="headerlink" title="我的题解："></a>我的题解：</h1><p>这道题主要是哈希表的知识点，但是我们可以用defaultdict来做，可以省下几行代码量。<br>defaultdict可以假设存在key的初始值，所以我们只用直接append或者add就行。<br>这次和官方题解一模一样呢</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findingUsersActiveMinutes</span>(<span class="params">self, logs: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], k: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        dict1 = defaultdict(<span class="built_in">set</span>)</span><br><span class="line">        list1 = [<span class="number">0</span>] * k</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> logs:</span><br><span class="line">            dict1[i].add(j)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> dict1:</span><br><span class="line">            <span class="built_in">print</span>(dict1[i])</span><br><span class="line">            <span class="comment"># TypeError object of type ‘type‘ has no len() 是因为dict少打了1</span></span><br><span class="line">            list1[<span class="built_in">len</span>(dict1[i]) - <span class="number">1</span>] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> list1</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">哈希表</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/21/1817%E6%9F%A5%E6%89%BE%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83%E5%88%86%E9%92%9F%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-704二分查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/20/704%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">704. 二分查找</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/20/704%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="archive-article-date">
+  	<time datetime="2023-01-19T15:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/learning-algorithms-with-leetcode/xsshgi/">https://leetcode.cn/leetbook/read/learning-algorithms-with-leetcode/xsshgi/</a><br>不难，只是递归做个笔记</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">recursion</span>(<span class="params">nums, left, right, target</span>):</span><br><span class="line">            <span class="keyword">if</span> left &gt; right:</span><br><span class="line">                <span class="comment"># 递归结束</span></span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">            mid = left + (right - left) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &lt; target:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> recursion(nums, left, right, target)</span><br><span class="line"></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> recursion(nums, left, right, target)</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/learning-algorithms-with-leetcode/xssbke/">https://leetcode.cn/leetbook/read/learning-algorithms-with-leetcode/xssbke/</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The guess API is already defined for you.</span></span><br><span class="line"><span class="comment"># @param num, your guess</span></span><br><span class="line"><span class="comment"># @return -1 if num is higher than the picked number</span></span><br><span class="line"><span class="comment">#          1 if num is lower than the picked number</span></span><br><span class="line"><span class="comment">#          otherwise return 0</span></span><br><span class="line"><span class="comment"># def guess(num: int) -&gt; int:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">guessNumber</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">            <span class="keyword">def</span> <span class="title function_">recursion</span>(<span class="params">nums, left, right</span>):</span><br><span class="line">                <span class="keyword">if</span> left &gt; right:</span><br><span class="line">                    <span class="comment"># 递归结束</span></span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                mid = left + (right - left) // <span class="number">2</span></span><br><span class="line">                <span class="keyword">if</span> guess(mid) == <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> mid</span><br><span class="line">                <span class="keyword">elif</span> guess(mid) == <span class="number">1</span>:</span><br><span class="line">                    left = mid + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    right = mid - <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> recursion(nums, left, right)</span><br><span class="line"></span><br><span class="line">            left = <span class="number">1</span></span><br><span class="line">            right = n</span><br><span class="line">            <span class="keyword">return</span> recursion(n, left, right)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/20/704%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-1819序列中不同最大公约数的数目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/20/1819%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/">1819.序列中不同最大公约数的数目</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/20/1819%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/" class="archive-article-date">
+  	<time datetime="2023-01-19T14:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-different-subsequences-gcds/solutions/?orderBy=most_votes">https://leetcode.cn/problems/number-of-different-subsequences-gcds/solutions/?orderBy=most_votes</a></p>
+<p><img src="/../assets/img/2023-01-20%20(1).png" alt="2023-01-20 (1).png"></p>
+<p>题解 ：</p>
+<p>由于非空子序列的数量高达 </p>
+<p>$$<br>2^n-1<br>$$ </p>
+<p>，直接回溯枚举是会超时的。不妨换一个视角，考虑值域。</p>
+<p>多个数的最大公约数等于 g，也反过来说明这些数都是 g 的倍数。例如 [8,12,6] 的最大公约数是 2，这些数都是 2 的倍数。</p>
+<p>那么，能不能反过来，枚举 g 的倍数呢？</p>
+<p>1,2,3,<br>2,4,6,⋯<br>3,6,9,⋯<br>看上去运行时间是个平方级别的，会超时。<br>⌊<br>1<br>U<br>​<br>⌋<br>先别急着否定，这里得来点数学。<br>设 U&#x3D;max(nums)，那么 1 的倍数需要枚举 $⌊U1⌋\left\lfloor\dfrac{U}{1}\right\rfloor⌊<br>1<br>U<br>​<br>⌋ $个，222 的倍数需要枚举 ⌊U2⌋\left\lfloor\dfrac{U}{2}\right\rfloor⌊2 U ​ ⌋ 个，……，把这些加起来，去掉下取整，有4</p>
+<p>$$⌊U1⌋+⌊U2⌋+⋯+⌊UU⌋≤U⋅(11+12+⋯+1U) \left\lfloor\dfrac{U}{1}\right\rfloor + \left\lfloor\dfrac{U}{2}\right\rfloor +\cdots + \left\lfloor\dfrac{U}{U}\right\rfloor \le U\cdot\left(\dfrac{1}{1} + \dfrac{1}{2} + \cdots + \dfrac{1}{U}\right)$$</p>
+<p>右边括号中的叫做 调和级数部分和，可以看成是 $$O(log⁡U)O(\log U)O(logU)$$ 的，因此枚举倍数的时间复杂度为 $$O(Ulog⁡U)O(U\log U)O(UlogU)$$，不会超时。</p>
+<p>那么就枚举 $$i&#x3D;1,2,⋯ ,Ui&#x3D;1,2,\cdots,Ui&#x3D;1,2,⋯,U$ 及其倍数，当作子序列中的数。</p>
+<p>子序列中的数越多，g 就可能越小，就越可能等于 i。<br>例如，如果枚举 i&#x3D;2 的倍数，其中 8 和 12 是在 $$nums\textit{nums}nums$$ 中的，但由于 8 和 12 的最大公约数等于 4，所以无法找到一个子序列，其最大公约数为 i。但如果还有 6 也在 $$nums\textit{nums}nums$$ 中，那么最大公约数等于 2，这样 i 就可以是一个子序列的最大公约数了。</p>
+<p>代码实现时，需要用哈希表或者数组，记录每个数是否在 $$nums\textit{nums}nums$$ 中，从而加快判断。数组的效率会更高一些。</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-different-subsequences-gcds/solutions/2061079/ji-bai-100mei-ju-gcdxun-huan-you-hua-pyt-get7/?orderBy=most_votes">https://leetcode.cn/problems/number-of-different-subsequences-gcds/solutions/2061079/ji-bai-100mei-ju-gcdxun-huan-you-hua-pyt-get7/?orderBy=most_votes</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">困难</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/20/1819%E5%BA%8F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%90%8C%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2299强密码检验器II" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -587,11 +847,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">已解决</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">已解决</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -686,11 +946,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">已解决</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">已解决</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -777,11 +1037,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
         		</li>
       		
 		</ul>
@@ -821,238 +1081,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-6293统计好子数组的数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/16/6293%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0/">6293. 统计好子数组的数目</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/16/6293%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2023-01-16T04:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一看这道题就是双指针，不过对与双指针实在不熟悉，在搭框架的时候就浪费了大部分的时间。   </p>
-<p>这道题是周赛的第三题，前两题都很快秒杀了，但是因为睡过头了，打开电脑的时候只剩半小时了。     </p>
-<p>一直在debug，今下午看看0x3f的题解吧。他滑动窗口算法和双指针的讲解有一套。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> count</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countGood</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        tail = <span class="number">0</span></span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(<span class="built_in">set</span>(nums)) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> k &gt; <span class="built_in">len</span>(nums) * (<span class="built_in">len</span>(nums)-<span class="number">1</span>) // <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; <span class="built_in">len</span>(nums) - <span class="number">1</span>:</span><br><span class="line">            x = Counter(nums[start:tail])</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(x) &gt;= k:</span><br><span class="line">                flag2 = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> x:</span><br><span class="line">                    <span class="keyword">if</span> x[j] &gt;= k:</span><br><span class="line">                        flag2 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> flag2 &gt;= k:</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> x:</span><br><span class="line">                    <span class="keyword">if</span> x[i] * (x[i] - <span class="number">1</span>) // <span class="number">2</span> &gt;= k:</span><br><span class="line">                        flag += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> tail != <span class="built_in">len</span>(nums):</span><br><span class="line">                tail += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> flag</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/16/6293%E7%BB%9F%E8%AE%A1%E5%A5%BD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2293" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/15/2293/">每日一题 2293. 极大极小游戏</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/15/2293/" class="archive-article-date">
-  	<time datetime="2023-01-15T06:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>虽然是简单题，但是有递归思想。      </p>
-<p>不断地将一维列表转化为二维列表进行操作（这样可以避免因为index的改变造成的混乱）</p>
-<p>然后用flag进行计数，进行最大值和最小值的比较。    </p>
-<p>最后返回就行了，虽然肯定返回一个数字，不过还是‘nums[0]’来避免警告。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">2293. 极大极小游戏</span><br><span class="line">简单</span><br><span class="line">39</span><br><span class="line">company</span><br><span class="line">谷歌 Google</span><br><span class="line">给你一个下标从 0 开始的整数数组 nums ，其长度是 2 的幂。</span><br><span class="line"></span><br><span class="line">对 nums 执行下述算法：</span><br><span class="line"></span><br><span class="line">设 n 等于 nums 的长度，如果 n == 1 ，终止 算法过程。否则，创建 一个新的整数数组 newNums ，新数组长度为 n / 2 ，下标从 0 开始。</span><br><span class="line">对于满足 0 &lt;= i &lt; n / 2 的每个 偶数 下标 i ，将 newNums[i] 赋值 为 min(nums[2 * i], nums[2 * i + 1]) 。</span><br><span class="line">对于满足 0 &lt;= i &lt; n / 2 的每个 奇数 下标 i ，将 newNums[i] 赋值 为 max(nums[2 * i], nums[2 * i + 1]) 。</span><br><span class="line">用 newNums 替换 nums 。</span><br><span class="line">从步骤 1 开始 重复 整个过程。</span><br><span class="line">执行算法后，返回 nums 中剩下的那个数字。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入：nums = [1,3,5,2,4,8,2,2]</span><br><span class="line">输出：1</span><br><span class="line">解释：重复执行算法会得到下述数组。</span><br><span class="line">第一轮：nums = [1,5,4,2]</span><br><span class="line">第二轮：nums = [1,4]</span><br><span class="line">第三轮：nums = [1]</span><br><span class="line">1 是最后剩下的那个数字，返回 1 。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：nums = [3]</span><br><span class="line">输出：3</span><br><span class="line">解释：3 就是最后剩下的数字，返回 3 。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;= nums.length &lt;= 1024</span><br><span class="line">1 &lt;= nums[i] &lt;= 109</span><br><span class="line">nums.length 是 2 的幂</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minMaxGame</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(nums) &gt; <span class="number">1</span>:</span><br><span class="line">            nums = [nums[i:i + <span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(nums), <span class="number">2</span>)]</span><br><span class="line">            <span class="comment"># 分成2维</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">                <span class="keyword">if</span> flag % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">                    nums[i] = <span class="built_in">min</span>(nums[i])</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    nums[i] = <span class="built_in">max</span>(nums[i])</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/15/2293/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-不对" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/15/%E4%B8%8D%E5%AF%B9/">太累了</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/15/%E4%B8%8D%E5%AF%B9/" class="archive-article-date">
-  	<time datetime="2023-01-14T16:06:00.797Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        这里有东西被加密了，需要输入密码查看哦。
-        
-          <a class="article-more-a" href="/2023/01/15/%E4%B8%8D%E5%AF%B9/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/15/%E4%B8%8D%E5%AF%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1151,7 +1182,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
+                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1159,11 +1190,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">哈希表</a>
+                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
+                <a href="javascript:void(0)" class="js-tag color4">哈希表</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1171,11 +1202,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
               </li>
              
               <li class="article-tag-list-item">
