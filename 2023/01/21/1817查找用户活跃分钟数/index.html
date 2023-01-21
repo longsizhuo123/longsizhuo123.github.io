@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
   <title>1817. 查找用户活跃分钟数 每日一题 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;finding-the-users-active-minutes&#x2F;description&#x2F;?orderBy&#x3D;most_votes我的题解：这道题主要是哈希表的知识点，但是我们可以用defaultdict来做，可以省下几行代码量。defaultdict可以假设存在key的初始值，所以我们只用直接append或者add就行。这次和官方题解一模一">
+  <meta name="description" content="1817. 查找用户活跃分钟数  我的题解：这道题主要是哈希表的知识点，但是我们可以用defaultdict来做，可以省下几行代码量。defaultdict可以假设存在key的初始值，所以我们只用直接append()或者add()就行。这次和官方题解一模一样呢! 1234567891011class Solution:    def findingUsersActiveMinutes(self,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1817. 查找用户活跃分钟数 每日一题">
 <meta property="og:url" content="https://longsizhuo123.github.io/2023/01/21/1817%E6%9F%A5%E6%89%BE%E7%94%A8%E6%88%B7%E6%B4%BB%E8%B7%83%E5%88%86%E9%92%9F%E6%95%B0/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;finding-the-users-active-minutes&#x2F;description&#x2F;?orderBy&#x3D;most_votes我的题解：这道题主要是哈希表的知识点，但是我们可以用defaultdict来做，可以省下几行代码量。defaultdict可以假设存在key的初始值，所以我们只用直接append或者add就行。这次和官方题解一模一">
+<meta property="og:description" content="1817. 查找用户活跃分钟数  我的题解：这道题主要是哈希表的知识点，但是我们可以用defaultdict来做，可以省下几行代码量。defaultdict可以假设存在key的初始值，所以我们只用直接append()或者add()就行。这次和官方题解一模一样呢! 1234567891011class Solution:    def findingUsersActiveMinutes(self,">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://longsizhuo123.github.io/assets/img/2023-01-21.png">
 <meta property="article:published_time" content="2023-01-20T13:05:00.000Z">
-<meta property="article:modified_time" content="2023-01-20T13:09:33.929Z">
+<meta property="article:modified_time" content="2023-01-21T16:10:13.052Z">
 <meta property="article:author" content="Loong Loong">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="哈希表">
@@ -187,7 +187,10 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="https-leetcode-cn-problems-finding-the-users-active-minutes-description-orderBy-most-votes"><a href="#https-leetcode-cn-problems-finding-the-users-active-minutes-description-orderBy-most-votes" class="headerlink" title="https://leetcode.cn/problems/finding-the-users-active-minutes/description/?orderBy=most_votes"></a><img src="/../assets/img/2023-01-21.png" alt="2023-01-21.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/finding-the-users-active-minutes/description/?orderBy=most_votes">https://leetcode.cn/problems/finding-the-users-active-minutes/description/?orderBy=most_votes</a></h2><h1 id="我的题解："><a href="#我的题解：" class="headerlink" title="我的题解："></a>我的题解：</h1><p>这道题主要是哈希表的知识点，但是我们可以用defaultdict来做，可以省下几行代码量。<br>defaultdict可以假设存在key的初始值，所以我们只用直接append或者add就行。<br>这次和官方题解一模一样呢</p>
+        <p><img src="/../assets/img/2023-01-21.png" alt="2023-01-21.png"></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/finding-the-users-active-minutes/description/?orderBy=most_votes">1817. 查找用户活跃分钟数</a></p>
+<hr>
+<h1 id="我的题解："><a href="#我的题解：" class="headerlink" title="我的题解："></a>我的题解：</h1><p>这道题主要是<strong>哈希表</strong>的知识点，但是我们可以用<code>defaultdict</code>来做，可以省下几行代码量。<br><code>defaultdict</code>可以假设存在<code>key</code>的初始值，所以我们只用直接<code>append()</code>或者<code>add()</code>就行。<br>这次和官方题解一模一样呢!</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findingUsersActiveMinutes</span>(<span class="params">self, logs: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], k: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        dict1 = defaultdict(<span class="built_in">set</span>)</span><br><span class="line">        list1 = [<span class="number">0</span>] * k</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> logs:</span><br><span class="line">            dict1[i].add(j)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> dict1:</span><br><span class="line">            <span class="built_in">print</span>(dict1[i])</span><br><span class="line">            <span class="comment"># TypeError object of type ‘type‘ has no len() 是因为dict少打了1</span></span><br><span class="line">            list1[<span class="built_in">len</span>(dict1[i]) - <span class="number">1</span>] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> list1</span><br></pre></td></tr></table></figure>
 
       
@@ -279,6 +282,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2023/01/22/6275%E4%BD%BF%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%8F%E6%93%8D%E4%BD%9C%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          6275. 使数组中所有元素相等的最小操作数 II
+        
+      </div>
+    </a>
   
   
     <a href="/2023/01/20/704%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" id="article-nav-older" class="article-nav-link-wrap">
@@ -420,6 +432,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">困难</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">已解决</a>
               </li>
              
@@ -428,11 +444,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">困难</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -444,11 +464,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">加密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
