@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
-  <title>置顶文章 | Siz Long</title>
+  <title>1664. 生成平衡数组的方案数 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="longsizhuo123.github.io “Maybe it could be a nice memory” Welcome to my personal blog repository on Github! My name is Sizhuo Long, and I am currently a student in Australia. This repository is home t">
+  <meta name="description" content="1664. 生成平衡数组的方案数 思想：读题的时候看到 中等 就知道肯定不是真的要删除某个元素。否则会超时，所以试了试极具python特色的代码：用切片处理所有的数据；不过超时了。。 然后看官方题解，用的动态规划。中心思想是：  不失一般性，现在我们将下标 i 的元素进行删除，显而易见下标 i 之前的元素下标并不会因此发生改变，而下标 i之后的原本在 j，j&gt;i下标的数组元素会移动到下标 j">
 <meta property="og:type" content="article">
-<meta property="og:title" content="置顶文章">
-<meta property="og:url" content="https://longsizhuo123.github.io/2023/01/15/hello-world/index.html">
+<meta property="og:title" content="1664. 生成平衡数组的方案数">
+<meta property="og:url" content="https://longsizhuo123.github.io/2023/01/27/1664%E7%94%9F%E6%88%90%E5%B9%B3%E8%A1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="longsizhuo123.github.io “Maybe it could be a nice memory” Welcome to my personal blog repository on Github! My name is Sizhuo Long, and I am currently a student in Australia. This repository is home t">
+<meta property="og:description" content="1664. 生成平衡数组的方案数 思想：读题的时候看到 中等 就知道肯定不是真的要删除某个元素。否则会超时，所以试了试极具python特色的代码：用切片处理所有的数据；不过超时了。。 然后看官方题解，用的动态规划。中心思想是：  不失一般性，现在我们将下标 i 的元素进行删除，显而易见下标 i 之前的元素下标并不会因此发生改变，而下标 i之后的原本在 j，j&gt;i下标的数组元素会移动到下标 j">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://user-images.githubusercontent.com/114939201/214082770-35d1fb45-9891-4b73-ba89-18e33030640f.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/114939201/214082782-ae84027e-0a15-4ed4-843b-00a29ea19480.png">
-<meta property="article:published_time" content="2023-01-14T16:06:01.517Z">
-<meta property="article:modified_time" content="2023-01-23T15:47:46.454Z">
+<meta property="og:image" content="https://longsizhuo123.github.io/assets/img/1674887518406.png">
+<meta property="article:published_time" content="2023-01-26T14:15:00.000Z">
+<meta property="article:modified_time" content="2023-01-28T06:40:20.000Z">
 <meta property="article:author" content="Loong Loong">
-<meta property="article:tag" content="未解决">
-<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/114939201/214082770-35d1fb45-9891-4b73-ba89-18e33030640f.png">
+<meta name="twitter:image" content="https://longsizhuo123.github.io/assets/img/1674887518406.png">
   
     <link rel="alternative" href="/atom.xml" title="Siz Long" type="application/atom+xml">
   
@@ -171,48 +171,44 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-1664生成平衡数组的方案数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      置顶文章
+      1664. 生成平衡数组的方案数
     </h1>
   
 
         
-        <a href="/2023/01/15/hello-world/" class="archive-article-date">
-  	<time datetime="2023-01-14T16:06:01.517Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-15</time>
+        <a href="/2023/01/27/1664%E7%94%9F%E6%88%90%E5%B9%B3%E8%A1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2023-01-26T14:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="longsizhuo123-github-io"><a href="#longsizhuo123-github-io" class="headerlink" title="longsizhuo123.github.io"></a>longsizhuo123.github.io</h1><p><img src="https://user-images.githubusercontent.com/114939201/214082770-35d1fb45-9891-4b73-ba89-18e33030640f.png" alt="pattern_stripes-1_1_2_0-0_125_1__cc2a35_4f372d_00a1b0_edc951_eb6941"></p>
-<p><em>“Maybe it could be a nice memory”</em></p>
-<p>Welcome to my personal blog repository on Github! My name is Sizhuo Long, and I am currently a student in Australia. This repository is home to my personal blog, which is built using the HEXO static site generator. </p>
-<p>On my blog, you’ll find a variety of content including my thoughts on technology, programming, and the latest developments in my field of study. I also share my experiences and lessons learned from the projects I’ve worked on. </p>
-<p>I hope that by sharing my knowledge and insights, I can help others who are interested in the same topics. I welcome any comments and feedback, and I am always open to collaboration. </p>
-<p><strong>Thank you for visiting my blog</strong>, I hope you will find something interesting here. And I would really appreciate it if you could pay more attention to my blog and <strong>follow me</strong>.</p>
-<h3 id="Why-you-should-follow-me"><a href="#Why-you-should-follow-me" class="headerlink" title="Why you should follow me"></a>Why you should follow me</h3><ul>
-<li>I’ll share my personal experiences and thoughts on technology and programming </li>
-<li>I’ll keep you updated on the latest developments in my field of study</li>
-<li>I’m open to collaboration and feedback.</li>
-</ul>
-<h3 id="How-to-contact-me"><a href="#How-to-contact-me" class="headerlink" title="How to contact me"></a>How to contact me</h3><ul>
-<li>Email: <a href="mailto:&#108;&#111;&#x6e;&#103;&#x73;&#105;&#x7a;&#104;&#117;&#x6f;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#108;&#111;&#x6e;&#103;&#x73;&#105;&#x7a;&#104;&#117;&#x6f;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></li>
-<li>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/longsizhuo/">Sizhuo Long</a></li>
-<li>XiaoHongShu(Small RedBook): <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5c0b8cc2000000000601e809">@sizhuo_long</a></li>
-</ul>
-<p>Thank you for reading, and I hope you enjoy my blog!</p>
-<p><img src="https://user-images.githubusercontent.com/114939201/214082782-ae84027e-0a15-4ed4-843b-00a29ea19480.png" alt="pattern_stripes-1_1_2_0-0_125_1__cc2a35_4f372d_00a1b0_edc951_eb6941"></p>
-<p><strong><a target="_blank" rel="noopener" href="https://longsizhuo.shinyapps.io/long/">面向单细胞RNA数据分析工具</a></strong><br>以前做的项目，还有很多错误，勿喷。<br><strong><a href="html/Sichuan_Traveler/index.html">蜀地旅行菌</a></strong><br>这是一个本科大二的时候的一个小作业，是小组作业。一开始因为链接不了<code>html</code>文件，阅读了很多很多官方文档或者CSDN文档<br>    。最后阅读了一篇文章，说是HEXO在当你<code>generate</code>的时候，就会把source中的文件append到public中去，后来试了很多次，发现直接以<br>public为源文件夹，调用目录即可。虽然这样就会导致无法在md文档中超链接到文件。    </p>
-<p>同时，也存在新的bug未解决：login.html无法和index.html相互跳转</p>
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-<div class="badge-base LI-profile-badge" data-locale="zh_CN" data-size="medium" data-theme="dark" data-type="HORIZONTAL" data-vanity="longsizhuo" data-version="v1"><a class="badge-base__link LI-simple-link" target="_blank" rel="noopener" href="https://au.linkedin.com/in/longsizhuo?trk=profile-badge">Sizhuo Long</a></div>
+        <p><img src="/../assets/img/1674887518406.png" alt="1674887518406.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ways-to-make-a-fair-array/description/?orderBy=most_relevant">1664. 生成平衡数组的方案数</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>读题的时候看到 中等 就知道肯定不是真的要删除某个元素。否则会超时，所以试了试极具python特色的代码：用切片处理所有的数据；<br>不过超时了。。</p>
+<p>然后看官方题解，用的动态规划。中心思想是：</p>
+<blockquote>
+<p>不失一般性，现在我们将下标 i 的元素进行删除，<br>显而易见下标 i 之前的元素下标并不会因此发生改变，而下标 i<br>之后的原本在 j，j&gt;i下标的数组元素会移动到下标 j−1，<br>即下标 i 之后的奇数下标元素会成为偶数下标元素，<br>偶数下标元素会成为奇数下标元素。</p>
+</blockquote>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><figcaption><span>切片</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">waysToMakeFair</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            temp_nums = nums[:i] + nums[i+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">sum</span>(temp_nums[::<span class="number">2</span>])==<span class="built_in">sum</span>(temp_nums[<span class="number">1</span>::<span class="number">2</span>]):</span><br><span class="line">                flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> flag</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><figcaption><span>官方题解</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">waysToMakeFair</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        res = odd1 = even1 = odd2 = even2 = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            <span class="keyword">if</span> i &amp; <span class="number">1</span>:</span><br><span class="line">                odd2 += num</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                even2 += num</span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            <span class="keyword">if</span> i &amp; <span class="number">1</span>:</span><br><span class="line">                odd2 -= num</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                even2 -= num</span><br><span class="line">            <span class="keyword">if</span> odd1 + even2 == odd2 + even1:</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i &amp; <span class="number">1</span>:</span><br><span class="line">                odd1 += num</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                even1 += num</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 
 
 
@@ -223,51 +219,27 @@ var _hmt = _hmt || [];
     </div>
     <div class="article-info article-info-index">
       
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
-      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/HEXO//" class="article-tag-list-link color5">HEXO</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/未解决//" class="article-tag-list-link color4">未解决</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/未解决/存在bug//" class="article-tag-list-link color1">存在bug</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -317,7 +289,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2023/01/15/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2023/01/27/1664%E7%94%9F%E6%88%90%E5%B9%B3%E8%A1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -331,18 +303,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2023/01/15/2293/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/01/27/2309%E5%85%BC%E5%85%B7%E5%A4%A7%E5%B0%8F%E5%86%99%E7%9A%84%E6%9C%80%E5%A5%BD%E8%8B%B1%E6%96%87%E5%AD%97%E6%AF%8D/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          每日一题 2293. 极大极小游戏
+          2309. 兼具大小写的最好英文字母 每日一题
         
       </div>
     </a>
   
   
-    <a href="/2023/01/15/%E4%B8%8D%E5%AF%B9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">太累了</div>
+    <a href="/2023/01/27/217%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">217. 存在重复元素 C++/Python3</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
 <li>I’m open to collaboration and feedback.</li>
 </ul>
 <h3 id="How-to-contact-me"><a href="#How-to-contact-me" class="headerlink" title="How to contact me"></a>How to contact me</h3><ul>
-<li>Email: <a href="mailto:&#x6c;&#111;&#x6e;&#103;&#x73;&#x69;&#x7a;&#104;&#x75;&#x6f;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x6c;&#111;&#x6e;&#103;&#x73;&#x69;&#x7a;&#104;&#x75;&#x6f;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></li>
+<li>Email: <a href="mailto:&#108;&#111;&#x6e;&#103;&#x73;&#105;&#x7a;&#104;&#117;&#x6f;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#108;&#111;&#x6e;&#103;&#x73;&#105;&#x7a;&#104;&#117;&#x6f;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></li>
 <li>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/longsizhuo/">Sizhuo Long</a></li>
 <li>XiaoHongShu(Small RedBook): <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5c0b8cc2000000000601e809">@sizhuo_long</a></li>
 </ul>
@@ -460,6 +460,108 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/01/27/2309%E5%85%BC%E5%85%B7%E5%A4%A7%E5%B0%8F%E5%86%99%E7%9A%84%E6%9C%80%E5%A5%BD%E8%8B%B1%E6%96%87%E5%AD%97%E6%AF%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-1664生成平衡数组的方案数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/27/1664%E7%94%9F%E6%88%90%E5%B9%B3%E8%A1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/">1664. 生成平衡数组的方案数</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/27/1664%E7%94%9F%E6%88%90%E5%B9%B3%E8%A1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2023-01-26T14:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/../assets/img/1674887518406.png" alt="1674887518406.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ways-to-make-a-fair-array/description/?orderBy=most_relevant">1664. 生成平衡数组的方案数</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>读题的时候看到 中等 就知道肯定不是真的要删除某个元素。否则会超时，所以试了试极具python特色的代码：用切片处理所有的数据；<br>不过超时了。。</p>
+<p>然后看官方题解，用的动态规划。中心思想是：</p>
+<blockquote>
+<p>不失一般性，现在我们将下标 i 的元素进行删除，<br>显而易见下标 i 之前的元素下标并不会因此发生改变，而下标 i<br>之后的原本在 j，j&gt;i下标的数组元素会移动到下标 j−1，<br>即下标 i 之后的奇数下标元素会成为偶数下标元素，<br>偶数下标元素会成为奇数下标元素。</p>
+</blockquote>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><figcaption><span>切片</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">waysToMakeFair</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            temp_nums = nums[:i] + nums[i+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">sum</span>(temp_nums[::<span class="number">2</span>])==<span class="built_in">sum</span>(temp_nums[<span class="number">1</span>::<span class="number">2</span>]):</span><br><span class="line">                flag += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> flag</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><figcaption><span>官方题解</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">waysToMakeFair</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        res = odd1 = even1 = odd2 = even2 = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            <span class="keyword">if</span> i &amp; <span class="number">1</span>:</span><br><span class="line">                odd2 += num</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                even2 += num</span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            <span class="keyword">if</span> i &amp; <span class="number">1</span>:</span><br><span class="line">                odd2 -= num</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                even2 -= num</span><br><span class="line">            <span class="keyword">if</span> odd1 + even2 == odd2 + even1:</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i &amp; <span class="number">1</span>:</span><br><span class="line">                odd1 += num</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                even1 += num</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/27/1664%E7%94%9F%E6%88%90%E5%B9%B3%E8%A1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/">展开全文 >></a>
         </p>
       
 
@@ -780,7 +882,7 @@ var _hmt = _hmt || [];
 <li>I’m open to collaboration and feedback.</li>
 </ul>
 <h3 id="How-to-contact-me"><a href="#How-to-contact-me" class="headerlink" title="How to contact me"></a>How to contact me</h3><ul>
-<li>Email: <a href="mailto:&#x6c;&#x6f;&#x6e;&#103;&#x73;&#105;&#122;&#104;&#117;&#111;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#109;">&#x6c;&#x6f;&#x6e;&#103;&#x73;&#105;&#122;&#104;&#117;&#111;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#109;</a></li>
+<li>Email: <a href="mailto:&#x6c;&#x6f;&#x6e;&#103;&#115;&#105;&#122;&#104;&#117;&#x6f;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x6c;&#x6f;&#x6e;&#103;&#115;&#105;&#122;&#104;&#117;&#x6f;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a></li>
 <li>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/longsizhuo/">Sizhuo Long</a></li>
 <li>XiaoHongShu(Small RedBook): <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5c0b8cc2000000000601e809">@sizhuo_long</a></li>
 </ul>
@@ -1014,85 +1116,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-6300最小公共值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/22/6300%E6%9C%80%E5%B0%8F%E5%85%AC%E5%85%B1%E5%80%BC/">6300. 最小公共值</a>
-    </h1>
-  
-
-        
-        <a href="/2023/01/22/6300%E6%9C%80%E5%B0%8F%E5%85%AC%E5%85%B1%E5%80%BC/" class="archive-article-date">
-  	<time datetime="2023-01-21T16:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/../assets/img/2023-01-22%20(2).png" alt="2023-01-22 (2).png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/contest/biweekly-contest-96/problems/minimum-common-value/">6300. 最小公共值</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>本来是打算用元组一个个遍历找，但是超时了。<br>于是用intersection函数在<code>O(1)</code>的时间复杂度下解决</p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getCommon</span>(<span class="params">self, nums1: <span class="type">List</span>[<span class="built_in">int</span>], nums2: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        common = <span class="built_in">set</span>(nums1).intersection(nums2)</span><br><span class="line">        <span class="keyword">if</span> common:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">min</span>(common)</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/01/22/6300%E6%9C%80%E5%B0%8F%E5%85%AC%E5%85%B1%E5%80%BC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1223,15 +1246,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">双指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1267,11 +1294,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
