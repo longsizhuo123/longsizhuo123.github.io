@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
 <li>I’m open to collaboration and feedback.</li>
 </ul>
 <h3 id="How-to-contact-me"><a href="#How-to-contact-me" class="headerlink" title="How to contact me"></a>How to contact me</h3><ul>
-<li>Email: <a href="mailto:&#x6c;&#111;&#110;&#103;&#x73;&#105;&#122;&#x68;&#117;&#111;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x6c;&#111;&#110;&#103;&#x73;&#105;&#122;&#x68;&#117;&#111;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a></li>
+<li>Email: <a href="mailto:&#x6c;&#x6f;&#110;&#103;&#x73;&#x69;&#122;&#x68;&#x75;&#x6f;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#x6c;&#x6f;&#110;&#103;&#x73;&#x69;&#122;&#x68;&#x75;&#x6f;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;</a></li>
 <li>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/longsizhuo/">Sizhuo Long</a></li>
 <li>XiaoHongShu(Small RedBook): <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5c0b8cc2000000000601e809">@sizhuo_long</a></li>
 </ul>
@@ -382,6 +382,357 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-76最小覆盖子串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0205/.html">76最小覆盖子串.md</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0205/.html" class="archive-article-date">
+  	<time datetime="2023-02-05T09:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/2023-02-05%20(3).png" alt="2023-02-05 (3).png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/description/">76. 最小覆盖子串</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>当不存在t里所有元素的时候，右指针右移<br>当存在t里所有元素的时候，左指针右移，如果右指针没有到最右边，继续移动右指针<br>如果找到t，跳出返回</p>
+<h2 id="优化："><a href="#优化：" class="headerlink" title="优化："></a>优化：</h2><blockquote>
+<p>The code finds the minimum length window in string s that contains all the characters in string t. The code uses two pointers, left and right, to traverse s and keep track of the window. The isAll function checks if the characters in t are present in the current window.<br>To improve the code, consider the following:<br>Use a dict dict_keys instead of the isAll function to track the count of each character in the current window, and update the count directly instead of using Counter function repeatedly.<br>Remove unused variables ans, hash_1, and dict_t.<br>Initialize right outside the loop, and use while right &lt; len(s) and not isAll(dict_keys, dict_t) as the loop condition to terminate when all characters in t are present in the current window.<br>Keep track of the minimum window length and the start and end indices of the window, and return s[start:end + 1] at the end.</p>
+</blockquote>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><figcaption><span>Mine</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minWindow</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        ans = <span class="number">1000001</span></span><br><span class="line">        hash_1 = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">isAll</span>(<span class="params">dict_keys, target</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> target:</span><br><span class="line">                <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> dict_keys:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> dict_keys[i] &lt; target[i]:</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        dict_t = Counter(t)</span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> right &lt; <span class="built_in">len</span>(s):</span><br><span class="line">            <span class="comment"># 当不存在t里所有元素的时候，右指针右移</span></span><br><span class="line">            <span class="comment"># 当存在t里所有元素的时候，左指针右移，如果右指针没有到最右边，继续移动右指针</span></span><br><span class="line">            <span class="comment"># 如果找到t，跳出返回</span></span><br><span class="line">            dict1 = Counter(s[left:right + <span class="number">1</span>])</span><br><span class="line">            <span class="comment"># 如果有所有元素了</span></span><br><span class="line">            <span class="keyword">if</span> isAll(dict1, dict_t):</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, right - left + <span class="number">1</span>)</span><br><span class="line">                hash_1[right - left + <span class="number">1</span>] = s[left:right+<span class="number">1</span>]</span><br><span class="line">                <span class="built_in">print</span>(ans, hash_1)</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right += <span class="number">1</span></span><br><span class="line">            <span class="built_in">print</span>(ans, hash_1, dict1.keys())</span><br><span class="line">        <span class="keyword">return</span> hash_1[ans] <span class="keyword">if</span> <span class="built_in">len</span>(hash_1) != <span class="number">0</span> <span class="keyword">else</span> <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minWindow</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="comment"># 存储t字符串中每个字符的数量</span></span><br><span class="line">        dict_t = Counter(t)</span><br><span class="line">        <span class="comment"># 存储当前滑动窗口中的字符</span></span><br><span class="line">        dict_keys = &#123;&#125;</span><br><span class="line">        <span class="comment"># 左指针和右指针</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 记录最小长度</span></span><br><span class="line">        min_len = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">        <span class="comment"># 记录最短字符串的起始位置和结束位置</span></span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        end = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 右指针从0到len(s) - 1依次滑动</span></span><br><span class="line">        <span class="keyword">while</span> right &lt; <span class="built_in">len</span>(s):</span><br><span class="line">            <span class="comment"># 如果当前字符在t中，则把它加入当前滑动窗口的字典中</span></span><br><span class="line">            <span class="keyword">if</span> s[right] <span class="keyword">in</span> dict_t:</span><br><span class="line">                dict_keys[s[right]] = dict_keys.get(s[right], <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">            <span class="comment"># 如果当前滑动窗口中包含了t中的所有字符</span></span><br><span class="line">            <span class="keyword">while</span> right &lt; <span class="built_in">len</span>(s) <span class="keyword">and</span> isAll(dict_keys, dict_t):</span><br><span class="line">                <span class="comment"># 如果当前长度小于之前记录的最小长度，更新最小长度和起始位置和结束位置</span></span><br><span class="line">                <span class="keyword">if</span> right - left + <span class="number">1</span> &lt; min_len:</span><br><span class="line">                    min_len = right - left + <span class="number">1</span></span><br><span class="line">                    start = left</span><br><span class="line">                    end = right</span><br><span class="line">                <span class="comment"># 左指针右移，把当前字符从当前滑动窗口的字典中移除</span></span><br><span class="line">                <span class="keyword">if</span> s[left] <span class="keyword">in</span> dict_keys:</span><br><span class="line">                    dict_keys[s[left]] -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> dict_keys[s[left]] == <span class="number">0</span>:</span><br><span class="line">                        <span class="keyword">del</span> dict_keys[s[left]]</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            right += <span class="number">1</span></span><br><span class="line">        <span class="comment"># 返回最短字符串，如果没有则返回空字符串</span></span><br><span class="line">        <span class="keyword">return</span> s[start:end + <span class="number">1</span>] <span class="keyword">if</span> min_len != <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>) <span class="keyword">else</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isAll</span>(<span class="params">dict_keys, target</span>):</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> target:</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> dict_keys <span class="keyword">or</span> dict_keys[key] &lt; target[key]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">困难</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0205/.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-6347统计范围内的元音字符串数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0205/.html">6347统计范围内的元音字符串数.md</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0205/.html" class="archive-article-date">
+  	<time datetime="2023-02-05T03:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/../assets/img/2023-02-05%20(2).png" alt="2023-02-05 (2).png"></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>注意预处理和前缀和<br>前缀和是一种算法，用于求出一个数组的前缀和。数组的前缀和定义为在数组的某个位置的前缀元素的和。换句话说，前缀和就是将一个数组的每个位置的元素与其之前的元素相加。</p>
+<p>这个代码使用前缀和来优化查询过程。它预处理了每个单词的首尾字母是否是元音，然后将这些结果保存在一个列表中。然后，它使用前缀和计算每个查询结果。</p>
+<p>具体来说，对于每个查询 (i, j)，它将统计从 words[i] 到 words[j] 中满足条件（首尾字母都是元音）的单词数。这可以通过使用 counts[j+1] - counts[i] 来完成。这是因为 counts[j+1] 包含了从 words[0] 到 words[j] 中满足条件的单词数，而 counts[i] 包含了从 words[0] 到 words[i-1] 中满足条件的单词数。因此，counts[j+1] - counts[i] 即为从 words[i] 到 words[j] 中满足条件的单词数。</p>
+<p>在代码中，counts 数组使用前缀和预处理，因此可以在 O(1) 时间内计算每个查询的结果。这使代码的总运行时间从 O(n^2) 降至 O(n)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], queries: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        yuanyin = &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;u&#x27;</span>&#125;</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> queries:</span><br><span class="line">            count = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i, j + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> words[x][<span class="number">0</span>] <span class="keyword">in</span> yuanyin <span class="keyword">and</span> words[x][-<span class="number">1</span>] <span class="keyword">in</span> yuanyin:</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">            ans.append(count)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], queries: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        yuanyin = <span class="built_in">set</span>(<span class="string">&#x27;aeiou&#x27;</span>)</span><br><span class="line">        <span class="comment"># 遍历每个单词，判断它的首尾字母是否都是元音</span></span><br><span class="line">        <span class="comment"># 将结果存入 words_first_last 列表中</span></span><br><span class="line">        words_first_last = [(word[<span class="number">0</span>] <span class="keyword">in</span> yuanyin, word[-<span class="number">1</span>] <span class="keyword">in</span> yuanyin) <span class="keyword">for</span> word <span class="keyword">in</span> words]</span><br><span class="line">        <span class="comment"># 创建一个 counts 列表，用来存储前缀和</span></span><br><span class="line">        counts = [<span class="number">0</span>] * (<span class="built_in">len</span>(words) + <span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 遍历每个单词，计算前缀和</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(words)):</span><br><span class="line">            counts[i + <span class="number">1</span>] = counts[i] + <span class="built_in">int</span>(words_first_last[i][<span class="number">0</span>] <span class="keyword">and</span> words_first_last[i][<span class="number">1</span>])</span><br><span class="line">        <span class="comment"># 遍历每个查询，计算该查询的结果</span></span><br><span class="line">        ans = [counts[j + <span class="number">1</span>] - counts[i] <span class="keyword">for</span> i, j <span class="keyword">in</span> queries]</span><br><span class="line">        <span class="comment"># 返回结果</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0205/.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-6331两个线段获得的最多奖品" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0205/.html">6331两个线段获得的最多奖品 make()用法</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0205/.html" class="archive-article-date">
+  	<time datetime="2023-02-04T16:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/../assets/img/2023-02-05%20(1).png" alt="2023-02-05 (1).png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximize-win-from-two-segments/">6331. 两个线段获得的最多奖品</a></p>
+<h1 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yilovexing/article/details/121172745">make</a><br>make() 是 Go 语言内存分配的内置函数，默认有三个参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make(<span class="type">Type</span>, <span class="built_in">len</span>, cap)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Type：数据类型，必要参数，Type 的值只能是 slice、 map、 channel 这三种数据类型。<br>len：数据类型实际占用的内存空间长度，map、 channel 是可选参数，slice 是必要参数。<br>cap：为数据类型提前预留的内存空间长度，可选参数。<br>所谓的提前预留是当前为数据类型申请内存空间的时候，提前申请好额外的内存空间，这样可以避免二次分配内存带来的开销，大大提高程序的性能。<br>看到这里你有没有这样的疑惑，既然在初始化的时候已经指定数据的大小了，那为什么还要指定预留的大小呢？<br>这是因为 <code>make()</code> 使用的是一种动态数组算法，一开始先向操作系统申请一小块内存，<br>这个就是 <code>cap</code>，等 <code>cap</code> 被 <code>len</code> 占用满以后就需要扩容，<br>扩容就是动态数组再去向操作系统申请当前长度的两倍的内存，然后将旧数据复制到新内存空间中。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0205/.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-1798你能构造出连续值的最大数目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0205/.html">1798你能构造出连续值的最大数目 每日一题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0205/.html" class="archive-article-date">
+  	<time datetime="2023-02-04T13:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/2023-02-05.png" alt="2023-02-05.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-number-of-consecutive-values-you-can-make/description/?orderBy=most_votes">1798. 你能构造出连续值的最大数目</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p><img src="/../assets/img/4A052176419779588F1300C93180C44A.png" alt="4A052176419779588F1300C93180C44A.png"><br><img src="/../assets/img/img.png" alt="img.png"><br><code>nums = [1,4,10,3,1]</code>1 ~ 10 全部可以构造出来，所以11 ~ 20也可以。<br>遍历 <code>nums = [1,1,3,4,10]</code>， 如果 i&lt;&#x3D; <em>前面的和+1</em></p>
+<blockquote>
+<p>$i_0(1) &lt;&#x3D; 0+1; i_1(1) &lt;&#x3D; 1+1; i_2(3) &lt;&#x3D; 2+1; i_3(4) &lt;&#x3D; 5+1; i_4(10) &lt;&#x3D; 9+1$</p>
+</blockquote>
+<p>, 就说明i前面的数字是都可以构造出来的。<code>if i &gt; m + 1</code>则说明无法构造了。</p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getMaximumConsecutive</span>(<span class="params">self, coins: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        m = <span class="number">0</span>  <span class="comment"># 一开始只能构造出 0</span></span><br><span class="line">        coins.sort()</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> coins:</span><br><span class="line">            <span class="keyword">if</span> c &gt; m + <span class="number">1</span>:  <span class="comment"># coins 已排序，后面没有比 c 更小的数了</span></span><br><span class="line">                <span class="keyword">break</span>  <span class="comment"># 无法构造出 m+1，继续循环没有意义</span></span><br><span class="line">            m += c  <span class="comment"># 可以构造出区间 [0,m+c] 中的所有整数</span></span><br><span class="line">        <span class="keyword">return</span> m + <span class="number">1</span>  <span class="comment"># [0,m] 中一共有 m+1 个整数</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getMaximumConsecutive</span><span class="params">(coins []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 初始化一个包含0的数组</span></span><br><span class="line">	m := <span class="number">0</span></span><br><span class="line">	sort.Ints(coins)</span><br><span class="line">	<span class="keyword">for</span> _, c := <span class="keyword">range</span> coins &#123;</span><br><span class="line">		<span class="keyword">if</span> c &gt; m+<span class="number">1</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		m += c</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> m + <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0205/.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2325解密消息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -389,7 +740,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/0201/.html">2325解密消息.md</a>
+      <a class="article-title" href="/2023/0201/.html">2325解密消息 每日一题</a>
     </h1>
   
 
@@ -431,11 +782,15 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">哈希表</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">每日一题</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">哈希表</a>
         		</li>
       		
 		</ul>
@@ -729,363 +1084,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-brief_alternate 作业帮忙" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0130/.html">brief_alternate 作业帮忙</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0130/.html" class="archive-article-date">
-  	<time datetime="2023-01-30T06:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="../assets/documents/brief_alternate.pdf">brief_alternate.pdf</a><br><a href="../assets/documents/superstore_transaction.csv">superstore_transaction.csv</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>自学pandas进行数据处理，比之前<code>import csv</code>好用多了。</p>
-<p>其中的知识点需要记住的是：</p>
-<ol>
-<li>df[“列名”] 可以直接将第一行判定为列的名字，并且返回一个只包含列名的列表。</li>
-<li>idxmax()返回包含最大值的index,max()饭回最大值</li>
-<li><code>.loc </code>函数是 pandas 中的一个重要函数，用于选择和定位数据框中的数据。它允许您选择某些行和列，并将其以 DataFrame 或 Series 的形式返回。<br>通过使用行标签和列标签作为索引，您可以在数据框中执行如下操作：<br>.选择单行数据<br>.选择多行数据<br>.选择单列数据<br>.选择多列数据<br>语法： <code>df.loc[row_indexer, column_indexer]</code><br>其中，row_indexer 是要选择的行的标签，column_indexer 是要选择的列的标签。</li>
-<li>unique()返回不重复的value的number计数。<br>代码如下：</li>
-</ol>
-<p><a href="../assets/documents/superstore">superstore</a></p>
-<figure class="highlight python"><figcaption><span>s_p</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import pandas library as pd</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read CSV file named &#x27;superstore_transaction.csv&#x27; and store it in a dataframe named &#x27;df&#x27;</span></span><br><span class="line">df = pd.read_csv(<span class="string">&quot;superstore_transaction.csv&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove &quot;$&quot; and &quot;,&quot; from the values in the &#x27;Profit&#x27; column and convert it to integer</span></span><br><span class="line">df[<span class="string">&quot;Profit&quot;</span>] = df[<span class="string">&quot;Profit&quot;</span>].<span class="built_in">str</span>.replace(<span class="string">&#x27;$&#x27;</span>, <span class="string">&quot;&quot;</span>).<span class="built_in">str</span>.replace(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;&quot;</span>).astype(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove &quot;$&quot; and &quot;,&quot; from the values in the &#x27;Sales&#x27; column and convert it to integer</span></span><br><span class="line">df[<span class="string">&quot;Sales&quot;</span>] = df[<span class="string">&quot;Sales&quot;</span>].<span class="built_in">str</span>.replace(<span class="string">&#x27;$&#x27;</span>, <span class="string">&quot;&quot;</span>).<span class="built_in">str</span>.replace(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;&quot;</span>).astype(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get the index of the row with the maximum value in the &#x27;Profit&#x27; column and store it in &#x27;col_max_profit&#x27;</span></span><br><span class="line">col_max_profit = df[<span class="string">&quot;Profit&quot;</span>].idxmax()</span><br><span class="line"><span class="comment"># Get the index of the row with the maximum value in the &#x27;Sales&#x27; column and store it in &#x27;col_max_sales&#x27;</span></span><br><span class="line">col_max_sales = df[<span class="string">&quot;Sales&quot;</span>].idxmax()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Store the details of the transaction with highest sales</span></span><br><span class="line">highest_sales_info = [</span><br><span class="line">    <span class="string">&quot;=========================\n&quot;</span></span><br><span class="line">    <span class="string">&quot;HIGHEST SALES TRANSACTION\n&quot;</span></span><br><span class="line">    <span class="string">&quot;=========================\n&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Category: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Category&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Customer Name: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Customer Name&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Product Name: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Product Name&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Segment: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Segment&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Sub-Category: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Sub-Category&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Profit: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df[<span class="string">&quot;Sales&quot;</span>].<span class="built_in">max</span>()),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Store the details of the transaction with the highest profit</span></span><br><span class="line">highest_profit_info = [</span><br><span class="line">    <span class="string">&quot;==========================\n&quot;</span></span><br><span class="line">    <span class="string">&quot;HIGHEST PROFIT TRANSACTION\n&quot;</span></span><br><span class="line">    <span class="string">&quot;==========================\n&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Category: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Category&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Customer Name: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Customer Name&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Product Name: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Product Name&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Segment: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Segment&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Sub-Category: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Sub-Category&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Profit: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df[<span class="string">&quot;Profit&quot;</span>].<span class="built_in">max</span>()),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a file named &#x27;summary_report.txt&#x27; in &#x27;append&#x27; mode and store it in &#x27;file&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;summary_report.txt&quot;</span>, <span class="string">&quot;a&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="comment"># Write the &#x27;highest_sales_info&#x27; details to the file</span></span><br><span class="line">    file.write(<span class="string">&#x27;&#x27;</span>.join(highest_sales_info))</span><br><span class="line">    file.write(<span class="string">&#x27;&#x27;</span>.join(highest_profit_info))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><figcaption><span>api</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;&quot;</span></span><br><span class="line">payload = &#123;&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;apikey&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">r = requests.request(<span class="string">&quot;GET&quot;</span>, url, headers=headers, data=payload)  <span class="comment"># 响应API</span></span><br><span class="line"><span class="comment"># 查看响应结果</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Status code:&quot;</span>, r.status_code)</span><br><span class="line"><span class="comment"># 返回内容为json格式文件</span></span><br><span class="line"><span class="comment"># 将API响应存储在一个变量中</span></span><br><span class="line"><span class="comment"># json()函数仅解码json格式返回</span></span><br><span class="line">response_dict = r.json()</span><br><span class="line"><span class="comment"># print(response_dict)</span></span><br><span class="line"><span class="comment"># 处理结果  获得响应字典</span></span><br><span class="line"><span class="comment"># 探索有关仓库的信息  response_dict字典的嵌套</span></span><br><span class="line"><span class="comment"># print(response_dict[&#x27;info&#x27;][&#x27;rate&#x27;])</span></span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;summary_report.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">head = [</span><br><span class="line">    <span class="string">&quot;=================================================\n&quot;</span></span><br><span class="line">    <span class="string">&quot;SINGAPORE TO US DOLLAR EXCHANGE RATE IN REAL TIME\n&quot;</span></span><br><span class="line">    <span class="string">&quot;=================================================\n&quot;</span></span><br><span class="line">]</span><br><span class="line">f.writelines(head)</span><br><span class="line">f.writelines([<span class="built_in">str</span>(response_dict[<span class="string">&#x27;info&#x27;</span>][<span class="string">&#x27;rate&#x27;</span>])+<span class="string">&quot;\n&quot;</span>])</span><br><span class="line">f.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;over&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><figcaption><span>customers</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&quot;superstore_transaction.csv&quot;</span>)</span><br><span class="line">highest_sales_info = [</span><br><span class="line">    <span class="string">&quot;====================\n&quot;</span></span><br><span class="line">    <span class="string">&quot;SUPERSTORE CUSTOMERS\n&quot;</span></span><br><span class="line">    <span class="string">&quot;====================\n&quot;</span>,</span><br><span class="line">    <span class="string">&quot;TOTAL: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df[<span class="string">&quot;Customer Name&quot;</span>].nunique(), <span class="string">&quot;Category&quot;</span>),</span><br><span class="line">]</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;summary_report.txt&quot;</span>, <span class="string">&quot;a&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.writelines(highest_sales_info)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pandas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0130/.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-1669合并两个链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0130/.html">1669. 合并两个链表 每日一题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0130/.html" class="archive-article-date">
-  	<time datetime="2023-01-30T05:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/1675057199631.png" alt="1675057199631.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-in-between-linked-lists/description/">1669. 合并两个链表</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>直接放上官方题解了，就是模拟链表。</p>
-<p>题目要求将 list1<br>的第 a 到 b 个节点都删除，将其替换为 list2<br>。因此，我们首先找到 list1<br>中第 a−1 个节点 preA，以及第 b+1 个节点 aftB。由于 1≤a≤b&lt;n−1<br>（其中 n 是 list1 的长度），所以 preA 和 aftB 是一定存在的。</p>
-<p>然后我们让 preA 的 next 指向 list2<br>的头节点，再让 list2<br>的尾节点的 next 指向 aftB 即可。</p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x</span>):</span><br><span class="line">        self.val = x</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="literal">None</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">mergeInBetween</span>(<span class="params">self, list1: ListNode, a: <span class="built_in">int</span>, b: <span class="built_in">int</span>, list2: ListNode</span>) -&gt; ListNode:</span><br><span class="line">        preA = list1</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(a-<span class="number">1</span>):</span><br><span class="line">            preA = preA.<span class="built_in">next</span></span><br><span class="line">        preB = preA</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(b - a + <span class="number">2</span>):</span><br><span class="line">            preB = preB.<span class="built_in">next</span></span><br><span class="line">        preA.<span class="built_in">next</span> = list2</span><br><span class="line">        <span class="keyword">while</span> list2.<span class="built_in">next</span>:</span><br><span class="line">            list2 = list2.<span class="built_in">next</span></span><br><span class="line">        list2.<span class="built_in">next</span> = preB</span><br><span class="line">        <span class="keyword">return</span> list1</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">每日一题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0130/.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-6338猴子碰撞的方法数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0129/.html">6338. 猴子碰撞的方法数 周赛</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0129/.html" class="archive-article-date">
-  	<time datetime="2023-01-29T03:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/../assets/img/2023-01-29%20(1).png" alt="2023-01-29 (1).png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/contest/weekly-contest-330/problems/count-collisions-of-monkeys-on-a-polygon/">6338. 猴子碰撞的方法数</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>纯数学问题，就是$2^n - 2$。但是n最多有$10^9$那么大，直接返回会超时。<br>所以用了快速幂算法，</p>
-<blockquote>
-<p>使用快速幂算法来降低计算 2^n 的时间复杂度。<br>在这里，我们用变量 x 来存储 2^n，并在每次循环中将 x 平方。当 n 为奇数时，我们将结果乘以 x。这样可以在每次循环中计算出2^n。<br>在返回结果之前，我们需要用(res-2)%mod 去除边界情况</p>
-</blockquote>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">monkeyMove</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        mod = <span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span></span><br><span class="line">        res = <span class="number">1</span></span><br><span class="line">        x = <span class="number">2</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">                res = (res * x) % mod</span><br><span class="line">            x = (x * x) % mod</span><br><span class="line">            n = n // <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> (res-<span class="number">2</span>) % mod</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">快速幂</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0129/.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2315统计星号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0129/.html">2315. 统计星号 每日一题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0129/.html" class="archive-article-date">
-  	<time datetime="2023-01-29T03:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/../assets/img/2023-01-29.png" alt="2023-01-29.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-asterisks/description/">2315. 统计星号</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>我的：简单的出栈入栈的简单版<br>@ylq：对<code>|</code>的个数计数，当个数是2的倍数的时候进行<code>*</code>的计数</p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><figcaption><span>出栈入栈</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countAsterisks</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        stack = <span class="literal">True</span></span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> stack:</span><br><span class="line">                <span class="keyword">if</span> i == <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&#x27;|&#x27;</span> <span class="keyword">and</span> stack:</span><br><span class="line">                stack = <span class="literal">False</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&#x27;|&#x27;</span> <span class="keyword">and</span> <span class="keyword">not</span> stack:</span><br><span class="line">                stack = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> flag</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><figcaption><span>ylq</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countAsterisks</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        count1, count2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">if</span> s[i] == <span class="string">&#x27;|&#x27;</span>:</span><br><span class="line">                count1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> count1 % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">and</span> s[i] == <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">                count2 += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count2</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">每日一题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0129/.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1216,10 +1214,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
@@ -1228,7 +1222,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1236,11 +1238,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">哈希表</a>
+                <a href="javascript:void(0)" class="js-tag color4">已解决</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">未解决</a>
+                <a href="javascript:void(0)" class="js-tag color4">哈希表</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1252,15 +1254,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多重集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1284,11 +1282,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">加密</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">加密</a>
               </li>
             
             <div class="clearfix"></div>
