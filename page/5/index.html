@@ -167,6 +167,93 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-1813" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0116/undefined.html">1813. 句子相似性 III</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0116/undefined.html" class="archive-article-date">
+  	<time datetime="2023-01-16T04:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">一个句子是由一些单词与它们之间的单个空格组成，且句子的开头和结尾没有多余空格。比方说，&quot;Hello World&quot; ，&quot;HELLO&quot; ，&quot;hello world hello world&quot; 都是句子。每个单词都 只 包含大写和小写英文字母。</span><br><span class="line"></span><br><span class="line">如果两个句子 sentence1 和 sentence2 ，可以通过往其中一个句子插入一个任意的句子（可以是空句子）而得到另一个句子，那么我们称这两个句子是 相似的 。比方说，sentence1 = &quot;Hello my name is Jane&quot; 且 sentence2 = &quot;Hello Jane&quot; ，我们可以往 sentence2 中 &quot;Hello&quot; 和 &quot;Jane&quot; 之间插入 &quot;my name is&quot; 得到 sentence1 。</span><br><span class="line"></span><br><span class="line">给你两个句子 sentence1 和 sentence2 ，如果 sentence1 和 sentence2 是相似的，请你返回 true ，否则返回 false 。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：sentence1 = &quot;My name is Haley&quot;, sentence2 = &quot;My Haley&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：可以往 sentence2 中 &quot;My&quot; 和 &quot;Haley&quot; 之间插入 &quot;name is&quot; ，得到 sentence1 。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：sentence1 = &quot;of&quot;, sentence2 = &quot;A lot of words&quot;</span><br><span class="line">输出：false</span><br><span class="line">解释：没法往这两个句子中的一个句子只插入一个句子就得到另一个句子。</span><br><span class="line">示例 3：</span><br><span class="line"></span><br><span class="line">输入：sentence1 = &quot;Eating right now&quot;, sentence2 = &quot;Eating&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：可以往 sentence2 的结尾插入 &quot;right now&quot; 得到 sentence1 。</span><br><span class="line">示例 4：</span><br><span class="line"></span><br><span class="line">输入：sentence1 = &quot;Luky&quot;, sentence2 = &quot;Lucccky&quot;</span><br><span class="line">输出：false</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;= sentence1.length, sentence2.length &lt;= 100</span><br><span class="line">sentence1 和 sentence2 都只包含大小写英文字母和空格。</span><br><span class="line">sentence1 和 sentence2 中的单词都只由单个空格隔开。</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法:"></a>我的解法:</h1><p>想的是一次次遍历判断字符是否在最左边或者最右边然后删除，<br>但是做的过程中耐心没了，感觉是削足适履。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">areSentencesSimilar</span>(<span class="params">self, sentence1: <span class="built_in">str</span>, sentence2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        list1 = sentence1.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        list2 = sentence2.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(list1) &lt; <span class="built_in">len</span>(list2):</span><br><span class="line">            temp = list1</span><br><span class="line">            list1 = list2</span><br><span class="line">            list2 = temp</span><br><span class="line">        ans=copy.deepcopy(list2)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> list2:</span><br><span class="line">            <span class="keyword">for</span> index, j <span class="keyword">in</span> <span class="built_in">enumerate</span>(list1):</span><br><span class="line">                <span class="keyword">if</span> i == j <span class="keyword">and</span> (index == <span class="number">0</span> <span class="keyword">or</span> index == <span class="built_in">len</span>(list1) - <span class="number">1</span>):</span><br><span class="line">                    ans.remove(i)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ans:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="官方题解："><a href="#官方题解：" class="headerlink" title="官方题解："></a>官方题解：</h1><p>根据题意，两个句子 <em>sentence1</em> 和 <em>sentence2</em>，如果是相似的，那么这两个句子按空格分割得到的字符串数组 <em>words1</em><br>和 <em>words2</em>，一定能通过往其中一个字符串数组中插入某个字符串数组（可以为空），得到另一个字符串数组。这个验证可以通过双指针完成。<br><em>i</em> 表示两个字符串数组从左开始，最多有 <em>i</em> 个字符串相同。<br><em>j</em> 表示剩下的字符串数组从右开始，最多有 <em>j</em> 个字符串相同。<br>如果 <em>i+j</em> 正好是某个字符串数组的长度，那么原字符串就是相似的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">areSentencesSimilar</span>(<span class="params">self, sentence1: <span class="built_in">str</span>, sentence2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        words1 = sentence1.split()</span><br><span class="line">        words2 = sentence2.split()</span><br><span class="line">        i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(words1) <span class="keyword">and</span> i &lt; <span class="built_in">len</span>(words2) <span class="keyword">and</span> words1[i] == words2[i]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j &lt; <span class="built_in">len</span>(words1) - i <span class="keyword">and</span> j &lt; <span class="built_in">len</span>(words2) - i <span class="keyword">and</span> words1[-j - <span class="number">1</span>] == words2[-j - <span class="number">1</span>]:</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> i + j == <span class="built_in">min</span>(<span class="built_in">len</span>(words1), <span class="built_in">len</span>(words2))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0116/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-6293统计好子数组的数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -912,110 +999,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-219" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/1207/undefined.html">219.存在重复元素 II 哈希表图形学</a>
-    </h1>
-  
-
-        
-        <a href="/2022/1207/undefined.html" class="archive-article-date">
-  	<time datetime="2022-12-06T14:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h1><p>这道题一开始是在手机上做的，直接用的是双哈希表，一个存元素，一个存index，当某个元素超过2个的时候判断是否存在某两个他们的index相减小于等于k的情况。因此时间复杂度是<code>O(n^3)</code>。</p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">containsNearbyDuplicate</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        hash_1=&#123;&#125;</span><br><span class="line">        hash_2=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> index, i <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> hash_1:</span><br><span class="line">                hash_1[i] = <span class="number">1</span></span><br><span class="line">                hash_2[i] = [index]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hash_1[i] += <span class="number">1</span></span><br><span class="line">                hash_2[i].append(index)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> hash_1:</span><br><span class="line">            <span class="keyword">if</span> hash_1[i] &gt;= <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(hash_2[i])):</span><br><span class="line">                    <span class="keyword">for</span> m <span class="keyword">in</span> <span class="built_in">range</span>(j + <span class="number">1</span>, <span class="built_in">len</span>(hash_2[i])):</span><br><span class="line">                        <span class="keyword">if</span> <span class="built_in">abs</span>(hash_2[i][j]-hash_2[i][m]) &lt;= k:</span><br><span class="line">                            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-
-<p>看<a href="/u/ac_oier">@宫水三叶</a>宫水三叶的解法后，才想起来，这道题的目的是为了练习双指针在哈希表中的应用，TA的原话是整理题意：是否存在长度不超过的 k+1k + 1k+1 窗口，窗口内有相同元素。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#整理题意：是否存在长度不超过的 k+1k + 1k+1 窗口，窗口内有相同元素。</span><br><span class="line">class Solution:</span><br><span class="line">    def containsNearbyDuplicate(self, nums: List[int], k: int) -&gt; bool:</span><br><span class="line">        n = len(nums)</span><br><span class="line">        s = set()</span><br><span class="line">        for i in range(n):</span><br><span class="line">            if i &gt; k:</span><br><span class="line">                s.remove(nums[i - k - 1])</span><br><span class="line">            if nums[i] in s:</span><br><span class="line">                return True</span><br><span class="line">            s.add(nums[i])</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">已解决</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python/哈希表//" class="article-tag-list-link color4">哈希表</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/已解决//" class="article-tag-list-link color4">已解决</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/已解决/题解//" class="article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/1207/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
@@ -1142,6 +1125,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
@@ -1158,11 +1145,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">

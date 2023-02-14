@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
 <li>I’m open to collaboration and feedback.</li>
 </ul>
 <h3 id="How-to-contact-me"><a href="#How-to-contact-me" class="headerlink" title="How to contact me"></a>How to contact me</h3><ul>
-<li>Email: <a href="mailto:&#108;&#111;&#x6e;&#x67;&#x73;&#x69;&#x7a;&#x68;&#x75;&#111;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;">&#108;&#111;&#x6e;&#x67;&#x73;&#x69;&#x7a;&#x68;&#x75;&#111;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;</a></li>
+<li>Email: <a href="mailto:&#108;&#x6f;&#x6e;&#103;&#x73;&#105;&#x7a;&#104;&#117;&#111;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#108;&#x6f;&#x6e;&#103;&#x73;&#105;&#x7a;&#104;&#117;&#111;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></li>
 <li>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/longsizhuo/">Sizhuo Long</a></li>
 <li>XiaoHongShu(Small RedBook): <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5c0b8cc2000000000601e809">@sizhuo_long</a></li>
 </ul>
@@ -382,6 +382,93 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-1124. 表现良好的最长时间段" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0215/undefined.html">1124. 表现良好的最长时间段.md</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0215/undefined.html" class="archive-article-date">
+  	<time datetime="2023-02-14T14:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/2023-02-15.png" alt="2023-02-15.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-well-performing-interval/description/">1124. 表现良好的最长时间段.md</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>这题不会，以为是双指针但是超时了，结果是前缀和算法。<br>通过前缀和，我们可以把子数组的元素和转换成两个前缀和的差，即<br>$$<br>\sum_{j&#x3D;left}^{right} nums[j] &#x3D; \sum_{j&#x3D;0}^{right} nums[j]− \sum_{j&#x3D;0}^{left-1} nums[j]&#x3D;s[right+1]−s[left]<br>$$<br>既然说到了「子数组的元素和」，那么利用前缀和 s，将问题变为：<br>找到两个下标 i 和 j，满足 j&lt;ij&lt;ij&lt;i 且 s[j]&lt;s[i]，最大化 i−j的值。</p>
+<p><img src="https://pic.leetcode.cn/1676294271-XVWmuP-1124-3.png"></p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><figcaption><span>双指针</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestWPI</span>(<span class="params">self, hours: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> index, i <span class="keyword">in</span> <span class="built_in">enumerate</span>(hours):</span><br><span class="line">            count = <span class="number">0</span></span><br><span class="line">            j = index</span><br><span class="line">            <span class="keyword">while</span> j &lt; <span class="built_in">len</span>(hours):</span><br><span class="line">                <span class="keyword">if</span> hours[j] &lt;= <span class="number">8</span>:</span><br><span class="line">                    count -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> hours[j] &gt; <span class="number">8</span>:</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> count &gt; <span class="number">0</span>:</span><br><span class="line">                    ans = <span class="built_in">max</span>(ans, j - index + <span class="number">1</span>)</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><figcaption><span>前缀和</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestWPI</span>(<span class="params">self, hours: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(hours)</span><br><span class="line">        s = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">        st = [<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> j, h <span class="keyword">in</span> <span class="built_in">enumerate</span>(hours, <span class="number">1</span>):</span><br><span class="line">            s[j] = s[j - <span class="number">1</span>] + (<span class="number">1</span> <span class="keyword">if</span> h &gt; <span class="number">8</span> <span class="keyword">else</span> -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> s[j] &lt; s[st[-<span class="number">1</span>]]:</span><br><span class="line">                st.append(j)</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n, <span class="number">0</span> , -<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">while</span> st <span class="keyword">and</span> s[i] &gt; s[st[-<span class="number">1</span>]]:</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, i-st.pop())</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0215/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-1234. 替换子串得到平衡字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -389,7 +476,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/0213/undefined.html">1234. 替换子串得到平衡字符串.md</a>
+      <a class="article-title" href="/2023/0213/undefined.html">1234. 替换子串得到平衡字符串 每日一题</a>
     </h1>
   
 
@@ -403,7 +490,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/2023-02-13.png" alt="2023-02-13.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/replace-the-substring-for-balanced-string/description/">1234. 替换子串得到平衡字符串.md</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>同向双指针，这道题看的灵神的解。<br>假如在该字符串中，这四个字符都恰好出现 n&#x2F;4 次，那么它就是一个「平衡字符串」。<br>如果在待替换子串之外的任意字符的出现次数都<strong>超过</strong> $m&#x3D;\dfrac{n}{4}$<br>，那么无论怎么替换，都无法使这个字符的出现次数等于m。<br>反过来说，如果在待替换子串之外的任意字符的出现次数都<strong>不超过</strong> m，</p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p><code>all()</code>:如果 bool(x) 对于可迭代对象中的所有值 x 都为 True，则返回 True。 如果可迭代对象为空，则返回 True。</p>
+<p>同向双指针，这道题看的灵神的解。<br>假如在该字符串中，这四个字符都恰好出现 n&#x2F;4 次，那么它就是一个「平衡字符串」。<br>如果在待替换子串之外的任意字符的出现次数都<strong>超过</strong> $m&#x3D;\dfrac{n}{4}$<br>，那么无论怎么替换，都无法使这个字符的出现次数等于m。<br>反过来说，如果在待替换子串之外的任意字符的出现次数都<strong>不超过</strong> m，</p>
 <blockquote>
 <p>那么可以通过替换 ，使 s 为平衡字符串，即每个字符的出现次数均为 m。<br>对于本题，设子串的左右端点为 left 和 right，枚举 right，<br>如果子串外的任意字符的出现次数都不超过m，则说明从 left 到<br>right的这段子串可以是待替换子串，用其长度 right−left+1<br>更新答案的最小值，并向右移动 left，缩小子串长度。</p>
 </blockquote>
@@ -1000,91 +1088,6 @@ value -- 可选，如果指定键的值不存在时，返回该默认值。
 
 
   
-    <article id="post-6347统计范围内的元音字符串数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0205/undefined.html">6347统计范围内的元音字符串数.md</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0205/undefined.html" class="archive-article-date">
-  	<time datetime="2023-02-05T03:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/../assets/img/2023-02-05%20(2).png" alt="2023-02-05 (2).png"></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>注意预处理和前缀和<br>前缀和是一种算法，用于求出一个数组的前缀和。数组的前缀和定义为在数组的某个位置的前缀元素的和。换句话说，前缀和就是将一个数组的每个位置的元素与其之前的元素相加。</p>
-<p>这个代码使用前缀和来优化查询过程。它预处理了每个单词的首尾字母是否是元音，然后将这些结果保存在一个列表中。然后，它使用前缀和计算每个查询结果。</p>
-<p>具体来说，对于每个查询 (i, j)，它将统计从 words[i] 到 words[j] 中满足条件（首尾字母都是元音）的单词数。这可以通过使用 counts[j+1] - counts[i] 来完成。这是因为 counts[j+1] 包含了从 words[0] 到 words[j] 中满足条件的单词数，而 counts[i] 包含了从 words[0] 到 words[i-1] 中满足条件的单词数。因此，counts[j+1] - counts[i] 即为从 words[i] 到 words[j] 中满足条件的单词数。</p>
-<p>在代码中，counts 数组使用前缀和预处理，因此可以在 O(1) 时间内计算每个查询的结果。这使代码的总运行时间从 O(n^2) 降至 O(n)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], queries: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        yuanyin = &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;u&#x27;</span>&#125;</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> queries:</span><br><span class="line">            count = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i, j + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> words[x][<span class="number">0</span>] <span class="keyword">in</span> yuanyin <span class="keyword">and</span> words[x][-<span class="number">1</span>] <span class="keyword">in</span> yuanyin:</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">            ans.append(count)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], queries: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        yuanyin = <span class="built_in">set</span>(<span class="string">&#x27;aeiou&#x27;</span>)</span><br><span class="line">        <span class="comment"># 遍历每个单词，判断它的首尾字母是否都是元音</span></span><br><span class="line">        <span class="comment"># 将结果存入 words_first_last 列表中</span></span><br><span class="line">        words_first_last = [(word[<span class="number">0</span>] <span class="keyword">in</span> yuanyin, word[-<span class="number">1</span>] <span class="keyword">in</span> yuanyin) <span class="keyword">for</span> word <span class="keyword">in</span> words]</span><br><span class="line">        <span class="comment"># 创建一个 counts 列表，用来存储前缀和</span></span><br><span class="line">        counts = [<span class="number">0</span>] * (<span class="built_in">len</span>(words) + <span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 遍历每个单词，计算前缀和</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(words)):</span><br><span class="line">            counts[i + <span class="number">1</span>] = counts[i] + <span class="built_in">int</span>(words_first_last[i][<span class="number">0</span>] <span class="keyword">and</span> words_first_last[i][<span class="number">1</span>])</span><br><span class="line">        <span class="comment"># 遍历每个查询，计算该查询的结果</span></span><br><span class="line">        ans = [counts[j + <span class="number">1</span>] - counts[i] <span class="keyword">for</span> i, j <span class="keyword">in</span> queries]</span><br><span class="line">        <span class="comment"># 返回结果</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0205/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1211,6 +1214,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
@@ -1227,11 +1234,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">

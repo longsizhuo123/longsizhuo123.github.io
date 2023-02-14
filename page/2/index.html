@@ -167,6 +167,91 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-6347统计范围内的元音字符串数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0205/undefined.html">6347统计范围内的元音字符串数.md</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0205/undefined.html" class="archive-article-date">
+  	<time datetime="2023-02-05T03:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/../assets/img/2023-02-05%20(2).png" alt="2023-02-05 (2).png"></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>注意预处理和前缀和<br>前缀和是一种算法，用于求出一个数组的前缀和。数组的前缀和定义为在数组的某个位置的前缀元素的和。换句话说，前缀和就是将一个数组的每个位置的元素与其之前的元素相加。</p>
+<p>这个代码使用前缀和来优化查询过程。它预处理了每个单词的首尾字母是否是元音，然后将这些结果保存在一个列表中。然后，它使用前缀和计算每个查询结果。</p>
+<p>具体来说，对于每个查询 (i, j)，它将统计从 words[i] 到 words[j] 中满足条件（首尾字母都是元音）的单词数。这可以通过使用 counts[j+1] - counts[i] 来完成。这是因为 counts[j+1] 包含了从 words[0] 到 words[j] 中满足条件的单词数，而 counts[i] 包含了从 words[0] 到 words[i-1] 中满足条件的单词数。因此，counts[j+1] - counts[i] 即为从 words[i] 到 words[j] 中满足条件的单词数。</p>
+<p>在代码中，counts 数组使用前缀和预处理，因此可以在 O(1) 时间内计算每个查询的结果。这使代码的总运行时间从 O(n^2) 降至 O(n)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], queries: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        yuanyin = &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;u&#x27;</span>&#125;</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> queries:</span><br><span class="line">            count = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i, j + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> words[x][<span class="number">0</span>] <span class="keyword">in</span> yuanyin <span class="keyword">and</span> words[x][-<span class="number">1</span>] <span class="keyword">in</span> yuanyin:</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">            ans.append(count)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], queries: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        yuanyin = <span class="built_in">set</span>(<span class="string">&#x27;aeiou&#x27;</span>)</span><br><span class="line">        <span class="comment"># 遍历每个单词，判断它的首尾字母是否都是元音</span></span><br><span class="line">        <span class="comment"># 将结果存入 words_first_last 列表中</span></span><br><span class="line">        words_first_last = [(word[<span class="number">0</span>] <span class="keyword">in</span> yuanyin, word[-<span class="number">1</span>] <span class="keyword">in</span> yuanyin) <span class="keyword">for</span> word <span class="keyword">in</span> words]</span><br><span class="line">        <span class="comment"># 创建一个 counts 列表，用来存储前缀和</span></span><br><span class="line">        counts = [<span class="number">0</span>] * (<span class="built_in">len</span>(words) + <span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 遍历每个单词，计算前缀和</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(words)):</span><br><span class="line">            counts[i + <span class="number">1</span>] = counts[i] + <span class="built_in">int</span>(words_first_last[i][<span class="number">0</span>] <span class="keyword">and</span> words_first_last[i][<span class="number">1</span>])</span><br><span class="line">        <span class="comment"># 遍历每个查询，计算该查询的结果</span></span><br><span class="line">        ans = [counts[j + <span class="number">1</span>] - counts[i] <span class="keyword">for</span> i, j <span class="keyword">in</span> queries]</span><br><span class="line">        <span class="comment"># 返回结果</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0205/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-6331两个线段获得的最多奖品" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -969,90 +1054,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-2315统计星号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0129/undefined.html">2315. 统计星号 每日一题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0129/undefined.html" class="archive-article-date">
-  	<time datetime="2023-01-29T03:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/../assets/img/2023-01-29.png" alt="2023-01-29.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-asterisks/description/">2315. 统计星号</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>我的：简单的出栈入栈的简单版<br>@ylq：对<code>|</code>的个数计数，当个数是2的倍数的时候进行<code>*</code>的计数</p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><figcaption><span>出栈入栈</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countAsterisks</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        stack = <span class="literal">True</span></span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> stack:</span><br><span class="line">                <span class="keyword">if</span> i == <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">                    flag += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&#x27;|&#x27;</span> <span class="keyword">and</span> stack:</span><br><span class="line">                stack = <span class="literal">False</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&#x27;|&#x27;</span> <span class="keyword">and</span> <span class="keyword">not</span> stack:</span><br><span class="line">                stack = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> flag</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><figcaption><span>ylq</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countAsterisks</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        count1, count2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">if</span> s[i] == <span class="string">&#x27;|&#x27;</span>:</span><br><span class="line">                count1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> count1 % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">and</span> s[i] == <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">                count2 += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count2</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">每日一题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0129/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1179,6 +1180,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
@@ -1195,11 +1200,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">
