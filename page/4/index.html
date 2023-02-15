@@ -167,6 +167,104 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-1551使数组中所有元素相等的最小操作数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0122/undefined.html">1551. 使数组中所有元素相等的最小操作数</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0122/undefined.html" class="archive-article-date">
+  	<time datetime="2023-01-21T16:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/../assets/img/2023-01-22%20(3).png" alt="2023-01-22 (3).png"></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>是做完周赛的第二题：<a href="6275%CA%B9%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D4%AA%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%C8%B5%EF%BF%BD%EF%BF%BD%EF%BF%BD%D0%A1%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD.md">6275使数组中所有元素相等的最小操作数II.md</a><br>后心血来潮做的第一版。和第二版完全不一样，本来想练习贪心算法的。但是做着做着就发现了存在数学规律。<br>引用一下[yong]大佬的话：<br>因为是等差数列,很可能找到一个数学公式,用<code>O(1)</code>的时间复杂度解决. 先举几个简单的例子找找规律</p>
+<ol>
+<li>n&#x3D;3 最小操作数是 2</li>
+<li>n&#x3D;4 最小操作数是 1 + 3</li>
+<li>n&#x3D;5 最小操作数是 2 + 4</li>
+<li>n&#x3D;6 最小操作数是 1 + 3 + 5</li>
+<li>n&#x3D;7 最小操作数是 2 + 4 + 6<br>当n是偶数的时候,最小操作数是<code>1 + 3 + 5 + ... + n-1 = n*n/4 </code><br>当n是奇数的时候,最小操作数是<code>2 + 4 + ... + n-1 = (n*n - 1) / 4</code></li>
+</ol>
+<p>拿到这道题,感觉有点绕,仔细分析发现 <code>arr[i] = (2 * i) + 1 (0 &lt;= i &lt; n)</code>是典型的等差数列<code>(1,3,5,7,9...)</code>.<br>根据等差数列的求和公式,很容易求出数组arr的元素总和是<code>n^2</code>. 题设中说每次操作选出两个下标x y使<code>arr[x]</code>减一<code>arr[y]</code>加一.<br>换句话说,无论怎样选择x y,无论操作多少次,数组的总和不会变. 题设又保证数组中所有元素最终可以全部相等.<br>那我们假设最终所有元素等于a那么<code>n*a == n^2</code>,所以a &#x3D;&#x3D; n,也就是说最终数组元素都是n.其实n是数组的平均值.<br>知道最终元素都是n后,通过从数组起始和末尾下标开始向中间遍历,就可以到达操作数最小.<br>假设左边的下标是<code>i ((2 * i) + 1 &lt; n)</code>那么相应右边的下标是<code>n - i.</code><br>相应两个元素值与n的差都是<code>n - 1 + 2 * i</code>.所以我们只要计算数组中值小于n的元素与n的差的总和,就得到最小操作数了.</p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="type">int</span> <span class="title function_">minOperations</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> n * n / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 时空复杂度都是 O(1)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="type">int</span> <span class="title function_">minOperations</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">operation</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n ; i += <span class="number">2</span>) &#123;</span><br><span class="line">        operation += (n - i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> operation;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 时间复杂度是O(n) 空间复杂度是O(1)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minOperations</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        operate = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n, <span class="number">2</span>):</span><br><span class="line">            operate += (n - i)</span><br><span class="line">        <span class="keyword">return</span> operate</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang"><figcaption><span>erlang</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-spec</span> min_operations<span class="params">(N :: integer())</span> -&gt; integer<span class="params">()</span>.</span><br><span class="line"><span class="function"><span class="title">min_operations</span><span class="params">(N)</span> -&gt;</span></span><br><span class="line">N * N <span class="keyword">div</span> <span class="number">4</span>.</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><figcaption><span>dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="built_in">int</span> minOperations(<span class="built_in">int</span> n) &#123;</span><br><span class="line">    <span class="keyword">return</span> n * n ~/ <span class="number">4</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><figcaption><span>elixir</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">defmodule</span> <span class="title">Solution</span></span> <span class="keyword">do</span></span><br><span class="line">  <span class="variable">@spec</span> min_operations(n :: integer) :: integer</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">min_operations</span></span>(n) <span class="keyword">do</span></span><br><span class="line">        div(n * n , <span class="number">4</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0122/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-6300最小公共值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -961,105 +1059,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-1814" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0118/undefined.html">1814. 统计一个数组中好对子的数目 每日一题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0118/undefined.html" class="archive-article-date">
-  	<time datetime="2023-01-17T13:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">1814. 统计一个数组中好对子的数目</span><br><span class="line">中等</span><br><span class="line">86</span><br><span class="line">company</span><br><span class="line">优步 Uber</span><br><span class="line">给你一个数组 nums ，数组中只包含非负整数。定义 rev(x) 的值为将整数 x 各个数字位反转得到的结果。比方说 rev(123) = 321 ， rev(120) = 21 。我们称满足下面条件的下标对 (i, j) 是 好的 ：</span><br><span class="line"></span><br><span class="line">0 &lt;= i &lt; j &lt; nums.length</span><br><span class="line">nums[i] + rev(nums[j]) == nums[j] + rev(nums[i])</span><br><span class="line">请你返回好下标对的数目。由于结果可能会很大，请将结果对 109 + 7 取余 后返回。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：nums = [42,11,1,97]</span><br><span class="line">输出：2</span><br><span class="line">解释：两个坐标对为：</span><br><span class="line"> - (0,3)：42 + rev(97) = 42 + 79 = 121, 97 + rev(42) = 97 + 24 = 121 。</span><br><span class="line"> - (1,2)：11 + rev(1) = 11 + 1 = 12, 1 + rev(11) = 1 + 11 = 12 。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：nums = [13,10,35,24,76]</span><br><span class="line">输出：4</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;= nums.length &lt;= 105</span><br><span class="line">0 &lt;= nums[i] &lt;= 109</span><br></pre></td></tr></table></figure>
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>这道题没想到是哈希表，还以为是双指针。<br>做了很久，没想到解法，就直接看题解了，也看的半懂。<br>总之就是，好对子其实就是 两个 <em>i - res(i)</em> 相同的数字!<br>    <strong>文字游戏</strong>的感觉：</p>
-<blockquote>
-<p>42 + rev(97) &#x3D; 42 + 79 &#x3D; 121, 97 + rev(42) &#x3D; 97 + 24 &#x3D; 121 。<br>不就是 42-res(42) &#x3D;&#x3D; 97 - res(97) 吗？</p>
-</blockquote>
-<p>当*cnt[i-res(i)]*不存在时，会返回0.</p>
-<pre><code>ans += cnt[i-j]
-</code></pre>
-<p>因此在<em>cnt[i-j]<em>有2次值的时候才会返回到ans中<br>因为</em>cnt[i-j]&#x3D;1</em>时，是不会经过ans赋值的</p>
-<pre><code>cnt[i-j] += 1
-</code></pre>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>·元素为numsW - rev(num[il)<br>·计算每个元素出现次数<br>·计算每个次数等差数列和<br>@<a target="_blank" rel="noopener" href="https://leetcode.cn/u/nsf/">懒人</a></p>
-<hr>
-<h1 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countNicePairs</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">res</span>(<span class="params">num: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">int</span>(<span class="built_in">str</span>(num)[::-<span class="number">1</span>])</span><br><span class="line">        cnt = Counter()</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            j = res(i)</span><br><span class="line">            <span class="comment"># 当cnt[i-res(i)]不存在时，会返回0.</span></span><br><span class="line">            ans += cnt[i-j]</span><br><span class="line">            <span class="comment"># 因此在cnt[i-j] 有2次值的时候才会返回到ans中</span></span><br><span class="line">            <span class="comment"># 因为cnt[]=1时，是不会经过ans赋值的</span></span><br><span class="line">            cnt[i-j] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans % (<span class="number">10</span> ** <span class="number">9</span> + <span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">哈希表</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">已解决</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0118/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1202,11 +1201,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1250,11 +1249,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">

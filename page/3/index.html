@@ -167,6 +167,100 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-6338猴子碰撞的方法数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0129/undefined.html">6338. 猴子碰撞的方法数 周赛</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0129/undefined.html" class="archive-article-date">
+  	<time datetime="2023-01-29T03:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/../assets/img/2023-01-29%20(1).png" alt="2023-01-29 (1).png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/contest/weekly-contest-330/problems/count-collisions-of-monkeys-on-a-polygon/">6338. 猴子碰撞的方法数</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>纯数学问题，就是$2^n - 2$。但是n最多有$10^9$那么大，直接返回会超时。<br>所以用了快速幂算法，</p>
+<blockquote>
+<p>使用快速幂算法来降低计算 2^n 的时间复杂度。<br>在这里，我们用变量 x 来存储 2^n，并在每次循环中将 x 平方。当 n 为奇数时，我们将结果乘以 x。这样可以在每次循环中计算出2^n。<br>在返回结果之前，我们需要用(res-2)%mod 去除边界情况</p>
+</blockquote>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">monkeyMove</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        mod = <span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span></span><br><span class="line">        res = <span class="number">1</span></span><br><span class="line">        x = <span class="number">2</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">                res = (res * x) % mod</span><br><span class="line">            x = (x * x) % mod</span><br><span class="line">            n = n // <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> (res-<span class="number">2</span>) % mod</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">快速幂</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0129/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2315统计星号" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -313,11 +407,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">每日一题</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">每日一题</a>
         		</li>
       		
 		</ul>
@@ -852,7 +946,7 @@ var _hmt = _hmt || [];
 <li>I’m open to collaboration and feedback.</li>
 </ul>
 <h3 id="How-to-contact-me"><a href="#How-to-contact-me" class="headerlink" title="How to contact me"></a>How to contact me</h3><ul>
-<li>Email: <a href="mailto:&#x6c;&#x6f;&#110;&#x67;&#115;&#105;&#122;&#x68;&#x75;&#x6f;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x6c;&#x6f;&#110;&#x67;&#115;&#105;&#122;&#x68;&#x75;&#x6f;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a></li>
+<li>Email: <a href="mailto:&#x6c;&#111;&#110;&#x67;&#115;&#105;&#122;&#x68;&#x75;&#x6f;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#x6c;&#111;&#110;&#x67;&#115;&#105;&#122;&#x68;&#x75;&#x6f;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a></li>
 <li>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/longsizhuo/">Sizhuo Long</a></li>
 <li>XiaoHongShu(Small RedBook): <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5c0b8cc2000000000601e809">@sizhuo_long</a></li>
 </ul>
@@ -959,104 +1053,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/0123/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-1551使数组中所有元素相等的最小操作数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0122/undefined.html">1551. 使数组中所有元素相等的最小操作数</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0122/undefined.html" class="archive-article-date">
-  	<time datetime="2023-01-21T16:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/../assets/img/2023-01-22%20(3).png" alt="2023-01-22 (3).png"></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>是做完周赛的第二题：<a href="6275%CA%B9%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D4%AA%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%C8%B5%EF%BF%BD%EF%BF%BD%EF%BF%BD%D0%A1%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD.md">6275使数组中所有元素相等的最小操作数II.md</a><br>后心血来潮做的第一版。和第二版完全不一样，本来想练习贪心算法的。但是做着做着就发现了存在数学规律。<br>引用一下[yong]大佬的话：<br>因为是等差数列,很可能找到一个数学公式,用<code>O(1)</code>的时间复杂度解决. 先举几个简单的例子找找规律</p>
-<ol>
-<li>n&#x3D;3 最小操作数是 2</li>
-<li>n&#x3D;4 最小操作数是 1 + 3</li>
-<li>n&#x3D;5 最小操作数是 2 + 4</li>
-<li>n&#x3D;6 最小操作数是 1 + 3 + 5</li>
-<li>n&#x3D;7 最小操作数是 2 + 4 + 6<br>当n是偶数的时候,最小操作数是<code>1 + 3 + 5 + ... + n-1 = n*n/4 </code><br>当n是奇数的时候,最小操作数是<code>2 + 4 + ... + n-1 = (n*n - 1) / 4</code></li>
-</ol>
-<p>拿到这道题,感觉有点绕,仔细分析发现 <code>arr[i] = (2 * i) + 1 (0 &lt;= i &lt; n)</code>是典型的等差数列<code>(1,3,5,7,9...)</code>.<br>根据等差数列的求和公式,很容易求出数组arr的元素总和是<code>n^2</code>. 题设中说每次操作选出两个下标x y使<code>arr[x]</code>减一<code>arr[y]</code>加一.<br>换句话说,无论怎样选择x y,无论操作多少次,数组的总和不会变. 题设又保证数组中所有元素最终可以全部相等.<br>那我们假设最终所有元素等于a那么<code>n*a == n^2</code>,所以a &#x3D;&#x3D; n,也就是说最终数组元素都是n.其实n是数组的平均值.<br>知道最终元素都是n后,通过从数组起始和末尾下标开始向中间遍历,就可以到达操作数最小.<br>假设左边的下标是<code>i ((2 * i) + 1 &lt; n)</code>那么相应右边的下标是<code>n - i.</code><br>相应两个元素值与n的差都是<code>n - 1 + 2 * i</code>.所以我们只要计算数组中值小于n的元素与n的差的总和,就得到最小操作数了.</p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="type">int</span> <span class="title function_">minOperations</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> n * n / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 时空复杂度都是 O(1)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="type">int</span> <span class="title function_">minOperations</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">operation</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n ; i += <span class="number">2</span>) &#123;</span><br><span class="line">        operation += (n - i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> operation;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 时间复杂度是O(n) 空间复杂度是O(1)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minOperations</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        operate = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n, <span class="number">2</span>):</span><br><span class="line">            operate += (n - i)</span><br><span class="line">        <span class="keyword">return</span> operate</span><br></pre></td></tr></table></figure>
-<figure class="highlight erlang"><figcaption><span>erlang</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-spec</span> min_operations<span class="params">(N :: integer())</span> -&gt; integer<span class="params">()</span>.</span><br><span class="line"><span class="function"><span class="title">min_operations</span><span class="params">(N)</span> -&gt;</span></span><br><span class="line">N * N <span class="keyword">div</span> <span class="number">4</span>.</span><br></pre></td></tr></table></figure>
-<figure class="highlight dart"><figcaption><span>dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="built_in">int</span> minOperations(<span class="built_in">int</span> n) &#123;</span><br><span class="line">    <span class="keyword">return</span> n * n ~/ <span class="number">4</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight elixir"><figcaption><span>elixir</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">defmodule</span> <span class="title">Solution</span></span> <span class="keyword">do</span></span><br><span class="line">  <span class="variable">@spec</span> min_operations(n :: integer) :: integer</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">min_operations</span></span>(n) <span class="keyword">do</span></span><br><span class="line">        div(n * n , <span class="number">4</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0122/undefined.html">展开全文 >></a>
         </p>
       
 
@@ -1228,11 +1224,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1276,11 +1272,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
