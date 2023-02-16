@@ -167,6 +167,94 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2303计算应缴税款总额" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0123/undefined.html">2303. 计算应缴税款总额</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0123/undefined.html" class="archive-article-date">
+  	<time datetime="2023-01-23T07:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/../assets/img/2023-01-23%20(2).png" alt="2023-01-23 (2).png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/calculate-amount-paid-in-taxes/description/?orderBy=most_relevant">2303. 计算应缴税款总额</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>坐了很久，感觉难得不像是“简单”。没做出来，看的题解。判断的情况特别多，所以写了很多判断，越写越觉得不对劲。</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/calculate-amount-paid-in-taxes/solutions/2072838/ji-suan-ying-jiao-shui-kuan-zong-e-by-le-jv5s/?orderBy=most_relevant">来看看官方题解</a></p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><figcaption><span>错误代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">calculateTax</span>(<span class="params">self, brackets: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], income: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        <span class="keyword">if</span> income == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        tax: <span class="built_in">float</span> = <span class="number">0</span></span><br><span class="line">        index: <span class="built_in">int</span> = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> income &lt; brackets[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> income * brackets[<span class="number">0</span>][<span class="number">1</span>] / <span class="number">100</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            tax += brackets[<span class="number">0</span>][<span class="number">0</span>] * brackets[<span class="number">0</span>][<span class="number">1</span>] / <span class="number">100</span></span><br><span class="line">        <span class="keyword">while</span> index &lt; <span class="built_in">len</span>(brackets):</span><br><span class="line">            <span class="comment"># 判断是不是在最后一位了</span></span><br><span class="line">            <span class="keyword">if</span> index == <span class="built_in">len</span>(brackets) - <span class="number">1</span>:</span><br><span class="line">                <span class="comment"># 比brackets最后一个还大</span></span><br><span class="line">                <span class="keyword">if</span> income - brackets[index][<span class="number">0</span>] &lt; <span class="number">0</span>:</span><br><span class="line">                    tax += (income - brackets[index - <span class="number">1</span>][<span class="number">0</span>]) * brackets[index][<span class="number">1</span>] / <span class="number">100</span></span><br><span class="line">                    <span class="keyword">return</span> tax</span><br><span class="line">            <span class="keyword">if</span> income &gt;= brackets[index][<span class="number">0</span>]:</span><br><span class="line">                tax += (brackets[index][<span class="number">0</span>]- brackets[index-<span class="number">1</span>][<span class="number">0</span>]) * brackets[index][<span class="number">1</span>] / <span class="number">100</span></span><br><span class="line">            <span class="keyword">if</span> income &lt; brackets[index-<span class="number">1</span>][<span class="number">0</span>]:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            index += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> tax</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(Solution.calculateTax(Solution(), brackets = [[<span class="number">1</span>,<span class="number">0</span>],[<span class="number">4</span>,<span class="number">25</span>],[<span class="number">5</span>,<span class="number">50</span>]], income = <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/calculate-amount-paid-in-taxes/solutions/2072838/ji-suan-ying-jiao-shui-kuan-zong-e-by-le-jv5s/?orderBy=most_relevant">来看看官方题解</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">calculateTax</span>(<span class="params">self, brackets: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], income: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        totalTax = lower = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> upper, percent <span class="keyword">in</span> brackets:</span><br><span class="line">            tax = (<span class="built_in">min</span>(income, upper) - lower) * percent</span><br><span class="line">            totalTax += tax</span><br><span class="line">            <span class="keyword">if</span> income &lt;= upper:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            lower = upper</span><br><span class="line">        <span class="keyword">return</span> totalTax / <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>@<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/calculate-amount-paid-in-taxes/solutions/2073583/by-lcbin-94u4/?orderBy=most_relevant">ylb</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">calculateTax</span>(<span class="params">self, brackets: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], income: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        ans = prev = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> upper, percent <span class="keyword">in</span> brackets:</span><br><span class="line">            ans += <span class="built_in">max</span>(<span class="number">0</span>, <span class="built_in">min</span>(income, upper) - prev) * percent</span><br><span class="line">            prev = upper</span><br><span class="line">        <span class="keyword">return</span> ans / <span class="number">100</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0123/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-1551使数组中所有元素相等的最小操作数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -785,96 +873,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-1824最少侧跳次数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0118/undefined.html">1825. 求出 MK 平均值</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0118/undefined.html" class="archive-article-date">
-  	<time datetime="2023-01-18T04:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/../assets/img/2023-01-22.png" alt="2023-01-22.png"></p>
-<h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-sideway-jumps/description/?orderBy=most_votes">1824最小侧跳次数</a></p>
-<h1 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h1><p>我不会</p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-sideway-jumps/solutions/2071617/cong-0-dao-1-de-0-1-bfspythonjavacgo-by-1m8z4/?orderBy=most_votes">https://leetcode.cn/problems/minimum-sideway-jumps/solutions/2071617/cong-0-dao-1-de-0-1-bfspythonjavacgo-by-1m8z4/?orderBy=most_votes</a></p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minSideJumps</span>(<span class="params">self, obstacles: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(obstacles)</span><br><span class="line">        dis = [[n] * <span class="number">3</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        dis[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        q = deque([(<span class="number">0</span>, <span class="number">1</span>)])  <span class="comment"># 起点</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            i, j = q.popleft()</span><br><span class="line">            d = dis[i][j]</span><br><span class="line">            <span class="keyword">if</span> i == n - <span class="number">1</span>: <span class="keyword">return</span> d  <span class="comment"># 到达终点</span></span><br><span class="line">            <span class="keyword">if</span> obstacles[i + <span class="number">1</span>] != j + <span class="number">1</span> <span class="keyword">and</span> d &lt; dis[i + <span class="number">1</span>][j]:  <span class="comment"># 向右</span></span><br><span class="line">                dis[i + <span class="number">1</span>][j] = d</span><br><span class="line">                q.appendleft((i + <span class="number">1</span>, j))  <span class="comment"># 加到队首</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> (j + <span class="number">1</span>) % <span class="number">3</span>, (j + <span class="number">2</span>) % <span class="number">3</span>:  <span class="comment"># 枚举另外两条跑道（向上/向下）</span></span><br><span class="line">                <span class="keyword">if</span> obstacles[i] != k + <span class="number">1</span> <span class="keyword">and</span> d + <span class="number">1</span> &lt; dis[i][k]:</span><br><span class="line">                    dis[i][k] = d + <span class="number">1</span></span><br><span class="line">                    q.append((i, k))  <span class="comment"># 加到队尾</span></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">困难</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0118/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-1825求出 MK 平均值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -968,33 +966,32 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-350两个数组的交集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-1824最少侧跳次数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/0118/undefined.html">350.两个数组的交集</a>
+      <a class="article-title" href="/2023/0118/undefined.html">1825. 求出 MK 平均值</a>
     </h1>
   
 
         
         <a href="/2023/0118/undefined.html" class="archive-article-date">
-  	<time datetime="2023-01-17T16:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-18</time>
+  	<time datetime="2023-01-18T04:42:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">350. 两个数组的交集 II</span><br><span class="line">简单</span><br><span class="line">883</span><br><span class="line">company</span><br><span class="line">亚马逊</span><br><span class="line">company</span><br><span class="line">字节跳动</span><br><span class="line">company</span><br><span class="line">Facebook</span><br><span class="line">给你两个整数数组 nums1 和 nums2 ，请你以数组形式返回两数组的交集。返回结果中每个元素出现的次数，应与元素在两个数组中都出现的次数一致（如果出现次数不一致，则考虑取较小值）。可以不考虑输出结果的顺序。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：nums1 = [1,2,2,1], nums2 = [2,2]</span><br><span class="line">输出：[2,2]</span><br><span class="line">示例 2:</span><br><span class="line"></span><br><span class="line">输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]</span><br><span class="line">输出：[4,9]</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;= nums1.length, nums2.length &lt;= 1000</span><br><span class="line">0 &lt;= nums1[i], nums2[i] &lt;= 1000</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">进阶：</span><br><span class="line"></span><br><span class="line">如果给定的数组已经排好序呢？你将如何优化你的算法？</span><br><span class="line">如果 nums1 的大小比 nums2 小，哪种方法更优？</span><br><span class="line">如果 nums2 的元素存储在磁盘上，内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="/../assets/img/350_fig1.gif" alt="350_fig1.gif"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">containsNearbyDuplicate</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        hash_1 = &#123;&#125;</span><br><span class="line">        hash_2 = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> index, i <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> hash_1:</span><br><span class="line">                hash_1[i] = <span class="number">1</span></span><br><span class="line">                hash_2[i] = [index]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hash_1[i] += <span class="number">1</span></span><br><span class="line">                hash_2[i].append(index)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> hash_1:</span><br><span class="line">            <span class="keyword">if</span> hash_1[i] &gt;= <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(hash_2[i])):</span><br><span class="line">                    <span class="keyword">for</span> m <span class="keyword">in</span> <span class="built_in">range</span>(j + <span class="number">1</span>, <span class="built_in">len</span>(hash_2[i])):</span><br><span class="line">                        <span class="keyword">if</span> <span class="built_in">abs</span>(hash_2[i][j] - hash_2[i][m]) &lt;= k:</span><br><span class="line">                            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+        <p><img src="/../assets/img/2023-01-22.png" alt="2023-01-22.png"></p>
+<h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-sideway-jumps/description/?orderBy=most_votes">1824最小侧跳次数</a></p>
+<h1 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h1><p>我不会</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-sideway-jumps/solutions/2071617/cong-0-dao-1-de-0-1-bfspythonjavacgo-by-1m8z4/?orderBy=most_votes">https://leetcode.cn/problems/minimum-sideway-jumps/solutions/2071617/cong-0-dao-1-de-0-1-bfspythonjavacgo-by-1m8z4/?orderBy=most_votes</a></p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minSideJumps</span>(<span class="params">self, obstacles: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(obstacles)</span><br><span class="line">        dis = [[n] * <span class="number">3</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        dis[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        q = deque([(<span class="number">0</span>, <span class="number">1</span>)])  <span class="comment"># 起点</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            i, j = q.popleft()</span><br><span class="line">            d = dis[i][j]</span><br><span class="line">            <span class="keyword">if</span> i == n - <span class="number">1</span>: <span class="keyword">return</span> d  <span class="comment"># 到达终点</span></span><br><span class="line">            <span class="keyword">if</span> obstacles[i + <span class="number">1</span>] != j + <span class="number">1</span> <span class="keyword">and</span> d &lt; dis[i + <span class="number">1</span>][j]:  <span class="comment"># 向右</span></span><br><span class="line">                dis[i + <span class="number">1</span>][j] = d</span><br><span class="line">                q.appendleft((i + <span class="number">1</span>, j))  <span class="comment"># 加到队首</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> (j + <span class="number">1</span>) % <span class="number">3</span>, (j + <span class="number">2</span>) % <span class="number">3</span>:  <span class="comment"># 枚举另外两条跑道（向上/向下）</span></span><br><span class="line">                <span class="keyword">if</span> obstacles[i] != k + <span class="number">1</span> <span class="keyword">and</span> d + <span class="number">1</span> &lt; dis[i][k]:</span><br><span class="line">                    dis[i][k] = d + <span class="number">1</span></span><br><span class="line">                    q.append((i, k))  <span class="comment"># 加到队尾</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 整理题意：是否存在长度不超过的 k+1k + 1k+1 窗口，窗口内有相同元素。</span><br><span class="line">class Solution:</span><br><span class="line">    def containsNearbyDuplicate(self, nums: List[int], k: int) -&gt; bool:</span><br><span class="line">        n = len(nums)</span><br><span class="line">        s = set()</span><br><span class="line">        for i in range(n):</span><br><span class="line">            if i &gt; k:</span><br><span class="line">                s.remove(nums[i - k - 1])</span><br><span class="line">            if nums[i] in s:</span><br><span class="line">                return True</span><br><span class="line">            s.add(nums[i])</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
-<p>&amp;&amp;进行操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">intersect</span>(<span class="params">self, nums1: <span class="type">List</span>[<span class="built_in">int</span>], nums2: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        num1 = collections.Counter(nums1)</span><br><span class="line">        num2 = collections.Counter(nums2)</span><br><span class="line">        num = num1 &amp; num2</span><br><span class="line">        <span class="keyword">return</span> num.elements()</span><br></pre></td></tr></table></figure>
       
 
       
@@ -1011,15 +1008,15 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">哈希表</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">未解决</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">困难</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">已解决</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
         		</li>
       		
 		</ul>
@@ -1177,11 +1174,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1189,11 +1186,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,11 +1198,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1233,11 +1230,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1249,11 +1246,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
               </li>
              
               <li class="article-tag-list-item">

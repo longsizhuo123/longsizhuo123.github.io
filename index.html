@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
 <li>I’m open to collaboration and feedback.</li>
 </ul>
 <h3 id="How-to-contact-me"><a href="#How-to-contact-me" class="headerlink" title="How to contact me"></a>How to contact me</h3><ul>
-<li>Email: <a href="mailto:&#108;&#x6f;&#110;&#x67;&#115;&#105;&#122;&#104;&#117;&#111;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109;">&#108;&#x6f;&#110;&#x67;&#115;&#105;&#122;&#104;&#117;&#111;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#109;</a></li>
+<li>Email: <a href="mailto:&#x6c;&#x6f;&#110;&#103;&#115;&#105;&#122;&#104;&#x75;&#111;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#x6c;&#x6f;&#110;&#103;&#115;&#105;&#122;&#104;&#x75;&#111;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a></li>
 <li>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/longsizhuo/">Sizhuo Long</a></li>
 <li>XiaoHongShu(Small RedBook): <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5c0b8cc2000000000601e809">@sizhuo_long</a></li>
 </ul>
@@ -353,6 +353,87 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/0116/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2341. 数组能形成多少数对" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0216/undefined.html">2341. 数组能形成多少数对  每日一题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0216/undefined.html" class="archive-article-date">
+  	<time datetime="2023-02-16T12:33:00.092Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/2023-02-16.png" alt="2023-02-16.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-number-of-pairs-in-array/description/">2341. 数组能形成多少数对.md</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><h2 id="我流："><a href="#我流：" class="headerlink" title="我流："></a>我流：</h2><p>不知道是不是看到“简单”两个字，这道题有主动思考最优解。居然这一次比ylb大佬的哈希表方法还快。<br>把列表排序后，两个两个看是否相等就行。</p>
+<h2 id="哈希表思想："><a href="#哈希表思想：" class="headerlink" title="哈希表思想："></a>哈希表思想：</h2><p>Counter计数后，<code>a+=v//2</code>,<code>b+=v%2</code>对于每个数字 x，<br>如果 x 出现的次数 v 大于 1，则可以从数组中选出两个 x 形成一个数对，我们将v 除以 2 向下取整，<br>即可得到当前数字 x 可以形成的数对数目，然后我们累加这个数目到变量 s 中。</p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><figcaption><span>普通计数</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">numberOfPairs</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        nums.sort()</span><br><span class="line">        ans = [<span class="number">0</span>, <span class="built_in">len</span>(nums)]</span><br><span class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[index - <span class="number">1</span>] == nums[index]:</span><br><span class="line">                ans[<span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">                ans[<span class="number">1</span>] -= <span class="number">2</span></span><br><span class="line">                nums[index - <span class="number">1</span>] = nums[index] = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>哈希表</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">numberOfPairs</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        x = Counter(nums)</span><br><span class="line">        a = <span class="number">0</span></span><br><span class="line">        b = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> k,v <span class="keyword">in</span> x.items():</span><br><span class="line">            a+=v//<span class="number">2</span></span><br><span class="line">            b+=v%<span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> [a,b]</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0216/undefined.html">展开全文 >></a>
         </p>
       
 
@@ -999,90 +1080,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-2331计算布尔二叉树的值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0206/undefined.html">2331计算布尔二叉树的值 每日一题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0206/undefined.html" class="archive-article-date">
-  	<time datetime="2023-02-06T09:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/2023-02-06.png" alt="2023-02-06.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/evaluate-boolean-binary-tree/">2331计算布尔二叉树的值</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>对于当前的root，如果是leaf root（即左节点为空），则判断当前的布尔值（叶节点必定是布尔而不是判断）。<br>                否则就递归，直到遍历到叶节点，求出一个子树的左右孩子后，判断当前 Val的类型，最后求出Val的值。<br>如果Val不是根节点，则Val作为其他树的孩子节点返回到上一层子树。</p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">evaluateTree</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> root.left <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">bool</span>(root.val)</span><br><span class="line">        l = self.evaluateTree(root.left)</span><br><span class="line">        r = self.evaluateTree(root.right)</span><br><span class="line">        <span class="keyword">return</span> l <span class="keyword">or</span> r <span class="keyword">if</span> root.val == <span class="number">2</span> <span class="keyword">else</span> l <span class="keyword">and</span> r</span><br></pre></td></tr></table></figure>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> TreeNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	Val   <span class="type">int</span></span><br><span class="line">	Left  *TreeNode</span><br><span class="line">	Right *TreeNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">evaluateTree</span><span class="params">(root *TreeNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> root.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> root.Val == <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">	l, r := evaluateTree(root.Left), evaluateTree(root.Right)</span><br><span class="line">	<span class="keyword">if</span> root.Val == <span class="number">2</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> l || r</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l &amp;&amp; r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0206/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1201,11 +1198,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1213,11 +1210,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,11 +1222,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,11 +1254,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1273,11 +1270,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
               </li>
              
               <li class="article-tag-list-item">
