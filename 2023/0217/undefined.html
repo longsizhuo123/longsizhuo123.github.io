@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
-  <title>Python 击败98.40% collections的Counter 方法！ | Siz Long</title>
+  <title>1139. 最大的以 1 为边界的正方形  每日一题 | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Pyhton collection 包里 Counter() 可以对list里出现的元素进行计数，并且输出是字典。比如nums&#x3D;[1, 1, 1, 2, 2, 3] 对其Counter后的结果是Counter(&amp;#123;1: 3, 2: 2, 3: 1&amp;#125;)。  因此遍历一次字典，当value&gt;3的时候value&#x3D;2，就可以将大于2个的元素计数变成2个。 所以我们将Counter(">
+  <meta name="description" content="题目：1139. 最大的以 1 为边界的正方形.md 思想：quiz6 简单版，前缀和求解。需要注意的是左上角为0 的特殊情况没有考虑到，需要验证 # 上 左 下 右 四条边 1 的个数均为 d 代码：错误代码123456789101112131415161718192021222324252627class Solution:    def largest1BorderedSquare(self">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python 击败98.40% collections的Counter 方法！">
-<meta property="og:url" content="https://longsizhuo123.github.io/2022/1225/undefined.html">
+<meta property="og:title" content="1139. 最大的以 1 为边界的正方形  每日一题">
+<meta property="og:url" content="https://longsizhuo123.github.io/2023/0217/undefined.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="Pyhton collection 包里 Counter() 可以对list里出现的元素进行计数，并且输出是字典。比如nums&#x3D;[1, 1, 1, 2, 2, 3] 对其Counter后的结果是Counter(&amp;#123;1: 3, 2: 2, 3: 1&amp;#125;)。  因此遍历一次字典，当value&gt;3的时候value&#x3D;2，就可以将大于2个的元素计数变成2个。 所以我们将Counter(">
+<meta property="og:description" content="题目：1139. 最大的以 1 为边界的正方形.md 思想：quiz6 简单版，前缀和求解。需要注意的是左上角为0 的特殊情况没有考虑到，需要验证 # 上 左 下 右 四条边 1 的个数均为 d 代码：错误代码123456789101112131415161718192021222324252627class Solution:    def largest1BorderedSquare(self">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-25T09:39:00.000Z">
-<meta property="article:modified_time" content="2023-01-15T06:38:51.735Z">
+<meta property="og:image" content="https://longsizhuo123.github.io/assets/img/2023-02-17.png">
+<meta property="og:image" content="https://pic.leetcode.cn/1676448329-qJcoyK-1139.png">
+<meta property="article:published_time" content="2023-02-17T11:24:00.000Z">
+<meta property="article:modified_time" content="2023-02-17T11:28:00.682Z">
 <meta property="article:author" content="Loong Loong">
 <meta property="article:tag" content="Python">
-<meta property="article:tag" content="已解决,题解">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="前缀和">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://longsizhuo123.github.io/assets/img/2023-02-17.png">
   
     <link rel="alternative" href="/atom.xml" title="Siz Long" type="application/atom+xml">
   
@@ -168,38 +172,31 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-80" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-1139. 最大的以 1 为边界的正方形" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python 击败98.40% collections的Counter 方法！
+      1139. 最大的以 1 为边界的正方形  每日一题
     </h1>
   
 
         
-        <a href="/2022/1225/undefined.html" class="archive-article-date">
-  	<time datetime="2022-12-25T09:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-25</time>
+        <a href="/2023/0217/undefined.html" class="archive-article-date">
+  	<time datetime="2023-02-17T11:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Pyhton <code>collection</code> 包里 <code>Counter()</code> 可以对list里出现的元素进行计数，并且输出是字典。<br>比如<code>nums=[1, 1, 1, 2, 2, 3]</code> 对其Counter后的结果是<code>Counter(&#123;1: 3, 2: 2, 3: 1&#125;)</code>。</p>
-<ol>
-<li>因此遍历一次字典，当<code>value&gt;3</code>的时候<code>value=2</code>，就可以将大于2个的元素计数变成2个。</li>
-<li>所以我们将<code>Counter(&#123;1: 3, 2: 2, 3: 1&#125;)</code>变成<code>Counter(&#123;1: 2, 2: 2, 3: 1&#125;)</code>后再对其elements进行list操作就可以得到改变后的列表了。</li>
-</ol>
-<hr>
-<p>由于题意中“输入数组是以「引用」方式传递的”，所以我们将nums清空再填入就好</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter <span class="comment"># 导入包</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeDuplicates</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        dict1 = Counter(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> dict1:</span><br><span class="line">            <span class="keyword">if</span> dict1[i] &gt; <span class="number">2</span>:</span><br><span class="line">                dict1[i] = <span class="number">2</span></span><br><span class="line">        list1 = <span class="built_in">list</span>(dict1.elements())</span><br><span class="line">        nums.clear() <span class="comment"># 清空列表</span></span><br><span class="line">        nums.extend(list1) <span class="comment"># 将集合添加到列表</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(nums)</span><br></pre></td></tr></table></figure>
-<p>复杂度分析</p>
-<p>时间复杂度：<code>O(n)</code>，其中 <code>n</code> 是数组的长度。我们最多遍历该数组一次。</p>
-<p>空间复杂度：<code>O(1)</code>。我们只需要常数的空间存储若干变量。</p>
+        <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/2023-02-17.png" alt="2023-02-17.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-1-bordered-square/description/">1139. 最大的以 1 为边界的正方形.md</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>quiz6 简单版，前缀和求解。需要注意的是左上角为0 的特殊情况没有考虑到，<br>需要验证 # 上 左 下 右 四条边 1 的个数均为 d<br><img src="https://pic.leetcode.cn/1676448329-qJcoyK-1139.png"></p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><figcaption><span>错误代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largest1BorderedSquare</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        matrix_heng = copy.deepcopy(grid)</span><br><span class="line">        matrix_su = copy.deepcopy(grid)</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(grid) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="number">1</span> <span class="keyword">in</span> grid[<span class="number">0</span>]:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ind, i <span class="keyword">in</span> <span class="built_in">enumerate</span>(grid):</span><br><span class="line">            <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(i)):</span><br><span class="line">                <span class="comment"># 每一行相加</span></span><br><span class="line">                <span class="keyword">if</span> index &gt;= <span class="number">1</span>:</span><br><span class="line">                    matrix_heng[ind][index] += matrix_heng[ind][index-<span class="number">1</span>]</span><br><span class="line">                <span class="comment"># 每一列相加</span></span><br><span class="line">                <span class="keyword">if</span> ind &gt;= <span class="number">1</span>:</span><br><span class="line">                    matrix_su[ind][index] += matrix_su[ind-<span class="number">1</span>][index]</span><br><span class="line">        <span class="built_in">print</span>(matrix_heng, matrix_su)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid[i])):</span><br><span class="line">                minus = <span class="built_in">min</span>(matrix_heng[i][j], matrix_su[i][j])</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    <span class="keyword">if</span> grid[i-minus+<span class="number">1</span>][j-minus+<span class="number">1</span>] == <span class="number">1</span> <span class="keyword">and</span> i &gt;= minus-<span class="number">1</span> <span class="keyword">and</span> j &gt;= minus-<span class="number">1</span>:</span><br><span class="line">                        ans = <span class="built_in">max</span>(ans, minus ** <span class="number">2</span>)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largest1BorderedSquare</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        m, n = <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">        rs = [<span class="built_in">list</span>(accumulate(row, initial=<span class="number">0</span>)) <span class="keyword">for</span> row <span class="keyword">in</span> grid]  <span class="comment"># 每行的前缀和</span></span><br><span class="line">        cs = [<span class="built_in">list</span>(accumulate(col, initial=<span class="number">0</span>)) <span class="keyword">for</span> col <span class="keyword">in</span> <span class="built_in">zip</span>(*grid)]  <span class="comment"># 每列的前缀和</span></span><br><span class="line">        <span class="keyword">for</span> d <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">min</span>(m, n), <span class="number">0</span>, -<span class="number">1</span>):  <span class="comment"># 从大到小枚举正方形边长 d</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m - d + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n - d + <span class="number">1</span>):  <span class="comment"># 枚举正方形左上角坐标 (i,j)</span></span><br><span class="line">                    <span class="comment"># 上 左 下 右 四条边 1 的个数均为 d</span></span><br><span class="line">                    <span class="keyword">if</span> rs[i][j + d] - rs[i][j] == d <span class="keyword">and</span> \</span><br><span class="line">                       cs[j][i + d] - cs[j][i] == d <span class="keyword">and</span> \</span><br><span class="line">                       rs[i + d - <span class="number">1</span>][j + d] - rs[i + d - <span class="number">1</span>][j] == d <span class="keyword">and</span> \</span><br><span class="line">                       cs[j + d - <span class="number">1</span>][i + d] - cs[j + d - <span class="number">1</span>][i] == d:</span><br><span class="line">                        <span class="keyword">return</span> d * d</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -216,7 +213,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
         		</li>
       		
 		</ul>
@@ -272,7 +273,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2022/1225/undefined.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2023/0217/undefined.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -286,18 +287,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2023/0107/undefined.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          1801-1803 力扣新手初见！
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/1207/undefined.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1004.最大连续1的个数 III 最大连续1的个数 III</div>
+    <a href="/2023/0216/undefined.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2341. 数组能形成多少数对  每日一题</div>
       <i class="icon-circle-right"></i>
     </a>
   

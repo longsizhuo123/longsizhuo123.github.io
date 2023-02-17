@@ -167,6 +167,90 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-1604. 警告一小时内使用相同员工卡大于等于三次的人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0208/undefined.html">1604警告一小时内使用相同员工卡大于等于三次的人 每日一题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0208/undefined.html" class="archive-article-date">
+  	<time datetime="2023-02-07T13:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/../assets/img/2023-02-08.png" alt="2023-02-08.png"></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>注意这种时间题的数据预处理，可以把时间转换为分钟，具体可以看代码里的注释。想法和ylb大佬的一致。<br>还要注意的是，其实排序直接用sort就行了。<br>python: <code>:=</code>海象运算符，可以在判断中赋值<br>Golang: <code>SScanf</code>Sscanf从字符串str扫描文本，根据format 参数指定的格式将成功读取的空白分隔的值保存进成功传递给本函数的参数。<br>返回成功扫描的条目个数和遇到的任何错误。</p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">alertNames</span>(<span class="params">self, keyName: <span class="type">List</span>[<span class="built_in">str</span>], keyTime: <span class="type">List</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        ans = <span class="built_in">set</span>()</span><br><span class="line">        dict1 = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">        <span class="keyword">for</span> name, time <span class="keyword">in</span> <span class="built_in">zip</span>(keyName, keyTime):</span><br><span class="line">            dict1[name].append(<span class="built_in">int</span>(time[:<span class="number">2</span>])*<span class="number">60</span>+<span class="built_in">int</span>(time[<span class="number">3</span>:]))</span><br><span class="line">        <span class="built_in">print</span>(dict1)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> dict1:</span><br><span class="line">            <span class="comment"># 定义10：00-11：00出现三次计数，就警告</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(dict1[i]) &gt;= <span class="number">3</span>:</span><br><span class="line">                dict1[i].sort()</span><br><span class="line">                <span class="built_in">print</span>(dict1[i])</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(dict1[i])):</span><br><span class="line">                    <span class="comment"># 遍历当前小时到一小时内,好像可以直接看切片</span></span><br><span class="line">                    <span class="comment"># for k in range(len(dict1[i]) + 1, len(dict1[i])+3):</span></span><br><span class="line">                    <span class="keyword">if</span> j + <span class="number">2</span> &lt; <span class="built_in">len</span>(dict1[i]):</span><br><span class="line">                        <span class="comment"># if dict1[i][j:j + 3][0].replace(&quot;:&quot;, &quot;&quot;)[:2]</span></span><br><span class="line">                        <span class="keyword">if</span> <span class="built_in">abs</span>(dict1[i][j:j + <span class="number">3</span>][-<span class="number">1</span>] -</span><br><span class="line">                            dict1[i][j:j + <span class="number">3</span>][<span class="number">0</span>]) &lt;= <span class="number">60</span>:</span><br><span class="line">                            ans.add(i)</span><br><span class="line">                        <span class="built_in">print</span>(dict1[i][j:j + <span class="number">3</span>])</span><br><span class="line">        ans = <span class="built_in">list</span>(ans)</span><br><span class="line">        ans.sort()</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">哈希表</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0208/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2331计算布尔二叉树的值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -963,96 +1047,6 @@ value -- 可选，如果指定键的值不存在时，返回该默认值。
 
 
   
-    <article id="post-brief_alternate 作业帮忙" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0130/undefined.html">brief_alternate 作业帮忙</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0130/undefined.html" class="archive-article-date">
-  	<time datetime="2023-01-30T06:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="../assets/documents/brief_alternate.pdf">brief_alternate.pdf</a><br><a href="../assets/documents/superstore_transaction.csv">superstore_transaction.csv</a></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>自学pandas进行数据处理，比之前<code>import csv</code>好用多了。</p>
-<p>其中的知识点需要记住的是：</p>
-<ol>
-<li>df[“列名”] 可以直接将第一行判定为列的名字，并且返回一个只包含列名的列表。</li>
-<li>idxmax()返回包含最大值的index,max()饭回最大值</li>
-<li><code>.loc </code>函数是 pandas 中的一个重要函数，用于选择和定位数据框中的数据。它允许您选择某些行和列，并将其以 DataFrame 或 Series 的形式返回。<br>通过使用行标签和列标签作为索引，您可以在数据框中执行如下操作：<br>.选择单行数据<br>.选择多行数据<br>.选择单列数据<br>.选择多列数据<br>语法： <code>df.loc[row_indexer, column_indexer]</code><br>其中，row_indexer 是要选择的行的标签，column_indexer 是要选择的列的标签。</li>
-<li>unique()返回不重复的value的number计数。<br>代码如下：</li>
-</ol>
-<p><a href="../assets/documents/superstore">superstore</a></p>
-<figure class="highlight python"><figcaption><span>s_p</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import pandas library as pd</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read CSV file named &#x27;superstore_transaction.csv&#x27; and store it in a dataframe named &#x27;df&#x27;</span></span><br><span class="line">df = pd.read_csv(<span class="string">&quot;superstore_transaction.csv&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove &quot;$&quot; and &quot;,&quot; from the values in the &#x27;Profit&#x27; column and convert it to integer</span></span><br><span class="line">df[<span class="string">&quot;Profit&quot;</span>] = df[<span class="string">&quot;Profit&quot;</span>].<span class="built_in">str</span>.replace(<span class="string">&#x27;$&#x27;</span>, <span class="string">&quot;&quot;</span>).<span class="built_in">str</span>.replace(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;&quot;</span>).astype(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove &quot;$&quot; and &quot;,&quot; from the values in the &#x27;Sales&#x27; column and convert it to integer</span></span><br><span class="line">df[<span class="string">&quot;Sales&quot;</span>] = df[<span class="string">&quot;Sales&quot;</span>].<span class="built_in">str</span>.replace(<span class="string">&#x27;$&#x27;</span>, <span class="string">&quot;&quot;</span>).<span class="built_in">str</span>.replace(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;&quot;</span>).astype(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get the index of the row with the maximum value in the &#x27;Profit&#x27; column and store it in &#x27;col_max_profit&#x27;</span></span><br><span class="line">col_max_profit = df[<span class="string">&quot;Profit&quot;</span>].idxmax()</span><br><span class="line"><span class="comment"># Get the index of the row with the maximum value in the &#x27;Sales&#x27; column and store it in &#x27;col_max_sales&#x27;</span></span><br><span class="line">col_max_sales = df[<span class="string">&quot;Sales&quot;</span>].idxmax()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Store the details of the transaction with highest sales</span></span><br><span class="line">highest_sales_info = [</span><br><span class="line">    <span class="string">&quot;=========================\n&quot;</span></span><br><span class="line">    <span class="string">&quot;HIGHEST SALES TRANSACTION\n&quot;</span></span><br><span class="line">    <span class="string">&quot;=========================\n&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Category: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Category&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Customer Name: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Customer Name&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Product Name: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Product Name&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Segment: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Segment&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Sub-Category: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_sales, <span class="string">&quot;Sub-Category&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Profit: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df[<span class="string">&quot;Sales&quot;</span>].<span class="built_in">max</span>()),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Store the details of the transaction with the highest profit</span></span><br><span class="line">highest_profit_info = [</span><br><span class="line">    <span class="string">&quot;==========================\n&quot;</span></span><br><span class="line">    <span class="string">&quot;HIGHEST PROFIT TRANSACTION\n&quot;</span></span><br><span class="line">    <span class="string">&quot;==========================\n&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Category: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Category&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Customer Name: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Customer Name&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Product Name: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Product Name&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Segment: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Segment&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Sub-Category: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df.loc[col_max_profit, <span class="string">&quot;Sub-Category&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;Profit: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df[<span class="string">&quot;Profit&quot;</span>].<span class="built_in">max</span>()),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open a file named &#x27;summary_report.txt&#x27; in &#x27;append&#x27; mode and store it in &#x27;file&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;summary_report.txt&quot;</span>, <span class="string">&quot;a&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    <span class="comment"># Write the &#x27;highest_sales_info&#x27; details to the file</span></span><br><span class="line">    file.write(<span class="string">&#x27;&#x27;</span>.join(highest_sales_info))</span><br><span class="line">    file.write(<span class="string">&#x27;&#x27;</span>.join(highest_profit_info))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><figcaption><span>api</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;&quot;</span></span><br><span class="line">payload = &#123;&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;apikey&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">r = requests.request(<span class="string">&quot;GET&quot;</span>, url, headers=headers, data=payload)  <span class="comment"># 响应API</span></span><br><span class="line"><span class="comment"># 查看响应结果</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Status code:&quot;</span>, r.status_code)</span><br><span class="line"><span class="comment"># 返回内容为json格式文件</span></span><br><span class="line"><span class="comment"># 将API响应存储在一个变量中</span></span><br><span class="line"><span class="comment"># json()函数仅解码json格式返回</span></span><br><span class="line">response_dict = r.json()</span><br><span class="line"><span class="comment"># print(response_dict)</span></span><br><span class="line"><span class="comment"># 处理结果  获得响应字典</span></span><br><span class="line"><span class="comment"># 探索有关仓库的信息  response_dict字典的嵌套</span></span><br><span class="line"><span class="comment"># print(response_dict[&#x27;info&#x27;][&#x27;rate&#x27;])</span></span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;summary_report.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line">head = [</span><br><span class="line">    <span class="string">&quot;=================================================\n&quot;</span></span><br><span class="line">    <span class="string">&quot;SINGAPORE TO US DOLLAR EXCHANGE RATE IN REAL TIME\n&quot;</span></span><br><span class="line">    <span class="string">&quot;=================================================\n&quot;</span></span><br><span class="line">]</span><br><span class="line">f.writelines(head)</span><br><span class="line">f.writelines([<span class="built_in">str</span>(response_dict[<span class="string">&#x27;info&#x27;</span>][<span class="string">&#x27;rate&#x27;</span>])+<span class="string">&quot;\n&quot;</span>])</span><br><span class="line">f.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;over&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><figcaption><span>customers</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&quot;superstore_transaction.csv&quot;</span>)</span><br><span class="line">highest_sales_info = [</span><br><span class="line">    <span class="string">&quot;====================\n&quot;</span></span><br><span class="line">    <span class="string">&quot;SUPERSTORE CUSTOMERS\n&quot;</span></span><br><span class="line">    <span class="string">&quot;====================\n&quot;</span>,</span><br><span class="line">    <span class="string">&quot;TOTAL: &#123;&#125;\n&quot;</span>.<span class="built_in">format</span>(df[<span class="string">&quot;Customer Name&quot;</span>].nunique(), <span class="string">&quot;Category&quot;</span>),</span><br><span class="line">]</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;summary_report.txt&quot;</span>, <span class="string">&quot;a&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.writelines(highest_sales_info)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pandas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0130/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1171,11 +1165,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1183,11 +1177,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1227,11 +1221,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
               </li>
              
               <li class="article-tag-list-item">

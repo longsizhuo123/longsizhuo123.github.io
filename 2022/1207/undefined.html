@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
-  <title>2527.查询数组Xor美丽值 周赛第三题 | Siz Long</title>
+  <title>271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n) | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="6289.查询数组 Xor 美丽值。 这道题研究了很久，发现是一道数学题，但是又没想通透，因为不熟悉异或值。所以没有相出更好的解法。 首先是读题得知需要计(nums[i]|nums[j])&amp;nums[k]，因为ijk可以是数组里的任意值，所以用的三重for循环（肯定会超时），然后自己灵光了一点，也就一点，觉得i，j值互换的值是一样的，所以多加了一层判断（用的字典）。 12345678910">
+  <meta name="description" content="Problem: 271. 字符串的编码与解码  [TOC] 思路 第一反应是不是对字符串进行加密解密，但是读题后发现是将列表转化为字符串，然后第二部分对自己处理过的字符串转化回源列表。  解题方法 列表可能有多个元素（由‘，’区分开的单词组），在每个元素中可能存在多个由空格隔开的单词。于是分开对list中的元素和空格进行处理。   首先对列表进行第一层遍历，再对每个元素进行遍历，当读取到‘ ’">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2527.查询数组Xor美丽值 周赛第三题">
+<meta property="og:title" content="271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n)">
 <meta property="og:url" content="https://longsizhuo123.github.io/2022/1207/undefined.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="6289.查询数组 Xor 美丽值。 这道题研究了很久，发现是一道数学题，但是又没想通透，因为不熟悉异或值。所以没有相出更好的解法。 首先是读题得知需要计(nums[i]|nums[j])&amp;nums[k]，因为ijk可以是数组里的任意值，所以用的三重for循环（肯定会超时），然后自己灵光了一点，也就一点，觉得i，j值互换的值是一样的，所以多加了一层判断（用的字典）。 12345678910">
+<meta property="og:description" content="Problem: 271. 字符串的编码与解码  [TOC] 思路 第一反应是不是对字符串进行加密解密，但是读题后发现是将列表转化为字符串，然后第二部分对自己处理过的字符串转化回源列表。  解题方法 列表可能有多个元素（由‘，’区分开的单词组），在每个元素中可能存在多个由空格隔开的单词。于是分开对list中的元素和空格进行处理。   首先对列表进行第一层遍历，再对每个元素进行遍历，当读取到‘ ’">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-06T14:15:00.000Z">
-<meta property="article:modified_time" content="2023-01-15T06:39:47.745Z">
+<meta property="article:modified_time" content="2023-01-15T06:39:47.772Z">
 <meta property="article:author" content="Loong Loong">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="已解决,题解">
@@ -168,14 +168,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2527" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-271" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      2527.查询数组Xor美丽值 周赛第三题
+      271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n)
     </h1>
   
 
@@ -188,14 +188,33 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>6289.查询数组 Xor 美丽值。</p>
-<p>这道题研究了很久，发现是一道数学题，但是又没想通透，因为不熟悉异或值。所以没有相出更好的解法。</p>
-<p>首先是读题得知需要计(nums[i]|nums[j])&amp;nums[k]，因为ijk可以是数组里的任意值，所以用的三重for循环（肯定会超时），然后自己灵光了一点，也就一点，觉得i，j值互换的值是一样的，所以多加了一层判断（用的字典）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">xorBeauty</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans = []</span><br><span class="line">        record = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">                    <span class="keyword">if</span> k <span class="keyword">not</span> <span class="keyword">in</span> record:</span><br><span class="line">                        <span class="keyword">if</span> (i,j) <span class="keyword">not</span> <span class="keyword">in</span> record.values():</span><br><span class="line">                            record[k] = (i,j)</span><br><span class="line">                            flag = (nums[i]|nums[j])&amp;nums[k]</span><br><span class="line">                            <span class="keyword">if</span> flag <span class="keyword">not</span> <span class="keyword">in</span> ans:</span><br><span class="line">                                ans.append(flag)</span><br><span class="line">                            <span class="keyword">else</span>:</span><br><span class="line">                                ans.remove(flag)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(ans) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        answer = ans[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(ans)):</span><br><span class="line">            answer ^= ans[i]</span><br><span class="line">        <span class="keyword">return</span> answer</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>今天出门的时候还一直在想怎么判断答案一样的情况，结果一看大<a href="/u/endlesscheng">@灵茶山艾府</a>的解法，就一行，那没事了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def xorBeauty(self, nums: List[int]) -&gt; int:</span><br><span class="line">        return reduce(xor, nums)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>接着做，在网上搜了一下，原来如果两个值是一样的话求异或会抵消掉，比如A^B^A &#x3D; B，所以用的append，remove来实现这个功能。最后for循环求异或值。</p>
-<p>大佬代码还在研究ing</p>
+        <blockquote>
+<p>Problem: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/encode-and-decode-strings/description/">271. 字符串的编码与解码</a></p>
+</blockquote>
+<p>[TOC]</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
+<p>第一反应是不是对字符串进行加密解密，但是读题后发现是将列表转化为字符串，然后第二部分对自己处理过的字符串转化回源列表。</p>
+</blockquote>
+<h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><blockquote>
+<p>列表可能有多个元素（由‘，’区分开的单词组），在每个元素中可能存在多个由空格隔开的单词。于是分开对list中的元素和空格进行处理。</p>
+</blockquote>
+<ol>
+<li>首先对列表进行第一层遍历，再对每个元素进行遍历，当读取到‘ ’的时候对预先声明的空列表中添加转义符（一开始打算自定义转义符，后来发现\t直接可行）在每一层遍历每一次结束的时候都在列表中添加新的，与‘ ’不同的转义符比如\n。最后<code>&#39;&#39;.join()</code>转换成字符串，return。</li>
+<li>在解码时，预先声明一个空列表List和空字符串Str，当遍历读取到‘\t’的时候，就在字符串中加入空格<code>Str = &#39;&#39;.join([Str, &#39; &#39;])</code>，同理，读取到’\n’的时候就将Str添加到List中，并且将Str置空进行下一次的循环。</li>
+</ol>
+<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul>
+<li><p>时间复杂度:</p>
+<blockquote>
+<p>添加时间复杂度, 示例： $O(n)$</p>
+</blockquote>
+</li>
+<li><p>空间复杂度:</p>
+<blockquote>
+<p>添加空间复杂度, 示例： $O(n)$</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Codec</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">encode</span>(<span class="params">self, strs: <span class="built_in">list</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Encodes a list of strings to a single string.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="type">List</span> = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> strs:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> i:</span><br><span class="line">                <span class="keyword">if</span> j == <span class="string">&#x27; &#x27;</span>:</span><br><span class="line">                    <span class="type">List</span>.append(<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="type">List</span>.append(j)</span><br><span class="line">            <span class="type">List</span>.append(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        <span class="type">List</span> = <span class="string">&#x27;&#x27;</span>.join(<span class="type">List</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="type">List</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">decode</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">list</span>[<span class="built_in">str</span>]:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Decodes a single string to a list of strings.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="type">List</span> = []</span><br><span class="line">        Str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&#x27;\t&#x27;</span>:</span><br><span class="line">                Str = <span class="string">&#x27;&#x27;</span>.join([Str, <span class="string">&#x27; &#x27;</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> i != <span class="string">&#x27;\n&#x27;</span>:</span><br><span class="line">                    Str = <span class="string">&#x27;&#x27;</span>.join([Str, i])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="type">List</span>.append(Str)</span><br><span class="line">                    Str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="type">List</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -287,7 +306,7 @@ var _hmt = _hmt || [];
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n)
+          2527.查询数组Xor美丽值 周赛第三题
         
       </div>
     </a>
@@ -436,11 +455,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,11 +467,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,11 +511,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
               </li>
              
               <li class="article-tag-list-item">

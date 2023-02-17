@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
 <li>I’m open to collaboration and feedback.</li>
 </ul>
 <h3 id="How-to-contact-me"><a href="#How-to-contact-me" class="headerlink" title="How to contact me"></a>How to contact me</h3><ul>
-<li>Email: <a href="mailto:&#x6c;&#x6f;&#110;&#103;&#115;&#105;&#122;&#104;&#x75;&#111;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#x6c;&#x6f;&#110;&#103;&#115;&#105;&#122;&#104;&#x75;&#111;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a></li>
+<li>Email: <a href="mailto:&#108;&#x6f;&#110;&#x67;&#115;&#105;&#122;&#x68;&#117;&#x6f;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;">&#108;&#x6f;&#110;&#x67;&#115;&#105;&#122;&#x68;&#117;&#x6f;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;</a></li>
 <li>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/longsizhuo/">Sizhuo Long</a></li>
 <li>XiaoHongShu(Small RedBook): <a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/user/profile/5c0b8cc2000000000601e809">@sizhuo_long</a></li>
 </ul>
@@ -353,6 +353,91 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/0116/undefined.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-1139. 最大的以 1 为边界的正方形" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/0217/undefined.html">1139. 最大的以 1 为边界的正方形  每日一题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/0217/undefined.html" class="archive-article-date">
+  	<time datetime="2023-02-17T11:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p><img src="/../assets/img/2023-02-17.png" alt="2023-02-17.png"><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-1-bordered-square/description/">1139. 最大的以 1 为边界的正方形.md</a></p>
+<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>quiz6 简单版，前缀和求解。需要注意的是左上角为0 的特殊情况没有考虑到，<br>需要验证 # 上 左 下 右 四条边 1 的个数均为 d<br><img src="https://pic.leetcode.cn/1676448329-qJcoyK-1139.png"></p>
+<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><figcaption><span>错误代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largest1BorderedSquare</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        matrix_heng = copy.deepcopy(grid)</span><br><span class="line">        matrix_su = copy.deepcopy(grid)</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(grid) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="number">1</span> <span class="keyword">in</span> grid[<span class="number">0</span>]:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ind, i <span class="keyword">in</span> <span class="built_in">enumerate</span>(grid):</span><br><span class="line">            <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(i)):</span><br><span class="line">                <span class="comment"># 每一行相加</span></span><br><span class="line">                <span class="keyword">if</span> index &gt;= <span class="number">1</span>:</span><br><span class="line">                    matrix_heng[ind][index] += matrix_heng[ind][index-<span class="number">1</span>]</span><br><span class="line">                <span class="comment"># 每一列相加</span></span><br><span class="line">                <span class="keyword">if</span> ind &gt;= <span class="number">1</span>:</span><br><span class="line">                    matrix_su[ind][index] += matrix_su[ind-<span class="number">1</span>][index]</span><br><span class="line">        <span class="built_in">print</span>(matrix_heng, matrix_su)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(grid[i])):</span><br><span class="line">                minus = <span class="built_in">min</span>(matrix_heng[i][j], matrix_su[i][j])</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    <span class="keyword">if</span> grid[i-minus+<span class="number">1</span>][j-minus+<span class="number">1</span>] == <span class="number">1</span> <span class="keyword">and</span> i &gt;= minus-<span class="number">1</span> <span class="keyword">and</span> j &gt;= minus-<span class="number">1</span>:</span><br><span class="line">                        ans = <span class="built_in">max</span>(ans, minus ** <span class="number">2</span>)</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largest1BorderedSquare</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        m, n = <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">        rs = [<span class="built_in">list</span>(accumulate(row, initial=<span class="number">0</span>)) <span class="keyword">for</span> row <span class="keyword">in</span> grid]  <span class="comment"># 每行的前缀和</span></span><br><span class="line">        cs = [<span class="built_in">list</span>(accumulate(col, initial=<span class="number">0</span>)) <span class="keyword">for</span> col <span class="keyword">in</span> <span class="built_in">zip</span>(*grid)]  <span class="comment"># 每列的前缀和</span></span><br><span class="line">        <span class="keyword">for</span> d <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">min</span>(m, n), <span class="number">0</span>, -<span class="number">1</span>):  <span class="comment"># 从大到小枚举正方形边长 d</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m - d + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n - d + <span class="number">1</span>):  <span class="comment"># 枚举正方形左上角坐标 (i,j)</span></span><br><span class="line">                    <span class="comment"># 上 左 下 右 四条边 1 的个数均为 d</span></span><br><span class="line">                    <span class="keyword">if</span> rs[i][j + d] - rs[i][j] == d <span class="keyword">and</span> \</span><br><span class="line">                       cs[j][i + d] - cs[j][i] == d <span class="keyword">and</span> \</span><br><span class="line">                       rs[i + d - <span class="number">1</span>][j + d] - rs[i + d - <span class="number">1</span>][j] == d <span class="keyword">and</span> \</span><br><span class="line">                       cs[j + d - <span class="number">1</span>][i + d] - cs[j + d - <span class="number">1</span>][i] == d:</span><br><span class="line">                        <span class="keyword">return</span> d * d</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/0217/undefined.html">展开全文 >></a>
         </p>
       
 
@@ -996,90 +1081,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-1604. 警告一小时内使用相同员工卡大于等于三次的人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/0208/undefined.html">1604警告一小时内使用相同员工卡大于等于三次的人 每日一题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/0208/undefined.html" class="archive-article-date">
-  	<time datetime="2023-02-07T13:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><img src="/../assets/img/2023-02-08.png" alt="2023-02-08.png"></p>
-<h1 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h1><p>注意这种时间题的数据预处理，可以把时间转换为分钟，具体可以看代码里的注释。想法和ylb大佬的一致。<br>还要注意的是，其实排序直接用sort就行了。<br>python: <code>:=</code>海象运算符，可以在判断中赋值<br>Golang: <code>SScanf</code>Sscanf从字符串str扫描文本，根据format 参数指定的格式将成功读取的空白分隔的值保存进成功传递给本函数的参数。<br>返回成功扫描的条目个数和遇到的任何错误。</p>
-<h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">alertNames</span>(<span class="params">self, keyName: <span class="type">List</span>[<span class="built_in">str</span>], keyTime: <span class="type">List</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        ans = <span class="built_in">set</span>()</span><br><span class="line">        dict1 = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">        <span class="keyword">for</span> name, time <span class="keyword">in</span> <span class="built_in">zip</span>(keyName, keyTime):</span><br><span class="line">            dict1[name].append(<span class="built_in">int</span>(time[:<span class="number">2</span>])*<span class="number">60</span>+<span class="built_in">int</span>(time[<span class="number">3</span>:]))</span><br><span class="line">        <span class="built_in">print</span>(dict1)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> dict1:</span><br><span class="line">            <span class="comment"># 定义10：00-11：00出现三次计数，就警告</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(dict1[i]) &gt;= <span class="number">3</span>:</span><br><span class="line">                dict1[i].sort()</span><br><span class="line">                <span class="built_in">print</span>(dict1[i])</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(dict1[i])):</span><br><span class="line">                    <span class="comment"># 遍历当前小时到一小时内,好像可以直接看切片</span></span><br><span class="line">                    <span class="comment"># for k in range(len(dict1[i]) + 1, len(dict1[i])+3):</span></span><br><span class="line">                    <span class="keyword">if</span> j + <span class="number">2</span> &lt; <span class="built_in">len</span>(dict1[i]):</span><br><span class="line">                        <span class="comment"># if dict1[i][j:j + 3][0].replace(&quot;:&quot;, &quot;&quot;)[:2]</span></span><br><span class="line">                        <span class="keyword">if</span> <span class="built_in">abs</span>(dict1[i][j:j + <span class="number">3</span>][-<span class="number">1</span>] -</span><br><span class="line">                            dict1[i][j:j + <span class="number">3</span>][<span class="number">0</span>]) &lt;= <span class="number">60</span>:</span><br><span class="line">                            ans.add(i)</span><br><span class="line">                        <span class="built_in">print</span>(dict1[i][j:j + <span class="number">3</span>])</span><br><span class="line">        ans = <span class="built_in">list</span>(ans)</span><br><span class="line">        ans.sort()</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">哈希表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/0208/undefined.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1198,11 +1199,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">题解</a>
+                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">已解决,题解</a>
+                <a href="javascript:void(0)" class="js-tag color3">题解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,11 +1211,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字典树</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1254,11 +1255,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+                <a href="javascript:void(0)" class="js-tag color4">多重集</a>
               </li>
              
               <li class="article-tag-list-item">
