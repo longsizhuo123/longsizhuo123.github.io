@@ -6,20 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://longsizhuo123.github.io">
-  <title>Python 击败98.40% collections的Counter 方法！ | Siz Long</title>
+  <title>Archives | Siz Long</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Pyhton collection 包里 Counter() 可以对list里出现的元素进行计数，并且输出是字典。比如nums&#x3D;[1, 1, 1, 2, 2, 3] 对其Counter后的结果是Counter(&amp;#123;1: 3, 2: 2, 3: 1&amp;#125;)。  因此遍历一次字典，当value&gt;3的时候value&#x3D;2，就可以将大于2个的元素计数变成2个。 所以我们将Counter(">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python 击败98.40% collections的Counter 方法！">
-<meta property="og:url" content="https://longsizhuo123.github.io/2022/1225/undefined.html">
+  <meta name="description" content="本来想做一个有关于HEXO框架的笔记的，但是能记的太少了，也都在hello-word里。这里面还有好多东西等着去挖掘，但是 现阶段就先作为简单的笔记本使用。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Siz Long">
+<meta property="og:url" content="https://longsizhuo123.github.io/archives/page/7/index.html">
 <meta property="og:site_name" content="Siz Long">
-<meta property="og:description" content="Pyhton collection 包里 Counter() 可以对list里出现的元素进行计数，并且输出是字典。比如nums&#x3D;[1, 1, 1, 2, 2, 3] 对其Counter后的结果是Counter(&amp;#123;1: 3, 2: 2, 3: 1&amp;#125;)。  因此遍历一次字典，当value&gt;3的时候value&#x3D;2，就可以将大于2个的元素计数变成2个。 所以我们将Counter(">
+<meta property="og:description" content="本来想做一个有关于HEXO框架的笔记的，但是能记的太少了，也都在hello-word里。这里面还有好多东西等着去挖掘，但是 现阶段就先作为简单的笔记本使用。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-25T09:39:00.000Z">
-<meta property="article:modified_time" content="2023-01-15T06:38:51.735Z">
 <meta property="article:author" content="Loong Loong">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content="已解决,题解">
+<meta property="article:tag" content="blog">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Siz Long" type="application/atom+xml">
@@ -168,45 +165,36 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-80" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Python 击败98.40% collections的Counter 方法！
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/1207/undefined.html" class="archive-article-date">
+  	<time datetime="2022-12-06T14:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-07</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/1207/undefined.html">2527.查询数组Xor美丽值 周赛第三题</a>
     </h1>
   
 
-        
-        <a href="/2022/1225/undefined.html" class="archive-article-date">
-  	<time datetime="2022-12-25T09:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Pyhton <code>collection</code> 包里 <code>Counter()</code> 可以对list里出现的元素进行计数，并且输出是字典。<br>比如<code>nums=[1, 1, 1, 2, 2, 3]</code> 对其Counter后的结果是<code>Counter(&#123;1: 3, 2: 2, 3: 1&#125;)</code>。</p>
-<ol>
-<li>因此遍历一次字典，当<code>value&gt;3</code>的时候<code>value=2</code>，就可以将大于2个的元素计数变成2个。</li>
-<li>所以我们将<code>Counter(&#123;1: 3, 2: 2, 3: 1&#125;)</code>变成<code>Counter(&#123;1: 2, 2: 2, 3: 1&#125;)</code>后再对其elements进行list操作就可以得到改变后的列表了。</li>
-</ol>
-<hr>
-<p>由于题意中“输入数组是以「引用」方式传递的”，所以我们将nums清空再填入就好</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter <span class="comment"># 导入包</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeDuplicates</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        dict1 = Counter(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> dict1:</span><br><span class="line">            <span class="keyword">if</span> dict1[i] &gt; <span class="number">2</span>:</span><br><span class="line">                dict1[i] = <span class="number">2</span></span><br><span class="line">        list1 = <span class="built_in">list</span>(dict1.elements())</span><br><span class="line">        nums.clear() <span class="comment"># 清空列表</span></span><br><span class="line">        nums.extend(list1) <span class="comment"># 将集合添加到列表</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(nums)</span><br></pre></td></tr></table></figure>
-<p>复杂度分析</p>
-<p>时间复杂度：<code>O(n)</code>，其中 <code>n</code> 是数组的长度。我们最多遍历该数组一次。</p>
-<p>空间复杂度：<code>O(1)</code>。我们只需要常数的空间存储若干变量。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,114 +210,64 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://longsizhuo123.github.io/2022/1225/undefined.html" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2023/0107/undefined.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          1801-1803 力扣新手初见！
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/1207/undefined.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1004.最大连续1的个数 III 最大连续1的个数 III</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/1207/undefined.html" class="archive-article-date">
+  	<time datetime="2022-12-06T14:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-07</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/1207/undefined.html">271. 字符串的编码与解码 - Python 添加转义符解法 复杂度双O(n)</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">已解决,题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span>
+    </nav>
   
 
 
@@ -353,8 +291,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
